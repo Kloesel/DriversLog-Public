@@ -1,0 +1,256 @@
+/* ============================================================
+   Material Design 3 – Qt Stylesheet für Fahrtenbuch
+   ============================================================ */
+
+/* === Tokens === */
+/* Primary: #006493  OnPrimary: #FFFFFF */
+/* Surface: #F8FAFB  OnSurface: #1A1C1E */
+/* Outline: #72787E  SurfaceVariant: #DCE4E9 */
+
+/* === Global === */
+QWidget {
+    font-family: "Roboto", "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #1A1C1E;
+    background-color: #F8FAFB;
+}
+
+/* === Buttons (Filled) === */
+QPushButton {
+    background-color: #006493;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 40px;
+}
+QPushButton:hover    { background-color: #00527A; }
+QPushButton:pressed  { background-color: #004262; }
+QPushButton:disabled { background-color: #C4C7C9; color: #8C8F91; }
+
+/* Outlined Button */
+QPushButton[flat="true"] {
+    background-color: transparent;
+    border: 1px solid #72787E;
+    color: #006493;
+    border-radius: 20px;
+    padding: 10px 24px;
+}
+QPushButton[flat="true"]:hover { background-color: rgba(0,100,147,0.08); }
+
+/* === LineEdit / TextEdit === */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #72787E;
+    border-radius: 4px;
+    padding: 4px 12px;
+    min-height: 36px;
+    max-height: 36px;
+    selection-background-color: #006493;
+    selection-color: #FFFFFF;
+}
+QLineEdit:focus, QTextEdit:focus {
+    border: 2px solid #006493;
+}
+
+/* === ComboBox === */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #72787E;
+    border-radius: 4px;
+    padding: 4px 12px;
+    min-height: 36px;
+    max-height: 36px;
+}
+QComboBox:focus { border: 2px solid #006493; }
+QComboBox::drop-down { border: none; width: 32px; }
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #72787E;
+    width: 0; height: 0;
+    margin-right: 8px;
+}
+QComboBox QAbstractItemView {
+    background: #FFFFFF;
+    border: 1px solid #C4C7C9;
+    border-radius: 4px;
+    selection-background-color: #DCE4E9;
+    selection-color: #1A1C1E;
+}
+
+/* === SpinBox === */
+QSpinBox, QDoubleSpinBox {
+    background-color: #FFFFFF;
+    border: 1px solid #72787E;
+    border-radius: 4px;
+    padding: 4px 8px;
+    min-height: 36px;
+    max-height: 36px;
+}
+QSpinBox:focus, QDoubleSpinBox:focus { border: 2px solid #006493; }
+
+/* === Scrollbars (schmal / MD3) === */
+QScrollBar:vertical {
+    background: transparent;
+    width: 4px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: #72787E;
+    border-radius: 2px;
+    min-height: 30px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: none; }
+
+QScrollBar:horizontal {
+    background: transparent;
+    height: 4px;
+    margin: 0;
+}
+QScrollBar::handle:horizontal {
+    background: #72787E;
+    border-radius: 2px;
+    min-width: 30px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { width: 0; }
+
+/* === TabWidget === */
+QTabWidget::pane {
+    border: none;
+    background: #F8FAFB;
+}
+QTabBar::tab {
+    background: transparent;
+    color: #72787E;
+    padding: 12px 24px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+}
+QTabBar::tab:selected {
+    color: #006493;
+    border-bottom: 2px solid #006493;
+}
+QTabBar::tab:hover { background: rgba(0,100,147,0.08); }
+
+/* === TableView === */
+QTableView, QTreeView, QListView {
+    background: #FFFFFF;
+    border: 1px solid #DCE4E9;
+    border-radius: 8px;
+    gridline-color: #DCE4E9;
+    selection-background-color: #DCE4E9;
+    selection-color: #1A1C1E;
+    alternate-background-color: #F4F6F7;
+}
+QHeaderView::section {
+    background: #DCE4E9;
+    color: #1A1C1E;
+    font-weight: 600;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #72787E;
+}
+
+/* === GroupBox === */
+QGroupBox {
+    border: 1px solid #DCE4E9;
+    border-radius: 12px;
+    margin-top: 16px;
+    padding: 12px;
+    font-weight: 600;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 8px;
+    color: #006493;
+}
+
+/* === CheckBox / RadioButton === */
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 18px; height: 18px;
+    border: 2px solid #72787E;
+    border-radius: 3px;
+}
+QCheckBox::indicator:checked {
+    background-color: #006493;
+    border-color: #006493;
+    image: url(:/icons/check.png);
+}
+QRadioButton::indicator { border-radius: 9px; }
+QRadioButton::indicator:checked {
+    background-color: #006493;
+    border-color: #006493;
+}
+
+/* === MD3 App Bar === */
+#md3AppBar {
+    background-color: #006493;
+    min-height: 56px;
+    max-height: 56px;
+}
+#md3AppBar QLabel {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 500;
+}
+#md3HamburgerBtn {
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 22px;
+    padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 20px;
+}
+#md3HamburgerBtn:hover { background: rgba(255,255,255,0.15); }
+
+/* === Navigation Drawer === */
+#md3Drawer {
+    background-color: #FFFFFF;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+/* === Snackbar === */
+#md3Snackbar {
+    background-color: #1A1C1E;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 14px;
+}
+
+/* === Dialog === */
+QDialog {
+    background-color: #FFFFFF;
+    border-radius: 28px;
+}
+QDialog QLabel { color: #1A1C1E; }
+
+/* === MessageBox === */
+QMessageBox { background-color: #FFFFFF; }
+
+/* === ToolTip === */
+QToolTip {
+    background-color: #1A1C1E;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* === Separator === */
+QFrame[frameShape="4"], QFrame[frameShape="5"] {
+    border: none;
+    background: #DCE4E9;
+    max-height: 1px;
+}

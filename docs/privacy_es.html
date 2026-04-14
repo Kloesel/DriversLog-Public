@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de privacidad – Driverslog</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --primary: #006493;
+      --primary-light: #e8f3f9;
+      --text: #1a1c1e;
+      --muted: #5a6370;
+      --border: #dce4e9;
+      --bg: #f8fafb;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    .header-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 18px;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Sections ── */
+    section {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+
+    section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--primary);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .icon {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    p, li {
+      font-size: 0.95rem;
+      color: #2c3035;
+      line-height: 1.8;
+    }
+
+    p + p { margin-top: 12px; }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    /* ── Info-Kacheln ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .info-tile {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .info-tile .label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .info-tile .value {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── Externe Dienste ── */
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-top: 12px;
+    }
+
+    .service-card h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .service-card a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .service-card a:hover { text-decoration: underline; }
+
+    /* ── Badge: kein Verkauf ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    /* ── Datum-Banner ── */
+    .date-banner {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 520px) {
+      section { padding: 20px 18px; }
+      header { padding: 36px 18px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-icon">🚗</div>
+  <h1>Política de privacidad</h1>
+  <p>Aplicación Driverslog &nbsp;·&nbsp; Android &amp; Windows</p>
+</header>
+
+<div class="container">
+
+  <div class="date-banner">
+    Actualizado: abril de 2026 &nbsp;·&nbsp; Válido para Driverslog desde la versión 1.4.22
+  </div>
+
+  <section>
+    <h2><span class="icon">👤</span> Responsable</h2>
+    <div class="info-grid">
+      <div class="info-tile"><div class="label">Desarrollador</div><div class="value">Klösel</div></div>
+      <div class="info-tile"><div class="label">Contacto</div><div class="value">info.kloesel@gmx.de</div></div>
+      <div class="info-tile"><div class="label">Versión</div><div class="value">1.4.22+</div></div>
+      <div class="info-tile"><div class="label">Plataforma</div><div class="value">Android, Windows</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="icon">📋</span> Finalidad de la aplicación</h2>
+    <p>Driverslog se utiliza para el registro y gestión privado o profesional de viajes en vehículo. La aplicación permite registrar direcciones de origen y destino, distancias y datos del conductor, y puede exportar informes de viajes en PDF o CSV.</p>
+    <p>La aplicación está diseñada para uso personal. No se crean cuentas de usuario y no se almacenan datos en la nube.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">💾</span> Datos almacenados localmente</h2>
+    <p>Todos los datos introducidos se almacenan <strong>exclusivamente de forma local</strong> en el dispositivo (base de datos SQLite). Esto incluye:</p>
+    <ul>
+      <li>Datos de viaje (fecha, origen, destino, kilómetros, conductor)</li>
+      <li>Libreta de direcciones (calle, ciudad, coordenadas)</li>
+      <li>Datos del conductor (nombre)</li>
+      <li>Configuración de la aplicación</li>
+    </ul>
+    <p>Estos datos <strong>no salen del dispositivo automáticamente</strong> y no se transmiten al desarrollador.</p>
+    <div class="badge">✅ Sin almacenamiento en la nube</div>
+  </section>
+
+  <section>
+    <h2><span class="icon">🌐</span> Servicios externos (acceso a la red)</h2>
+    <p>La aplicación utiliza los siguientes servicios externos, <strong>exclusivamente por iniciativa del usuario</strong> (p. ej. al calcular una ruta):</p>
+    <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>Para convertir direcciones en coordenadas (geocodificación), los textos de dirección se transmiten al servicio público Nominatim de la Fundación OpenStreetMap. No se transmiten datos personales, solo el texto de dirección introducido.<br>
+        Privacidad: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
+    <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>Para calcular la ruta de conducción real, las coordenadas de origen y destino se transmiten al servidor de demostración público de OSRM (<code>router.project-osrm.org</code>). OSRM es gratuito y no requiere cuenta ni clave API. Solo se transmiten coordenadas GPS, sin datos personales.<br>
+        Proyecto: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
+    <div class="service-card"><h3>OpenRouteService (ORS) – opcional</h3><p>Alternativamente, se puede guardar una clave API personal de OpenRouteService en la configuración. Si se introduce una clave, las coordenadas de origen y destino se transmiten a OpenRouteService (HeiGIT, Heidelberg) en lugar de a OSRM. El servicio ofrece 500 solicitudes/día de forma gratuita. Sin clave, se utiliza OSRM.<br>
+        Privacidad: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
+    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">Los tres servicios solo se invocan cuando el usuario activa activamente un cálculo de distancia. No se producen solicitudes automáticas en segundo plano. OSRM se utiliza de forma predeterminada; ORS solo si se introduce una clave API.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">📶</span> Sincronización Wi-Fi</h2>
+    <p>La aplicación ofrece sincronización opcional entre dos dispositivos en la misma red Wi-Fi (p. ej. smartphone Android y PC Windows). Los datos de viaje se intercambian directamente entre los dos dispositivos, <strong>sin pasar por Internet ni por servidores externos</strong>.</p>
+    <p>La transmisión se realiza sin cifrar (TCP) en la red local. No se comparten datos con terceros.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔒</span> Permisos de Android</h2>
+    <ul>
+      <li><strong>INTERNET</strong> – para geocodificación Nominatim, enrutamiento OSRM y enrutamiento ORS opcional</li>
+      <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – para detección de sincronización Wi-Fi</li>
+      <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – para descubrimiento de dispositivos mediante difusión UDP</li>
+      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – acceso al archivo de base de datos</li>
+      <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – para sincronización directa Wi-Fi</li>
+    </ul>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No se solicitan permisos para cámara, micrófono, ubicación, contactos u otros datos confidenciales del dispositivo.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🚫</span> Sin compartir datos</h2>
+    <p>No existe <strong>ningún intercambio de datos personales</strong> con el desarrollador, anunciantes u otros terceros. La aplicación no contiene SDK de análisis, publicidad ni seguimiento.</p>
+    <div class="badge">✅ Sin seguimiento &nbsp;·&nbsp; ✅ Sin publicidad &nbsp;·&nbsp; ✅ Sin análisis</div>
+  </section>
+
+  <section>
+    <h2><span class="icon">⚖️</span> Sus derechos</h2>
+    <p>Dado que todos los datos se almacenan localmente en su dispositivo, tiene control total en todo momento. Puede eliminar todos los datos directamente en la aplicación o eliminar completamente los datos de la aplicación a través de la configuración de Android.</p>
+    <p>Para preguntas sobre protección de datos, contáctenos por correo electrónico: <strong>info.kloesel@gmx.de</strong></p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🔄</span> Cambios en esta política</h2>
+    <p>Esta política de privacidad puede actualizarse cuando haya cambios significativos en la aplicación. La fecha del último cambio se indica arriba. La versión actual siempre está disponible en esta URL.</p>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2026 Klösel &nbsp;·&nbsp; Driverslog &nbsp;·&nbsp; Esta aplicación utiliza Qt, bajo licencia <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
+</footer>
+
+</body>
+</html>

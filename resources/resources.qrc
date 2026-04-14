@@ -1,0 +1,31 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+
+  <qresource prefix="/styles">
+      <file>md3_style.qss</file>
+  </qresource>
+
+  <qresource prefix="/icons">
+    <!-- Material Icons als SVG (optional, für QCheckBox ::indicator) -->
+    <!-- <file alias="check_white.svg">icons/check_white.svg</file> -->
+  </qresource>
+
+  <qresource prefix="/">
+    <file alias="icon.png">icon.png</file>
+    <file alias="fahrtenbuch.png">fahrtenbuch.png</file>
+    <file alias="DatePickerDialog.qml">DatePickerDialog.qml</file>
+    <file alias="FahrtFormDialog.qml">FahrtFormDialog.qml</file>
+    <file alias="FahrtListView.qml">FahrtListView.qml</file>
+    <file alias="AdressFormDialog.qml">AdressFormDialog.qml</file>
+    <file alias="AdressListView.qml">AdressListView.qml</file>
+    <file alias="FahrerFormDialog.qml">FahrerFormDialog.qml</file>
+    <file alias="FahrerListView.qml">FahrerListView.qml</file>
+    <file alias="AppBar.qml">AppBar.qml</file>
+
+    <file alias="EinstellungenView.qml">EinstellungenView.qml</file>
+    <file alias="AboutView.qml">AboutView.qml</file>
+    <file alias="HelpView.qml">HelpView.qml</file>
+    <file alias="SyncLogView.qml">SyncLogView.qml</file>
+  </qresource>
+
+</RCC>

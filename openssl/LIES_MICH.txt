@@ -1,0 +1,3 @@
+Kopiere hierher:
+  libssl_3.so    aus C:/android_openssl/ssl_3/arm64-v8a/
+  libcrypto_3.so aus C:/android_openssl/ssl_3/arm64-v8a/

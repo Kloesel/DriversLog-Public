@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Fahrtenbuch</string>
+  </property>
+
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+
+      <widget class="QWidget" name="tabFahrten">
+       <attribute name="title">
+        <string>Fahrten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutFahrten">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tabAdressen">
+       <attribute name="title">
+        <string>Adressen</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutAdressen">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tabFahrer">
+       <attribute name="title">
+        <string>Fahrer</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutFahrer">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tabEinstellungen">
+       <attribute name="title">
+        <string>Einstellungen</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutEinstellungen">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tabExport">
+       <attribute name="title">
+        <string>Datenexport</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutExport">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>&amp;Datei</string>
+    </property>
+    <addaction name="actionSpeichern"/>
+    <addaction name="separator"/>
+    <addaction name="actionBeenden"/>
+   </widget>
+   <widget class="QMenu" name="menuNavigation">
+    <property name="title">
+     <string>&amp;Navigation</string>
+    </property>
+    <addaction name="actionFahrten"/>
+    <addaction name="actionAdressen"/>
+    <addaction name="actionFahrer"/>
+    <addaction name="actionEinstellungen"/>
+    <!-- Export-Tab über Tab-Navigation erreichbar -->
+   </widget>
+   <widget class="QMenu" name="menuSync">
+    <property name="title">
+     <string>&amp;Synchronisation</string>
+    </property>
+    <addaction name="actionSyncStarten"/>
+    <addaction name="actionSyncStatus"/>
+    <addaction name="separator"/>
+    <addaction name="actionSyncProtokoll"/>
+    <addaction name="separator"/>
+    <addaction name="actionDbExport"/>
+    <addaction name="actionDbImport"/>
+   </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>&amp;Hilfe</string>
+    </property>
+    <addaction name="actionBenutzeranleitung"/>
+    <addaction name="separator"/>
+    <addaction name="actionUeberQt"/>
+    <addaction name="actionUeberFahrtenbuch"/>
+   </widget>
+   <addaction name="menuDatei"/>
+   <addaction name="menuNavigation"/>
+   <addaction name="menuSync"/>
+   <addaction name="menuHilfe"/>
+  </widget>
+
+  <widget class="QStatusBar" name="statusBar"/>
+
+  <action name="actionSpeichern">
+   <property name="text">
+    <string>Speichern</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="toolTip">
+    <string>Aktuelle Aenderungen speichern</string>
+   </property>
+  </action>
+
+  <action name="actionBeenden">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+
+  <action name="actionFahrten">
+   <property name="text">
+    <string>Fahrten</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+
+  <action name="actionAdressen">
+   <property name="text">
+    <string>Adressen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
+
+  <action name="actionFahrer">
+   <property name="text">
+    <string>Fahrer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+  </action>
+
+  <action name="actionEinstellungen">
+   <property name="text">
+    <string>Einstellungen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+4</string>
+   </property>
+  </action>
+
+  <action name="actionExport">
+   <property name="text">
+    <string>Datenexport</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+5</string>
+   </property>
+  </action>
+
+  <action name="actionSyncStarten">
+   <property name="text">
+    <string>Sync jetzt starten</string>
+   </property>
+   <property name="toolTip">
+    <string>Datensynchronisation starten</string>
+   </property>
+  </action>
+
+  <action name="actionSyncStatus">
+   <property name="text">
+    <string>Sync-Status</string>
+   </property>
+  </action>
+
+  <action name="actionSyncProtokoll">
+   <property name="text">
+    <string>Sync-Protokoll …</string>
+   </property>
+   <property name="toolTip">
+    <string>Alle lokalen und empfangenen Änderungen anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+
+  <action name="actionDbExport">
+   <property name="text">
+    <string>Datenbank exportieren …</string>
+   </property>
+   <property name="toolTip">
+    <string>Datenbank als Datei speichern (zur Übertragung auf anderes Gerät)</string>
+   </property>
+  </action>
+
+  <action name="actionDbImport">
+   <property name="text">
+    <string>Datenbank importieren …</string>
+   </property>
+   <property name="toolTip">
+    <string>Datenbank von Datei laden (ersetzt lokale Datenbank vollständig)</string>
+   </property>
+  </action>
+
+  <action name="actionBenutzeranleitung">
+   <property name="text">
+    <string>Benutzeranleitung</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+
+  <action name="actionUeberQt">
+   <property name="text">
+    <string>Ueber Qt</string>
+   </property>
+  </action>
+
+  <action name="actionUeberFahrtenbuch">
+   <property name="text">
+    <string>Ueber Fahrtenbuch</string>
+   </property>
+  </action>
+
+ </widget>
+
+ <customwidgets>
+  <customwidget>
+   <class>FahrtenTable</class>
+   <extends>QWidget</extends>
+   <header>fahrtentable.h</header>
+  </customwidget>
+  <customwidget>
+   <class>AdressTable</class>
+   <extends>QWidget</extends>
+   <header>adresstable.h</header>
+  </customwidget>
+  <customwidget>
+   <class>FahrerTable</class>
+   <extends>QWidget</extends>
+   <header>fahrertable.h</header>
+  </customwidget>
+  <customwidget>
+   <class>EinstellungenWidget</class>
+   <extends>QWidget</extends>
+   <header>einstellungen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DatenExport</class>
+   <extends>QWidget</extends>
+   <header>datenexport.h</header>
+  </customwidget>
+ </customwidgets>
+
+ <resources/>
+ <connections/>
+</ui>

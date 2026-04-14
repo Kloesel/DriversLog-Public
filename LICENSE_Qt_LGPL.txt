@@ -1,0 +1,10 @@
+Fahrtenbuch verwendet Qt, lizenziert unter der GNU Lesser General Public License v3 (LGPL v3).
+
+Qt ist ein eingetragenes Warenzeichen der The Qt Company Ltd.
+
+Lizenztext:     https://www.gnu.org/licenses/lgpl-3.0.html
+Qt-Quellcode:   https://download.qt.io
+
+Gemäß LGPL v3 haben Sie das Recht, die Qt-Bibliotheken gegen eine
+modifizierte Version auszutauschen. Den dafür benötigten Qt-Quellcode
+finden Sie unter https://download.qt.io.

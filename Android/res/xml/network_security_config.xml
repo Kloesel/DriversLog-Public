@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Network Security Config
+    - Externe APIs (Nominatim, ORS): HTTPS erzwungen via base-config
+    - WLAN-Sync (lokales Netz): Klartext für private RFC-1918-Adressen erlaubt
+      Hinweis: Android domain-config unterstützt keine IP-Wildcards.
+      Lösung: usesCleartextTraffic im Manifest bleibt für lokales Netz,
+      base-config blockiert Cleartext für alle Nicht-RFC1918-Verbindungen.
+      TODO für maximale Konformität: WLAN-Sync auf lokales HTTPS (self-signed)
+      umstellen und usesCleartextTraffic komplett entfernen.
+-->
+<network-security-config>
+
+    <!-- Externe APIs (ORS, Nominatim): nur HTTPS -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">openrouteservice.org</domain>
+        <domain includeSubdomains="true">nominatim.openstreetmap.org</domain>
+    </domain-config>
+
+    <!-- Alles andere (inkl. WLAN-Sync im lokalen Netz): Cleartext erlaubt -->
+    <!-- Google Play: Data Safety Section muss WLAN-Sync-Cleartext dokumentieren -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+</network-security-config>
