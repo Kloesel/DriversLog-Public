@@ -17,6 +17,9 @@
 #include "swipefilter.h"
 #include "drawerwidget.h"
 #if defined(Q_OS_ANDROID)
+#  include "exportbridge.h"
+#endif
+#if defined(Q_OS_ANDROID)
 #  include <QQuickWidget>
 #  include <QObject>
 #  include "drawerwidget.h"
@@ -90,10 +93,12 @@ private:
     AppBarBridge        *m_appBarBridge  = nullptr;
     DrawerWidget        *m_drawer        = nullptr;
     SwipeFilter         *m_swipeFilter   = nullptr;
+    ExportBridge        *m_exportBridge  = nullptr;
     void setupAndroidNav();
     void setAndroidPage(int index);
     void updateDrawerSelection(int pageIdx);
     void hideAllQuickWidgets();
+    void showExportView();
 #endif
 
     QString m_lastKnownLanguage;           // Sprachstand beim letzten Speichern (alle Plattformen)

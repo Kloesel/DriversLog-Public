@@ -22,6 +22,9 @@ public:
                                  QWidget *parent = nullptr);
     void load();
     void save();
+#if defined(Q_OS_ANDROID)
+    void setOrsUnlocked();
+#endif
 
 signals:
     void settingsChanged();

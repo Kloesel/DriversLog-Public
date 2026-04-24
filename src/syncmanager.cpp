@@ -203,6 +203,16 @@ void SyncManager::startDiscoveryOnDemand(int durationMs)
 {
     if (!m_running || m_syncPaused || !m_discovery) return;
 
+#if defined(Q_OS_ANDROID)
+    // VPN-Warnung: einmalig pro Vordergrund-Session, nur wenn bekannte Peers vorhanden
+    if (!m_vpnWarnedThisSession && !m_ipToDeviceId.isEmpty()
+            && DeviceDiscovery::isVpnActive()) {
+        qWarning() << "[SyncManager] VPN aktiv – bekannte Peers vorhanden, UDP-Discovery möglicherweise blockiert";
+        m_vpnWarnedThisSession = true;
+        emit vpnWarning();
+    }
+#endif
+
     const bool started = m_discovery->start(
         static_cast<quint16>(m_settings.wifiUdpPort), durationMs);
 
@@ -237,6 +247,10 @@ void SyncManager::scheduleRelayIfNeeded()
             qDebug() << "[SyncManager] scheduleRelayIfNeeded: ausstehende Relays → Timer gestartet";
             m_relayCheckTimer->start();
         }
+        // Discovery starten damit Peers gefunden und Änderungen zeitnah gesendet werden
+        if (m_dbSync && m_dbSync->hasPendingForAnyKnownPeer()) {
+            startDiscoveryOnDemand(kDiscoveryPeriodicMs);
+        }
     } else {
         if (m_relayCheckTimer->isActive()) {
             qDebug() << "[SyncManager] scheduleRelayIfNeeded: keine Relays → Timer gestoppt";
@@ -260,10 +274,19 @@ void SyncManager::pauseSync()
     qDebug() << "[SyncManager] pauseSync: Discovery + Relay-Timer + Periodic-Timer angehalten, TCP-Server aktiv";
 }
 
+void SyncManager::triggerDiscovery()
+{
+    // Nach lokalem Speichern aufrufen – stößt sofort eine kurze Discovery an
+    // damit Peers zeitnah die neue Änderung erhalten.
+    if (!m_running || m_syncPaused) return;
+    startDiscoveryOnDemand(kDiscoveryPeriodicMs);
+}
+
 void SyncManager::resumeSync()
 {
     if (!m_running || !m_syncPaused) return;
     m_syncPaused = false;
+    m_vpnWarnedThisSession = false;  // neue Vordergrund-Session → VPN erneut prüfen
 
     scheduleRelayIfNeeded();
 
@@ -339,30 +362,28 @@ void SyncManager::syncNextPeer()
 
     // Knowledge-Matrix: nur was dieser Peer noch nicht hat
     QJsonArray pendingForPeer = m_dbSync->exportChanges(peerDevId);
+    // Neues Gerät (nur Default-Daten)? → Vollständigen Export anfordern statt Delta
+    if (m_dbSync->isNewDevice()) {
+        qDebug() << "[SyncManager] Leere DB erkannt – sende FULL_EXPORT_REQUEST an"
+                 << ip.toString();
+        emit syncProgress(tr("Fordere vollständigen Datensatz von %1 an …")
+                          .arg(ip.toString()));
+        m_transfer->requestFullExport(ip,
+                                      static_cast<quint16>(m_settings.wifiTcpPort));
+        QTimer::singleShot(10000, this, [this]() {
+            if (m_syncing && m_waitingForSyncResponse) {
+                m_waitingForSyncResponse = false;
+                qDebug() << "[SyncManager] Timeout nach FULL_EXPORT_REQUEST – weiter";
+                syncNextPeer();
+            }
+        });
+        m_waitingForSyncResponse = true;
+        return;
+    }
+
     qDebug() << "[DatabaseSync] exportChanges für diesen Peer:" << pendingForPeer.size();
 
     if (pendingForPeer.isEmpty()) {
-        // Neues Gerät? → Vollständigen Export anfordern statt Delta
-        if (m_dbSync->isNewDevice()) {
-            qDebug() << "[SyncManager] Leere DB erkannt – sende FULL_EXPORT_REQUEST an"
-                     << ip.toString();
-            emit syncProgress(tr("Fordere vollständigen Datensatz von %1 an …")
-                              .arg(ip.toString()));
-            m_transfer->requestFullExport(ip,
-                                          static_cast<quint16>(m_settings.wifiTcpPort));
-            // Timeout: falls Peer nicht antwortet (z.B. ebenfalls leere DB)
-            QTimer::singleShot(10000, this, [this]() {
-                if (m_syncing && m_waitingForSyncResponse) {
-                    m_waitingForSyncResponse = false;
-                    qDebug() << "[SyncManager] Timeout nach FULL_EXPORT_REQUEST – weiter";
-                    syncNextPeer();
-                }
-            });
-            m_waitingForSyncResponse = true;
-            return;
-        }
-
-        // Keine Änderungen für diesen Peer → Gegenstück bitten seine zu senden
         qDebug() << "[SyncManager] Nichts zu senden – sende SYNC_REQUEST an"
                  << ip.toString();
         m_waitingForSyncResponse = true;

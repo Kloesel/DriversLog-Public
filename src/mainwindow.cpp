@@ -10,6 +10,10 @@
 #include <QToolBar>
 #include <QStatusBar>
 #include <QCloseEvent>
+#if defined(Q_OS_ANDROID)
+#  include <csignal>
+#  include <unistd.h>
+#endif
 #include <QMessageBox>
 #include <QApplication>
 #include <QGuiApplication>
@@ -58,6 +62,7 @@ static void restoreHeaderState(const QString &key, QHeaderView *hv,
 #  include <QQuickWidget>
 #  include <QQmlContext>
 #  include <QQuickItem>
+#  include "exportbridge.h"
 #endif
 #include <QToolButton>
 #include <QHBoxLayout>
@@ -268,6 +273,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_fahrtenTab, &FahrtenTable::savedToDb, this, showSaved);
     connect(m_adressTab,  &AdressTable::savedToDb,  this, showSaved);
     connect(m_fahrerTab,  &FahrerTable::savedToDb,  this, showSaved);
+    // Nach lokalem Speichern sofort Discovery starten damit Peers zeitnah sync bekommen
+    connect(m_fahrtenTab, &FahrtenTable::savedToDb, m_syncMgr, &SyncManager::triggerDiscovery);
+    connect(m_adressTab,  &AdressTable::savedToDb,  m_syncMgr, &SyncManager::triggerDiscovery);
+    connect(m_fahrerTab,  &FahrerTable::savedToDb,  m_syncMgr, &SyncManager::triggerDiscovery);
 #endif
 
     connect(m_einstellTab, SIGNAL(settingsChanged()), this, SLOT(onSettingsChanged()));
@@ -278,14 +287,27 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_syncMgr, SIGNAL(syncProgress(QString)),      this, SLOT(onSyncProgress(QString)));
     connect(m_syncMgr, &SyncManager::syncStarted,          this, &MainWindow::onSyncStatus);
 
+#if defined(Q_OS_ANDROID)
+    // VPN-Warnung als Snackbar anzeigen
+    connect(m_syncMgr, &SyncManager::vpnWarning, this, [this]() {
+        Snackbar::show(this,
+            tr("⚠ VPN aktiv – WLAN-Sync möglicherweise eingeschränkt"),
+            5000);
+    });
+#endif
+
     // changeApplied: sofort refreshen wenn eine eingehende Änderung angewendet wurde
     // (syncFinished wird nicht immer emittiert wenn S22 direkt sendet ohne SYNC_REQUEST)
+    // Refresh via QTimer::singleShot um mehrfache schnelle Aufrufe zu bündeln
     if (m_syncMgr->dbSync()) {
         connect(m_syncMgr->dbSync(), &DatabaseSync::changeApplied,
                 this, [this](const QString &, int) {
-            m_fahrtenTab->refresh();
-            m_adressTab->refresh();
-            m_fahrerTab->refresh();
+            // Verzögert refreshen – bündelt alle Änderungen eines Batches
+            QTimer::singleShot(200, this, [this]() {
+                m_fahrtenTab->refresh();
+                m_adressTab->refresh();
+                m_fahrerTab->refresh();
+            });
         });
     }
 
@@ -463,6 +485,17 @@ void MainWindow::closeEvent(QCloseEvent *event)
     m_syncMgr->closeDb();
     m_db->close();
     event->accept();
+#if defined(Q_OS_ANDROID)
+    // Task aus Back-Stack entfernen (verhindert Android-Neustart nach SIGKILL)
+    QJniObject activity = QJniObject::callStaticObjectMethod(
+        "org/qtproject/qt/android/QtNative",
+        "activity",
+        "()Landroid/app/Activity;");
+    if (activity.isValid())
+        activity.callMethod<void>("finishAndRemoveTask");
+    // SIGKILL ist uncatchable – ART/atexit-Handler können exit(0) abfangen, SIGKILL nicht
+    kill(getpid(), SIGKILL);
+#endif
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -755,7 +788,7 @@ void MainWindow::setupAndroidNav()
     // Sync-Log freischalten wenn Bridge das Signal sendet (7x Titel-Tap)
     connect(m_appBarBridge, &AppBarBridge::syncLogActivated, this, [this]() {
         if (m_drawer) {
-            m_drawer->setItemVisible(6, true);
+            m_drawer->setItemVisible(7, true);   // 7 = Sync-Log
             // Kurze visuelle Bestätigung im Sync-Status
             m_appBarBridge->setSyncStatus(tr("🔓 Sync-Log aktiv"));
             QTimer::singleShot(2000, this, [this]() {
@@ -763,6 +796,9 @@ void MainWindow::setupAndroidNav()
                     m_syncMgr && m_syncMgr->isRunning() ? tr("Sync: WLAN") : tr("Sync: aus"));
             });
         }
+#if defined(Q_OS_ANDROID)
+        m_einstellTab->setOrsUnlocked();
+#endif
     });
     rootLay->addWidget(m_appBarQml);
 
@@ -788,32 +824,34 @@ void MainWindow::setupAndroidNav()
     m_drawer->addPage(QString::fromUtf8("\xF0\x9F\x91\xA4"), tr("Fahrer"));        // 👤 2
     m_drawer->addPage(QString::fromUtf8("\xE2\x9A\x99"),      tr("Einstellungen")); // ⚙  3
     m_drawer->addSeparator();                                                        //    4
-    m_drawer->addPage(QString::fromUtf8("\xE2\x9D\x93"),      tr("Hilfe"));         // ❓ 5
-    m_drawer->addPage(QString::fromUtf8("\xF0\x9F\x94\x84"), tr("Sync-Log"));      // 🔄 6
-    m_drawer->addPage(QString::fromUtf8("\xE2\x84\xB9"),      tr("Info"));          // ℹ  7
-    m_drawer->addSeparator();                                                        //    8
-    m_drawer->addPage(QString::fromUtf8("\xE2\x9C\x96"),      tr("Beenden"));       // ✖  9
+    m_drawer->addPage(QString::fromUtf8("\xF0\x9F\x93\xA4"), tr("Export"));        // 📤 5
+    m_drawer->addPage(QString::fromUtf8("\xE2\x9D\x93"),      tr("Hilfe"));         // ❓ 6
+    m_drawer->addPage(QString::fromUtf8("\xF0\x9F\x94\x84"), tr("Sync-Log"));      // 🔄 7
+    m_drawer->addPage(QString::fromUtf8("\xE2\x84\xB9"),      tr("Info"));          // ℹ  8
+    m_drawer->addSeparator();                                                        //    9
+    m_drawer->addPage(QString::fromUtf8("\xE2\x9C\x96"),      tr("Beenden"));       // ✖  10
 
     if (!e.mehrerefahrer)
         m_drawer->setItemVisible(2, false);
-    // Sync-Log (Index 6) im Release-Build verstecken – per 7x Titel-Tap freischaltbar
+    // Sync-Log (Index 7) im Release-Build verstecken – per 7x Titel-Tap freischaltbar
 #ifndef QT_DEBUG
-    m_drawer->setItemVisible(6, false);
+    m_drawer->setItemVisible(7, false);
 #endif
     m_drawer->setCurrentIndex(0);
 
     connect(m_drawer, &DrawerWidget::pageSelected, this, [this](int idx) {
         switch (idx) {
             case 0: case 1: case 2: case 3: setAndroidPage(idx); break;
-            case 5: { HelpWindow *h = new HelpWindow(this);
+            case 5: showExportView(); break;
+            case 6: { HelpWindow *h = new HelpWindow(this);
                       h->setAttribute(Qt::WA_DeleteOnClose);
 #if defined(Q_OS_WIN)
                       h->show();
 #endif
                     } break;
-            case 6: showSyncLog();  break;
-            case 7: showAbout();    break;
-            case 9: close();        break;
+            case 7: showSyncLog();  break;
+            case 8: showAbout();    break;
+            case 10: close();        break;
             default: break;
         }
     });
@@ -846,6 +884,46 @@ void MainWindow::onBurgerClicked()
 void MainWindow::onDrawerClosed()
 {
     // handled by DrawerWidget internally
+}
+
+void MainWindow::showExportView()
+{
+    // ExportBridge jedes Mal neu – vermeidet angehäufte Signal-Verbindungen
+    delete m_exportBridge;
+    m_exportBridge = new ExportBridge(m_db, this);
+
+    // Neues QQuickWidget jedes Mal – exakt wie SyncLogView.
+    // QQuickWidget teilt den EGL-Context aller anderen QQuickWidgets → kein Konflikt.
+    auto *pw = qobject_cast<QWidget*>(this);
+    auto *qw = new QQuickWidget(pw);
+    qw->setAttribute(Qt::WA_DeleteOnClose);
+    qw->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    qw->rootContext()->setContextProperty(QStringLiteral("exportBridge"), m_exportBridge);
+    m_exportBridge->reset();  // Status zurücksetzen beim Öffnen
+
+    connect(qw, &QQuickWidget::statusChanged, qw,
+        [qw](QQuickWidget::Status s) {
+            if (s == QQuickWidget::Error)
+                for (const auto &e : qw->errors())
+                    qWarning() << "ExportView QML:" << e.toString();
+        });
+
+    // Alte Verbindungen trennen bevor neue gesetzt werden (Bridge ist persistent)
+    disconnect(m_exportBridge, &ExportBridge::snackbarRequested, nullptr, nullptr);
+    disconnect(m_exportBridge, &ExportBridge::closeRequested,    nullptr, nullptr);
+
+    connect(m_exportBridge, &ExportBridge::snackbarRequested,
+        this, [qw](const QString &text, int ms) {
+            if (qw) Snackbar::show(qw, text, ms);
+        });
+
+    connect(m_exportBridge, &ExportBridge::closeRequested,
+        qw, &QWidget::deleteLater);
+
+    qw->setSource(QUrl(QStringLiteral("qrc:/ExportView.qml")));
+    if (pw) qw->setGeometry(0, 56, pw->width(), pw->height() - 56);
+    qw->show();
+    qw->raise();
 }
 #endif
 
