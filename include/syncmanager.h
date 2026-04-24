@@ -53,7 +53,6 @@ public:
      */
     void pauseSync();
     void resumeSync();
-    void triggerDiscovery();   // nach lokalem Speichern aufrufen
 
     void closeDb();
     bool isRunning() const { return m_running; }
@@ -64,7 +63,6 @@ signals:
     void syncStarted();
     void syncFinished(bool success, const QString &message);
     void syncProgress(const QString &message);
-    void vpnWarning();   // VPN aktiv während bekannte Peers im WLAN sind
 
 private slots:
     void onDeviceFound(const QHostAddress &ip, const QString &deviceId, const QString &deviceName);
@@ -109,7 +107,6 @@ private:
     QHash<QString, QString> m_ipToDeviceId;    // IP-String → deviceId (für Knowledge Matrix)
     bool                    m_waitingForSyncResponse = false; // SYNC_REQUEST läuft, Timer aktiv
     QSet<QString>           m_currentlySendingTo;             // Peers an die wir gerade senden (Race-Guard)
-    bool                    m_vpnWarnedThisSession = false;   // VPN-Warnung einmalig pro Vordergrund-Session
 
     // Timing-Konstanten für Discovery on-demand
     static constexpr int kDiscoveryInitMs     = 60000; // 60 s beim Start/Resume

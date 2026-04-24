@@ -23,7 +23,6 @@
     <file alias="AppBar.qml">AppBar.qml</file>
 
     <file alias="EinstellungenView.qml">EinstellungenView.qml</file>
-    <file alias="ExportView.qml">ExportView.qml</file>
     <file alias="AboutView.qml">AboutView.qml</file>
     <file alias="HelpView.qml">HelpView.qml</file>
     <file alias="SyncLogView.qml">SyncLogView.qml</file>

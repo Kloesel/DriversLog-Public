@@ -467,7 +467,7 @@ void FahrerTable::onDelete()
     }
 
     if (QMessageBox::question(this, tr("Löschen"),
-            tr("Fahrer \"%1\" wirklich löschen?").arg(name),
+            tr("Fahrer "%1" wirklich löschen?").arg(name),
             QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes) return;
 
     if (id > 0 && !m_db->deleteFahrer(id)) {

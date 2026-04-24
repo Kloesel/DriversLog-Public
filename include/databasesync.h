@@ -123,7 +123,6 @@ public:
      * Wird beim Start geprüft – neues Gerät fordert dann fullExport statt Delta.
      */
     bool isNewDevice() const;
-    bool hasPendingForAnyKnownPeer() const;
 
     QList<SyncLogEntry> getSyncLog(int limit = 200) const;
 

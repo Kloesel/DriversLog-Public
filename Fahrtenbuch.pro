@@ -23,9 +23,9 @@ CONFIG(debug, debug|release) {
     } else {
         BUILD_TIME = $$system(date +%H%M)
     }
-    VERSION = 1.4.26.$$BUILD_TIME
+    VERSION = 1.4.22.$$BUILD_TIME
 } else {
-    VERSION = 1.4.26
+    VERSION = 1.4.22
 }
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
@@ -102,9 +102,6 @@ win32 {
 }
 
 android {
-    HEADERS += include/exportbridge.h
-    SOURCES += src/exportbridge.cpp
-
     # Qt Quick + QML-Kalender (nur Android-Build)
     # QQuickView benoetigt quick + quickcontrols2 (kein quickwidgets)
     QT += quick quickcontrols2 quickwidgets

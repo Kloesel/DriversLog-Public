@@ -58,15 +58,20 @@ bool DeviceDiscovery::isWifiConnected()
 {
     // ConnectivityManager.getNetworkCapabilities(activeNetwork).hasTransport(TRANSPORT_WIFI)
     // TRANSPORT_WIFI = 1 (NetworkCapabilities Konstante)
+    // Benötigt ACCESS_NETWORK_STATE – wird von Qt automatisch ins Manifest eingetragen.
     QJniObject activity = QJniObject::callStaticObjectMethod(
         "org/qtproject/qt/android/QtNative", "activity",
         "()Landroid/app/Activity;");
-    if (!activity.isValid()) return true;
+    if (!activity.isValid()) {
+        qWarning() << "[DeviceDiscovery] isWifiConnected: kein JNI-Activity-Kontext → true";
+        return true; // Im Zweifel nicht blockieren
+    }
 
+    QJniObject connService = QJniObject::fromString("connectivity");
     QJniObject connManager = activity.callObjectMethod(
         "getSystemService",
         "(Ljava/lang/String;)Ljava/lang/Object;",
-        QJniObject::fromString("connectivity").object<jstring>());
+        connService.object<jstring>());
     if (!connManager.isValid()) return true;
 
     QJniObject activeNetwork = connManager.callObjectMethod(
@@ -82,34 +87,9 @@ bool DeviceDiscovery::isWifiConnected()
         activeNetwork.object());
     if (!caps.isValid()) return false;
 
-    return caps.callMethod<jboolean>("hasTransport", "(I)Z", 1); // TRANSPORT_WIFI = 1
-}
-
-bool DeviceDiscovery::isVpnActive()
-{
-    // TRANSPORT_VPN = 4 – prüft ob das aktive Netzwerk über ein VPN getunnelt wird
-    QJniObject activity = QJniObject::callStaticObjectMethod(
-        "org/qtproject/qt/android/QtNative", "activity",
-        "()Landroid/app/Activity;");
-    if (!activity.isValid()) return false;
-
-    QJniObject connManager = activity.callObjectMethod(
-        "getSystemService",
-        "(Ljava/lang/String;)Ljava/lang/Object;",
-        QJniObject::fromString("connectivity").object<jstring>());
-    if (!connManager.isValid()) return false;
-
-    QJniObject activeNetwork = connManager.callObjectMethod(
-        "getActiveNetwork", "()Landroid/net/Network;");
-    if (!activeNetwork.isValid()) return false;
-
-    QJniObject caps = connManager.callObjectMethod(
-        "getNetworkCapabilities",
-        "(Landroid/net/Network;)Landroid/net/NetworkCapabilities;",
-        activeNetwork.object());
-    if (!caps.isValid()) return false;
-
-    return caps.callMethod<jboolean>("hasTransport", "(I)Z", 4); // TRANSPORT_VPN = 4
+    // TRANSPORT_WIFI = 1
+    const bool wifi = caps.callMethod<jboolean>("hasTransport", "(I)Z", 1);
+    return wifi;
 }
 #endif
 

@@ -10,9 +10,6 @@ import QtQuick.Window 2.15
 Item {
     id: root
 
-    // Null-Guard: verhindert TypeError-Warnings während App-Neustart bei Sprachumschaltung
-    readonly property bool bridgeReady: typeof listBridge !== "undefined" && listBridge !== null
-
     // ── Farben ────────────────────────────────────────────────────────
     readonly property color clPrimary : "#006493"
     readonly property color clSurface : "#F2F4F5"
@@ -144,13 +141,13 @@ Item {
                             text: modelData.datum
                             font.pixelSize: 13 * dp; font.bold: true
                             color: root.clPrimary
-                            width: (bridgeReady && listBridge.mehrerefahrer) && modelData.fahrer.length > 0
+                            width: listBridge.mehrerefahrer && modelData.fahrer.length > 0
                                    ? implicitWidth + 8
                                    : parent.width - kmText.width
                             elide: Text.ElideRight
                         }
                         Text {
-                            visible: (bridgeReady && listBridge.mehrerefahrer) && modelData.fahrer.length > 0
+                            visible: listBridge.mehrerefahrer && modelData.fahrer.length > 0
                             text: modelData.fahrer
                             font.pixelSize: 13 * dp
                             color: root.clSub
@@ -166,25 +163,13 @@ Item {
                         }
                     }
 
-                    // Zeile 2: Start (fett wenn nach Start sortiert)
+                    // Zeile 2: Route
                     Text {
                         width: parent.width
-                        text: modelData.start
-                        font.pixelSize: 14 * dp
-                        font.bold: listBridge.sortField === "start_adresse_id"
-                        color: listBridge.sortField === "start_adresse_id"
-                               ? root.clPrimary : root.clOnSurf
-                        elide: Text.ElideRight
-                    }
-
-                    // Zeile 3: Ziel (fett wenn nach Ziel sortiert)
-                    Text {
-                        width: parent.width
-                        text: modelData.ziel
-                        font.pixelSize: 14 * dp
-                        font.bold: listBridge.sortField === "ziel_adresse_id"
-                        color: listBridge.sortField === "ziel_adresse_id"
-                               ? root.clPrimary : root.clOnSurf
+                        text: modelData.route
+                        font.pixelSize: 14 * dp; color: root.clOnSurf
+                        wrapMode: Text.WordWrap
+                        maximumLineCount: 2
                         elide: Text.ElideRight
                     }
 

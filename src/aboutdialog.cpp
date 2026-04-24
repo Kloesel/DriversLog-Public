@@ -37,7 +37,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     qw->rootContext()->setContextProperty(
         QStringLiteral("aboutDatabase"),     tr("SQLite 3 (WAL)"));
     qw->rootContext()->setContextProperty(
-        QStringLiteral("aboutDistance"),     tr("OSRM (kostenlos, kein Account)"));
+        QStringLiteral("aboutDistance"),     tr("ORS fastest route"));
     qw->rootContext()->setContextProperty(
         QStringLiteral("aboutDescription"),  tr("Simple mileage log for recording business trips "
                                                "with automatic distance calculation and Wi-Fi sync."));

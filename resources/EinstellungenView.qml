@@ -9,11 +9,6 @@ import QtQuick.Window 2.15
 Item {
     id: root
 
-    // Null-Guard: verhindert TypeError-Warnings während App-Neustart bei Sprachumschaltung
-    readonly property bool bridgeReady: typeof settingsBridge !== "undefined" && settingsBridge !== null
-    // debugBuild: im Release-Mode werden ORS-Einstellungen ausgeblendet
-    readonly property bool isDebug: typeof debugBuild !== "undefined" && debugBuild
-
     // ── Farben ────────────────────────────────────────────────────────────────
     readonly property color clPrimary : "#006493"
     readonly property color clSurface : "#F2F4F5"
@@ -168,8 +163,8 @@ Item {
             FieldLabel { text: qsTr("Monat") }
             FieldCombo {
                 id: monatCb
-                comboModel: bridgeReady ? settingsBridge.monatModel : []
-                initId:     bridgeReady ? settingsBridge.initMonat : 0
+                comboModel: settingsBridge.monatModel
+                initId:     settingsBridge.initMonat
             }
 
             FieldSpacer {}
@@ -184,7 +179,7 @@ Item {
                 TextInput {
                     id: jahrInput
                     anchors { fill: parent; leftMargin: 12; rightMargin: 12 }
-                    text: bridgeReady ? settingsBridge.initJahr.toString() : ""
+                    text: settingsBridge.initJahr.toString()
                     font.pixelSize: 16 * dp; color: root.clOnSurf
                     inputMethodHints: Qt.ImhDigitsOnly
                     verticalAlignment: TextInput.AlignVCenter
@@ -204,7 +199,7 @@ Item {
                 x: 16; width: parent.width - 32; height: 52 * dp; spacing: 12
                 Switch {
                     id: mehrereFahrerSwitch
-                    checked: bridgeReady && settingsBridge.initMehrereFahrer
+                    checked: settingsBridge.initMehrereFahrer
                 }
                 Text {
                     text: qsTr("Mehrere Fahrer")
@@ -218,7 +213,7 @@ Item {
                 x: 16; width: parent.width - 32; height: 52 * dp; spacing: 12
                 Switch {
                     id: hinZurueckSwitch
-                    checked: bridgeReady && settingsBridge.initHinZurueck
+                    checked: settingsBridge.initHinZurueck
                 }
                 Text {
                     text: qsTr("Standard: Hin & Zurück")
@@ -238,8 +233,8 @@ Item {
                 FieldLabel { text: qsTr("Standard-Fahrer") }
                 FieldCombo {
                     id: fahrerCb
-                    comboModel: bridgeReady ? settingsBridge.fahrerModel : []
-                    initId:     bridgeReady ? settingsBridge.initFahrerId : 0
+                    comboModel: settingsBridge.fahrerModel
+                    initId:     settingsBridge.initFahrerId
                     onComboModelChanged: currentIndex = root.findIdx(comboModel, initId)
                 }
                 FieldSpacer {}
@@ -249,32 +244,29 @@ Item {
             FieldLabel { text: qsTr("Standard-Adresse") }
             FieldCombo {
                 id: adresseCb
-                comboModel: bridgeReady ? settingsBridge.adressenModel : []
-                initId:     bridgeReady ? settingsBridge.initAdresseId : 0
+                comboModel: settingsBridge.adressenModel
+                initId:     settingsBridge.initAdresseId
                 onComboModelChanged: currentIndex = root.findIdx(comboModel, initId)
             }
 
             FieldSpacer {}
 
             // ── GRUPPE: Distanzberechnung ─────────────────────────────────────
-            // Im Release-Build ausgeblendet (ORS-Key nicht für Endnutzer)
-            SectionHeader { text: qsTr("Distanzberechnung"); visible: isDebug }
+            SectionHeader { text: qsTr("Distanzberechnung") }
 
             Text {
                 x: 16; width: parent.width - 32
-                visible: isDebug
                 text: qsTr("Ohne Key: OSRM (kostenlos, kein Account). Mit Key: OpenRouteService (ORS, 500 Abfragen/Tag).")
                 font.pixelSize: 12 * dp; color: root.clOutline
                 wrapMode: Text.WordWrap
             }
 
-            FieldSpacer { visible: isDebug }
+            FieldSpacer {}
 
-            FieldLabel { text: qsTr("ORS API-Key (optional)"); visible: isDebug }
+            FieldLabel { text: qsTr("ORS API-Key (optional)") }
 
             Rectangle {
                 id: apiKeyRect
-                visible: isDebug
                 x: 16; width: parent.width - 32; height: 48 * dp; radius: 8 * dp
                 clip: true   // verhindert Textüberlauf über den Rand
                 color: root.clCard
@@ -285,7 +277,7 @@ Item {
                     id: apiKeyInput
                     // Rechter Rand: Platz für Auge-Button (36px) + je 8px Abstand
                     anchors { fill: parent; leftMargin: 12; rightMargin: 52 }
-                    text: bridgeReady ? settingsBridge.initApiKey : ""
+                    text: settingsBridge.initApiKey
                     font.pixelSize: 14 * dp; color: root.clOnSurf
                     echoMode: TextInput.Password
                     verticalAlignment: TextInput.AlignVCenter
@@ -320,15 +312,15 @@ Item {
             FieldLabel { text: qsTr("App-Sprache") }
             FieldCombo {
                 id: languageCb
-                comboModel: bridgeReady ? settingsBridge.languageModel : []
-                initId:     bridgeReady ? settingsBridge.initLanguage : 0
+                comboModel: settingsBridge.languageModel
+                initId:     settingsBridge.initLanguage
             }
             Text {
                 x: 16; width: parent.width - 32
                 text: qsTr("Sprachänderung wird nach App-Neustart wirksam")
                 font.pixelSize: 11 * dp; color: root.clOutline
                 wrapMode: Text.WordWrap
-                visible: bridgeReady && languageCb.currentId !== settingsBridge.initLanguage
+                visible: languageCb.currentId !== settingsBridge.initLanguage
             }
             FieldSpacer {}
 
@@ -338,8 +330,8 @@ Item {
             FieldLabel { text: qsTr("Modus") }
             FieldCombo {
                 id: syncModeCb
-                comboModel: bridgeReady ? settingsBridge.syncModeModel : []
-                initId:     bridgeReady ? settingsBridge.initSyncMode : 0
+                comboModel: settingsBridge.syncModeModel
+                initId:     settingsBridge.initSyncMode
             }
 
             // WLAN-Ports
@@ -352,11 +344,11 @@ Item {
                 SectionHeader { text: qsTr("WLAN-Ports (Standard empfohlen)") }
 
                 FieldLabel { text: qsTr("UDP-Broadcast") }
-                PortInput { id: udpInput; initVal: bridgeReady ? settingsBridge.initUdpPort : 0 }
+                PortInput { id: udpInput; initVal: settingsBridge.initUdpPort }
 
                 FieldSpacer {}
                 FieldLabel { text: qsTr("TCP-Transfer") }
-                PortInput { id: tcpInput; initVal: bridgeReady ? settingsBridge.initTcpPort : 0 }
+                PortInput { id: tcpInput; initVal: settingsBridge.initTcpPort }
 
                 FieldSpacer {}
             }
