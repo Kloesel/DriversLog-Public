@@ -16,7 +16,7 @@ A dual-platform mileage logging app for **Android** and **Windows**, built with 
 
 | Platform | Qt UI | Min. Version |
 |---|---|---|
-| Android | QML / QQuickWidget | Android 7.0 (API 24) |
+| Android | QML / QQuickWidget | Android 9.0 (API 28) |
 | Windows | Qt Widgets | Windows 10 |
 
 ## Build Requirements
@@ -49,12 +49,12 @@ A dual-platform mileage logging app for **Android** and **Windows**, built with 
 ### Distance Calculation
 
 - **Default (no key required):** OSRM – `router.project-osrm.org`
-- **Optional:** OpenRouteService (ORS) – enter your free API key under Settings → Distance Calculation  
+- **Optional:** OpenRouteService (ORS) – enter your free API key under Settings → Distance Calculation (unlocked in release builds via 7 taps on the version number)  
   Register at [openrouteservice.org](https://openrouteservice.org/dev/#/signup) (500 requests/day free)
 
 ## Privacy Policy
 
-Available at: [kloesel.github.io/Fahrtenbuch](https://kloesel.github.io/Fahrtenbuch/)
+Available at: [kloesel.github.io/DriversLog-Public](https://kloesel.github.io/DriversLog-Public/)
 
 All trip data is stored locally on the device. No data is transmitted to the developer.  
 External services used (on user initiative only): Nominatim (geocoding), OSRM or ORS (routing).
