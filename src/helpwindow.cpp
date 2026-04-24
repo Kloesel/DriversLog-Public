@@ -41,7 +41,7 @@ HelpWindow::HelpWindow(QWidget *parent)
     addSection(tr("Navigation"),
         tr("Über das Burger-Menü oben links erreichst du:\n"
            "Fahrten · Adressen · Fahrer · Einstellungen\n"
-           "Hilfe · Sync-Log · Info · Beenden"));
+           "Hilfe · Info · Beenden"));
 
     addSection(tr("Fahrten"),
         tr("+ legt eine neue Fahrt an.\n"
@@ -58,34 +58,40 @@ HelpWindow::HelpWindow(QWidget *parent)
 
     addSection(tr("Fahrer"),
         tr("Sichtbar wenn 'Mehrere Fahrer' aktiv ist.\n"
-           "Nachname ist Pflichtfeld.\n"
-           "Kürzel erscheint als Badge in der Fahrtenliste."));
+           "Name ist Pflichtfeld.\n"
+           "Fahrer 'unbekannt' wird automatisch angelegt und kann nicht gel\u00f6scht werden."));
 
     addSection(tr("Einstellungen"),
         tr("Datumsfilter: Monat/Jahr zum Einschränken der Anzeige.\n"
            "Standard-Werte: Vorbesetzung beim Anlegen neuer Fahrten.\n"
            "Mehrere Fahrer: aktiviert Fahrerverwaltung.\n"
            "Sprache: App-Sprache (Neustart erforderlich).\n"
+#if !defined(Q_OS_ANDROID)
            "ORS API-Key: optional – für präzise Fahrtstrecke via openrouteservice.org.\n"
            "Ohne Key: automatisch OSRM (kostenlos, kein Account nötig).\n"
+#endif
            "Synchronisation: WLAN-Direktsync mit zweitem Gerät.\n"
            "Abbrechen verwirft alle Änderungen, Speichern übernimmt sie."));
 
     addSection(tr("Distanzberechnung"),
+#if defined(Q_OS_ANDROID)
+        tr("Distanzberechnung erfolgt automatisch über OSRM (kostenlos, kein Account nötig).\n"
+           "Ohne Netzwerk: Luftlinie × 1,3 als Näherungswert."));
+#else
         tr("Ohne ORS API-Key: OSRM (kostenlos, kein Account, automatisch).\n"
            "Mit ORS API-Key: OpenRouteService – schnellste Fahrtstrecke, 500 Anfragen/Tag.\n"
            "Ohne Netzwerk: Luftlinie × 1,3 als Näherungswert.\n"
            "ORS-Key kostenlos unter openrouteservice.org erhältlich."));
+#endif
 
     addSection(tr("Synchronisation (WLAN)"),
         tr("Beide Geräte müssen im selben WLAN sein.\n"
            "Einstellungen → Synchronisation → WLAN aktivieren.\n"
-           "Sync startet automatisch beim Speichern.\n"
-           "Sync-Log im Burger-Menü zeigt alle Übertragungen."));
+           "Sync startet automatisch beim Speichern."));
 
     addSection(tr("Technische Infos"),
         tr("Version: ") + appVer + tr("\nQt: ") + qtVer +
-        tr("\nDatenbank: SQLite 3 (WAL-Modus)\nPlattformen: Windows 10/11, Android API 21+"));
+        tr("\nDatenbank: SQLite 3 (WAL-Modus)\nPlattformen: Windows 10/11, Android API 24+"));
 
     // Qt 6.8 / Android 16: QQuickWidget statt QQuickView.
     // QQuickWidget teilt den EGL-Context aller anderen QQuickWidgets → kein Konflikt.
@@ -187,7 +193,13 @@ HelpWindow::HelpWindow(QWidget *parent)
           "k&ouml;nnen zwischen PC und Mobilger&auml;t per WLAN synchronisiert werden.") + "</p>"
         + "<ul>"
         + "<li><b>" + tr("Fahrtenerfassung") + "</b> – " + tr("Datum, Start- und Zieladresse, Entfernung, Fahrer, Bemerkung") + "</li>"
-        + "<li><b>" + tr("Entfernungsberechnung") + "</b> – " + tr("OSRM (kostenlos, kein Account) oder OpenRouteService mit API-Key (500/Tag)") + "</li>"
+        + "<li><b>" + tr("Entfernungsberechnung") + "</b> – "
+#if defined(Q_OS_ANDROID)
+        + tr("automatisch über OSRM (kostenlos, kein Account nötig)")
+#else
+        + tr("OSRM (kostenlos, kein Account) oder OpenRouteService mit API-Key (500/Tag)")
+#endif
+        + "</li>"
         + "<li><b>" + tr("Adressverwaltung") + "</b> – " + tr("Adressbuch mit CSV-Import") + "</li>"
         + "<li><b>" + tr("Fahrerverwaltung") + "</b> – " + tr("optionaler Mehrfahrer-Modus") + "</li>"
         + "<li><b>" + tr("Datenexport") + "</b> – " + tr("PDF (A4-Querformat) und CSV (Excel-kompatibel)") + "</li>"
@@ -201,7 +213,11 @@ HelpWindow::HelpWindow(QWidget *parent)
         + "<li>" + tr("Tab") + " <b>" + tr("Adressen") + "</b>: " + tr("häufig genutzte Adressen anlegen.") + "</li>"
         + "<li>" + tr("Optional Tab") + " <b>" + tr("Fahrer") + "</b> (" + tr("sichtbar wenn") + " <i>" + tr("Mehrere Fahrer") + "</i> " + tr("aktiviert") + ").</li>"
         + "<li>" + tr("Tab") + " <b>" + tr("Fahrten") + "</b>: " + tr("erste Fahrt über") + " <b>+ " + tr("Neue Fahrt") + "</b> " + tr("erfassen.") + "</li>"
-        + "<li>" + tr("Entfernungen werden automatisch per OSRM berechnet (kein Account n\u00f6tig). Optional: ORS API-Key in Einstellungen f\u00fcr pr\u00e4zisere Strecken.") + "</li>"
+        + "<li>" + tr("Entfernungen werden automatisch per OSRM berechnet (kein Account n\u00f6tig)."
+#if !defined(Q_OS_ANDROID)
+            " Optional: ORS API-Key in Einstellungen f\u00fcr pr\u00e4zisere Strecken."
+#endif
+            ) + "</li>"
         + "</ol>"
 
         // Fahrten
@@ -234,8 +250,7 @@ HelpWindow::HelpWindow(QWidget *parent)
         // Fahrer
         + "<h2><a name='fahrer'></a>" + tr("Fahrer") + "</h2>"
         + "<p>" + tr("Sichtbar wenn") + " <b>" + tr("Mehrere Fahrer") + "</b> " + tr("aktiviert.")
-        + " " + tr("Felder:") + " <b>" + tr("Nachname") + "</b> (" + tr("Pflicht") + "), <b>"
-        + tr("Vorname") + "</b>, <b>" + tr("Kürzel") + "</b>.</p>"
+        + " " + tr("Felder:") + " <b>" + tr("Name") + "</b> (" + tr("Pflicht") + ").</p>"
 
         // Einstellungen
         + "<h2><a name='einstellungen'></a>" + tr("Einstellungen") + "</h2>"
@@ -247,7 +262,6 @@ HelpWindow::HelpWindow(QWidget *parent)
         + "<tr><td>" + tr("Hin & Zurück") + "</td><td>" + tr("Standardwert der Checkbox bei neuen Fahrten.") + "</td></tr>"
         + "<tr><td>" + tr("Mehrere Fahrer") + "</td><td>" + tr("Schaltet Fahrerverwaltung ein.") + "</td></tr>"
         + "<tr><td>" + tr("Sprache") + "</td><td>" + tr("App-Sprache; Neustart erforderlich.") + "</td></tr>"
-        + "<tr><td>" + tr("ORS API-Key") + "</td><td>" + tr("Optional: ORS API-Key für präzise Strecke. Ohne Key: OSRM automatisch.") + "</td></tr>"
         + "<tr><td>" + tr("Synchronisation") + "</td><td>" + tr("Modus: Deaktiviert / WLAN.") + "</td></tr>"
         + "</table>"
         + "<p><b>" + tr("Abbrechen") + "</b> " + tr("verwirft alle Änderungen.") + " <b>" + tr("Speichern") + "</b> " + tr("übernimmt sie.") + "</p>"
@@ -260,12 +274,15 @@ HelpWindow::HelpWindow(QWidget *parent)
         // Distanzberechnung
         + "<h2><a name='distanz'></a>" + tr("Distanzberechnung") + "</h2>"
         + "<ol><li><b>" + tr("Geocoding") + "</b> (Nominatim): " + tr("Adressen → GPS-Koordinaten.") + "</li>"
+#if defined(Q_OS_ANDROID)
+        + "<li><b>" + tr("Routing") + "</b>: " + tr("OSRM (kostenlos, kein Account nötig).") + "</li></ol>"
+        + "<div class='hint'>" + tr("Die Distanzberechnung erfolgt automatisch über OSRM – kostenlos, kein Account erforderlich.") + "</div>"
+#else
         + "<li><b>" + tr("Routing") + "</b>: " + tr("Ohne Key: OSRM (kostenlos, kein Account). Mit ORS-Key: schnellste Strecke.") + "</li></ol>"
-        + "<h3>" + tr("ORS API-Key einrichten (optional)") + "</h3>"
-        + "<ol><li>" + tr("Account anlegen:") + " <a href='https://openrouteservice.org/dev/#/signup'>openrouteservice.org</a></li>"
-        + "<li>" + tr("Unter Tokens neuen Standard-Key anlegen.") + "</li>"
-        + "<li>" + tr("Key in Einstellungen → ORS API-Key eintragen.") + "</li></ol>"
-        + "<div class='hint'>" + tr("Ohne Key: OSRM wird automatisch verwendet – kostenlos, kein Account nötig.") + "</div>"
+        + "<div class='hint'>" + tr("Die App verwendet standardmäßig OSRM – kostenlos, kein Account nötig. "
+            "Für präzisere Streckenberechnung kann ein kostenloser ORS API-Key "
+            "(openrouteservice.org, 500 Anfragen/Tag) in den Einstellungen hinterlegt werden.") + "</div>"
+#endif
 
         // Synchronisation
         + "<h2><a name='sync'></a>" + tr("Synchronisation (WLAN)") + "</h2>"
@@ -291,9 +308,15 @@ HelpWindow::HelpWindow(QWidget *parent)
         + "<tr><td>" + tr("Version") + "</td><td>" + appVer + "</td></tr>"
         + "<tr><td>Qt</td><td>" + qtVer + "</td></tr>"
         + "<tr><td>" + tr("Datenbank") + "</td><td>SQLite 3 WAL</td></tr>"
-        + "<tr><td>" + tr("Plattformen") + "</td><td>Windows 10/11, Android API 21+</td></tr>"
+        + "<tr><td>" + tr("Plattformen") + "</td><td>Windows 10/11, Android API 24+</td></tr>"
         + "<tr><td>Geocoding</td><td>Nominatim (OpenStreetMap)</td></tr>"
-        + "<tr><td>Routing</td><td>OpenRouteService API</td></tr>"
+        + "<tr><td>Routing</td><td>"
+#if defined(Q_OS_ANDROID)
+        + "OSRM (kostenlos, kein Account)"
+#else
+        + "OSRM (Standard, kostenlos) / OpenRouteService (optional)"
+#endif
+        + "</td></tr>"
         + "<tr><td>" + tr("Einstellungen") + "</td><td>" + tr("Windows-Registry") + "</td></tr>"
         + "</table>"
         + "</body></html>";

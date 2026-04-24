@@ -3,6 +3,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QJsonDocument>
+#include <algorithm>
 #include <QVariant>
 #include <QDebug>
 
@@ -436,7 +437,6 @@ QJsonArray DatabaseSync::exportChanges(const QString &peerDeviceId) const
 
     if (peerDeviceId.isEmpty()) {
         // Fallback (unbekannter Peer): alle lokalen pending-Einträge
-        qDebug() << "[DatabaseSync] exportChanges: peerDeviceId leer – Fallback auf pending";
         q.prepare(
             "SELECT id, table_name, row_id, operation, timestamp_ms, device_id, local_seq "
             "FROM sync_log "
@@ -501,9 +501,6 @@ QJsonArray DatabaseSync::exportChanges(const QString &peerDeviceId) const
         result.append(obj);
     }
 
-    qDebug() << "[DatabaseSync] exportChanges für Peer"
-             << (peerDeviceId.isEmpty() ? "(fallback)" : peerDeviceId.left(8))
-             << ":" << result.size() << "Einträge";
     return result;
 }
 
@@ -516,8 +513,29 @@ bool DatabaseSync::applyChanges(const QJsonArray &changes)
     // Höchste Seq pro Ursprungsgerät für Knowledge-Matrix-Update sammeln
     QHash<QString, int> maxSeqByOrigin;
 
-    for (const QJsonValue &v : changes) {
-        const QJsonObject c   = v.toObject();
+    // FK-Constraints deaktivieren (wie applyFullExport) – verhindert FK-Fehler
+    // wenn Fahrten vor ihren Adressen/Fahrern ankommen.
+    // SQLite ignoriert PRAGMA foreign_keys innerhalb einer offenen Transaktion,
+    // daher außerhalb setzen.
+    { QSqlQuery fkOff(m_db); fkOff.exec("PRAGMA foreign_keys = OFF"); }
+
+    // Änderungen nach Tabellen-Priorität sortieren: fahrer → adressen → fahrten
+    // Verhindert FOREIGN KEY-Fehler wenn eine Fahrt vor ihrer Adresse/Fahrer ankommt
+    auto tablePriority = [](const QString &t) -> int {
+        if (t == "fahrer")   return 0;
+        if (t == "adressen") return 1;
+        return 2; // fahrten
+    };
+    QList<QJsonObject> sorted;
+    sorted.reserve(changes.size());
+    for (const QJsonValue &v : changes)
+        sorted.append(v.toObject());
+    std::stable_sort(sorted.begin(), sorted.end(),
+        [&tablePriority](const QJsonObject &a, const QJsonObject &b) {
+            return tablePriority(a["table"].toString()) < tablePriority(b["table"].toString());
+        });
+
+    for (const QJsonObject &c : sorted) {
         const QString  table  = c["table"].toString();
         const int      rowId  = c["row_id"].toInt();
         const QString  op     = c["operation"].toString();
@@ -572,7 +590,7 @@ bool DatabaseSync::applyChanges(const QJsonArray &changes)
             QSqlQuery flagOff(m_db);
             flagOff.exec("INSERT OR REPLACE INTO sync_meta(key,value) VALUES('applying_remote','0')");
         }
-        if (!ok) continue;
+        if (!ok) { skipped++; continue; }
 
         // Als empfangene Änderung im sync_log vermerken
         {
@@ -617,6 +635,9 @@ bool DatabaseSync::applyChanges(const QJsonArray &changes)
     // (peer_device_id = m_deviceId = ich selbst; bedeutet "ich habe von origin bis seq")
     for (auto it = maxSeqByOrigin.constBegin(); it != maxSeqByOrigin.constEnd(); ++it)
         updateKnowledge(m_deviceId, it.key(), it.value());
+
+    // FK-Constraints wieder aktivieren
+    { QSqlQuery fkOn(m_db); fkOn.exec("PRAGMA foreign_keys = ON"); }
 
     qDebug() << "[DatabaseSync] applyChanges: angewendet=" << applied
              << "übersprungen=" << skipped;
@@ -820,13 +841,37 @@ bool DatabaseSync::isNewDevice() const
     // Echte Nutzdaten = Zeilen in Fahrten/Adressen/Fahrer die nicht soft-gelöscht sind.
     // Migrations-Einträge (timestamp_ms=1) zählen nicht – die entstehen auch bei
     // einer frisch initialisierten leeren DB.
-    for (const QString &table : kSyncTables) {
+    // Der Default-Fahrer "unbekannt" (is_default=1) zählt ebenfalls nicht –
+    // er wird bei jeder frischen DB automatisch angelegt.
+    QSqlQuery qFahrer(m_db);
+    qFahrer.exec("SELECT COUNT(*) FROM fahrer WHERE is_deleted=0 AND is_default=0");
+    if (qFahrer.next() && qFahrer.value(0).toInt() > 0) return false;
+
+    for (const QString &table : {QString("adressen"), QString("fahrten")}) {
         QSqlQuery q(m_db);
         q.exec(QString("SELECT COUNT(*) FROM %1 WHERE is_deleted=0").arg(table));
         if (q.next() && q.value(0).toInt() > 0)
             return false;
     }
     return true;
+}
+
+bool DatabaseSync::hasPendingForAnyKnownPeer() const
+{
+    // Gibt true zurück wenn sync_log Einträge hat die noch nicht an mindestens
+    // einen bekannten Peer gesendet wurden (d.h. max_seq in sync_knowledge < local_seq).
+    QSqlQuery q(m_db);
+    q.exec(
+        "SELECT COUNT(*) FROM sync_log sl "
+        "WHERE sl.direction = 'local' "
+        "AND sl.local_seq > COALESCE("
+        "  (SELECT MIN(sk.max_seq) FROM sync_knowledge sk "
+        "   WHERE sk.origin_device_id = sl.device_id "
+        "   AND sk.peer_device_id != sl.device_id), "
+        "  0)"
+    );
+    if (q.next()) return q.value(0).toInt() > 0;
+    return false;
 }
 
 QList<SyncLogEntry> DatabaseSync::getSyncLog(int limit) const

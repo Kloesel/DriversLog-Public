@@ -98,7 +98,7 @@ Item {
                     InfoRow { label: (aboutLabelQt || "Qt version");      value: qtVersion }
                     InfoRow { label: (aboutLabelPlatform || "Platform");  value: aboutPlatform || "Windows / Android" }
                     InfoRow { label: (aboutLabelDb || "Database");        value: aboutDatabase || "SQLite 3 (WAL)" }
-                    InfoRow { label: (aboutLabelDist || "Distance");      value: aboutDistance || "ORS fastest route" }
+                    InfoRow { label: (aboutLabelDist || "Distance");      value: aboutDistance || "OSRM" }
                 }
             }
 

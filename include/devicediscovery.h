@@ -55,6 +55,7 @@ public:
      * Gibt im Fehlerfall (kein JNI-Kontext) true zurück, um Discovery nicht zu blockieren.
      */
     static bool isWifiConnected();
+    static bool isVpnActive();
 #endif
 
 signals:

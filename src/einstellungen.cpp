@@ -254,6 +254,13 @@ EinstellungenWidget::EinstellungenWidget(Database *db, SyncManager *syncMgr,
     m_qmlView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     m_qmlView->rootContext()->setContextProperty(
         QStringLiteral("settingsBridge"), m_bridge);
+#ifdef QT_DEBUG
+    m_qmlView->rootContext()->setContextProperty(
+        QStringLiteral("debugBuild"), true);
+#else
+    m_qmlView->rootContext()->setContextProperty(
+        QStringLiteral("debugBuild"), false);
+#endif
     m_qmlView->setSource(QUrl(QStringLiteral("qrc:/EinstellungenView.qml")));
 
     connect(m_qmlView, &QQuickWidget::statusChanged, this,
@@ -513,6 +520,15 @@ void EinstellungenWidget::onCancel()
 {
     emit cancelRequested();
 }
+
+#if defined(Q_OS_ANDROID)
+void EinstellungenWidget::setOrsUnlocked()
+{
+    if (m_qmlView)
+        m_qmlView->rootContext()->setContextProperty(
+            QStringLiteral("debugBuild"), true);
+}
+#endif
 
 #if !defined(Q_OS_ANDROID)
 void EinstellungenWidget::onSyncModeChanged(const QString &)
