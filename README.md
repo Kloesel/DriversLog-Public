@@ -1,6 +1,11 @@
-# Driverslog (Fahrtenbuch)
+# Driver's Log (Fahrtenbuch)
 
 A dual-platform mileage logging app for **Android** and **Windows**, built with Qt/C++.
+
+## Download
+
+- **Android:** [Google Play Store](https://play.google.com/store/apps/details?id=de.kloesel.driverslog)
+- **Windows:** [Latest release](https://github.com/Kloesel/DriversLog-Public/releases/latest)
 
 ## Free vs. Pro (Android)
 
@@ -37,47 +42,10 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 | Android | QML / QQuickWidget | Android 9.0 (API 28) |
 | Windows | Qt Widgets | Windows 10 |
 
-## Build Requirements
-
-| Component | Version |
-|---|---|
-| Qt | 6.8.3 |
-| Android NDK | 26.1.10909125 |
-| Android Build Tools | 35.0.1 |
-| Java (Android) | JDK 17 (Eclipse Adoptium) |
-| Gradle | 8.7 |
-| AGP | 8.3.2 |
-
-## Build Instructions
-
-### Windows
-
-1. Open `Fahrtenbuch.pro` in Qt Creator
-2. Select kit **Desktop Qt 6.8.3 MinGW 64-bit**
-3. Build → Release
-
-### Android
-
-1. Open `Fahrtenbuch.pro` in Qt Creator
-2. Select kit **Qt 6.8.3 for Android arm64-v8a**
-3. Configure keystore under Projects → Android → Build Steps → Sign package
-4. Build → Release
-5. Run `python rename_aab.py` to copy the signed `.aab` to `build/`
-
-### Distance Calculation
-
-- **Default (no key required):** OSRM – `router.project-osrm.org`
-- **Optional:** OpenRouteService (ORS) – enter your free API key under Settings → Distance Calculation (unlocked in release builds via 7 taps on the version number)  
-  Register at [openrouteservice.org](https://openrouteservice.org/dev/#/signup) (500 requests/day free)
-
 ## In-App Purchase
 
-The Android app uses **Google Play Billing Library 7.1.1** for the one-time Pro purchase.  
+The Android app uses **Google Play Billing** for the one-time Pro purchase.  
 Product ID: `driverslog_pro`
-
-Testing:
-- **Debug builds**: always Pro (no restrictions)
-- **Release builds**: tap version number 7× to unlock developer options → enable Pro mode for testing
 
 ## Privacy Policy
 
@@ -88,7 +56,7 @@ External services used (on user initiative only): Nominatim (geocoding), OSRM or
 
 ## License
 
-This application is licensed under the **GNU General Public License v3 (GPL-3.0)**.
+This application is proprietary software. All rights reserved.
 
 Qt libraries are used under the **GNU Lesser General Public License v3 (LGPL-3.0)**.  
 See [`LICENSE_Qt_LGPL.txt`](LICENSE_Qt_LGPL.txt) for the full Qt LGPL license text.
