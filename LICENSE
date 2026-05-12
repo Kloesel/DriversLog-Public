@@ -1,0 +1,12 @@
+Copyright (c) 2026 Klaus Nießen (Kloesel)
+
+Driver's Log is proprietary software. All rights reserved.
+
+The documentation and privacy policy in this repository are provided
+for informational purposes only.
+
+The Android app is available on Google Play Store.
+The Windows desktop app is available as a free download for Pro users.
+
+Qt libraries used in this application are licensed under the GNU Lesser
+General Public License (LGPL) v3. See LICENSE_Qt_LGPL.txt for details.
