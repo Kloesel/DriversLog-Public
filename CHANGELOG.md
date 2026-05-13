@@ -1,12 +1,14 @@
 # Driver's Log – Changelog
 
-## [1.5.04] – 2026-05-12
+## [1.5.04] – 2026-05-13
 
 ### Fixed
 - Distance calculation: improved address geocoding (more reliable for long street names)
 - Distance calculation: failed geocoding now shows an error instead of a wrong distance
-- In-app purchase: purchase confirmation (acknowledge) now handled correctly
-- Android 15/16: layout issue (edge-to-edge) fixed on Samsung S22
+- In-app purchase: purchase confirmation handled correctly (no more automatic cancellation)
+- Android 15/16: layout issue fixed on Samsung S22 (edge-to-edge)
+- Export: trip purpose list scrolling fixed; "All" checkbox added
+- Back button: app now goes to background instead of closing
 
 ---
 
