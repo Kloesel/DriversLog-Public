@@ -3,7 +3,7 @@
 ## [1.5.04] – 19.05.2026
 
 ### Neu
-- Datenbank exportieren und importieren (Einstellungen → Datenbank)
+- Datenbank exportieren und importieren (Einstellungen → Datenbank, Android + Windows)
 - Sync zurücksetzen im Sync-Log (Android + Windows)
 - Windows: Datenbank-Sicherung beim Deinstallieren
 
