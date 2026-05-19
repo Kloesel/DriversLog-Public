@@ -1,27 +1,40 @@
 # Driver's Log – Changelog
 
-## [1.5.04] – 2026-05-13
+## [1.5.04] – 19.05.2026
 
-### Fixed
-- Distance calculation: improved address geocoding (more reliable for long street names)
-- Distance calculation: failed geocoding now shows an error instead of a wrong distance
-- In-app purchase: purchase confirmation handled correctly (no more automatic cancellation)
-- Android 15/16: layout issue fixed on Samsung S22 (edge-to-edge)
-- Export: trip purpose list scrolling fixed; "All" checkbox added
-- Back button: app now goes to background instead of closing
+### Neu
+- Datenbank exportieren und importieren (Einstellungen → Datenbank)
+- Sync zurücksetzen im Sync-Log (Android + Windows)
+- Windows: Datenbank-Sicherung beim Deinstallieren
+
+### Fehlerbehebungen
+- Fahrt anlegen: Felder (km, Adresse, Fahrer, Fahrtzweck, Bemerkung) werden beim Wechsel des Datums oder beim Hinzufügen neuer Einträge nicht mehr zurückgesetzt
+- Entfernungsberechnung zuverlässiger bei langen Straßennamen
+- Entfernungsberechnung: fehlgeschlagenes Geocoding zeigt Fehlermeldung statt falscher Kilometeranzahl
+- In-App-Kauf: Bestätigung wird jetzt korrekt verarbeitet (keine automatische Stornierung mehr)
+- Android 15/16: Layout-Problem auf Samsung S22 behoben
+- Export: Fahrtzweck-Liste scrollbar; „Alle"-Checkbox ergänzt
+- Zurück-Taste: App geht in den Hintergrund statt zu schließen
 
 ---
 
-## [1.5.03] – 2026-05-11
+## [1.5.03] – 11.05.2026
 
-First release on Google Play Store.
+Erstveröffentlichung im Google Play Store.
 
 ### Features
-- Trip recording: date, start/destination address, distance, driver, trip purpose, notes
-- Address book with geocoding via OSRM (free, no account needed)
-- Driver management (multi-driver mode) – Pro
-- Trip purpose categories – Pro
-- CSV and PDF export with filter – Pro
-- Wi-Fi sync between Android and Windows (no cloud) – Pro
-- Multilingual: German, English, French, Dutch, Spanish
-- Free Windows desktop app included for Pro users
+- Fahrtenerfassung: Datum, Start/Ziel, Entfernung, Fahrer, Fahrtzweck, Bemerkung
+- Adressbuch mit automatischer Geocodierung (OSRM, kostenlos, kein Account nötig)
+- Fahrerverwaltung (Mehrfahrer-Modus) – Pro
+- Fahrtzweck-Kategorien – Pro
+- CSV- und PDF-Export mit Filter – Pro
+- WLAN-Sync zwischen Android und Windows (ohne Cloud) – Pro
+- Mehrsprachig: Deutsch, Englisch, Französisch, Niederländisch, Spanisch
+- Keine Werbung, keine Datenweitergabe, keine Cloud
+
+---
+
+## Windows-Version
+
+Die kostenlose Windows-Desktop-App steht für Pro-Nutzer als Installer zum Download bereit:  
+[github.com/Kloesel/DriversLog-Public/releases](https://github.com/Kloesel/DriversLog-Public/releases)
