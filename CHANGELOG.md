@@ -1,5 +1,17 @@
 # Driver's Log – Changelog
 
+## [1.5.05] – 01.06.2026
+
+### Fehlerbehebungen
+- Datenbank importieren: ungültige Dateien werden erkannt und abgewiesen
+- Datenbank importieren: importierte Daten werden korrekt mit anderen Geräten synchronisiert
+- Datenbank exportieren: Backup enthält jetzt zuverlässig alle Daten
+- In-App-Kauf: kein erneuter Kaufdialog mehr nach Deinstallation und Neuinstallation
+- Formulare (Fahrt, Adresse, Fahrer, Fahrtzweck): Eingabefeld scrollt beim Antippen
+  zuverlässig über die Tastatur
+
+---
+
 ## [1.5.04] – 19.05.2026
 
 ### Neu
