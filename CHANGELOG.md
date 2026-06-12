@@ -1,5 +1,44 @@
 # Driver's Log – Changelog
 
+## [1.6.00] – 11.06.2026
+
+### Neu
+- **GPS-Tracking** — Strecke automatisch per GPS erfassen
+  - Aktivitätsauswahl: Autofahrt 🚗, Fahrradtour 🚴, Wandern 🥾
+  - Hintergrund-Tracking (auch bei minimierter App)
+  - Nach Stop: Fahrtformular vorausgefüllt (Datum, km, Fahrtzweck, Adressen)
+  - Aktivitätssymbol in der Fahrtenliste
+- Hilfe und Info aktualisiert
+
+### Geändert
+- Hin & Zurück und Berechnen-Button bei GPS-Fahrten deaktiviert
+
+### Fehlerbehebungen
+- Einstellungen: Standard-Fahrer und Standard-Adresse wurden nicht gespeichert
+- GPS-Fahrten wurden nach dem Speichern nicht in der Liste angezeigt
+- Fahrtzweck „Fahrradtour" / „Wandern" wurde nicht automatisch angelegt
+
+---
+
+## [1.5.07] – 08.06.2026
+
+### Fehlerbehebungen
+- In-App-Kauf wird jetzt korrekt bestätigt – kein automatischer Abbruch mehr
+- Synchronisation startet nach App-Neustart zuverlässiger
+- Stabilitätsverbesserungen beim Billing
+
+---
+
+## [1.5.06] – 05.06.2026
+
+### Fehlerbehebungen
+- Weißer Bildschirm behoben: App startet nach längerer Hintergrundzeit wieder korrekt
+- Kurzes Aufflackern von übergroßem Text beim Tab-Wechsel behoben
+- Kauf-Status wird nach Erstattung ohne App-Neustart aktualisiert
+- Interne Bibliothek aktualisiert (Google Play Hinweis behoben)
+
+---
+
 ## [1.5.05] – 01.06.2026
 
 ### Fehlerbehebungen

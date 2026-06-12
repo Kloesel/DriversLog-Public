@@ -218,7 +218,7 @@
 <div class="container">
 
   <div class="date-banner">
-    Bijgewerkt: april 2026 &nbsp;·&nbsp; Geldig voor Driverslog vanaf versie 1.4.22
+    Bijgewerkt: mei 2026 &nbsp;·&nbsp; Geldig voor Driverslog vanaf versie 1.5.03
   </div>
 
   <section>
@@ -226,7 +226,7 @@
     <div class="info-grid">
       <div class="info-tile"><div class="label">Ontwikkelaar</div><div class="value">Klösel</div></div>
       <div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">App-versie</div><div class="value">1.4.22+</div></div>
+      <div class="info-tile"><div class="label">App-versie</div><div class="value">1.5.03+</div></div>
       <div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div>
     </div>
   </section>
@@ -241,9 +241,10 @@
     <h2><span class="icon">💾</span> Lokaal opgeslagen gegevens</h2>
     <p>Alle ingevoerde gegevens worden <strong>uitsluitend lokaal</strong> op het apparaat opgeslagen (SQLite-database). Dit omvat:</p>
     <ul>
-      <li>Ritgegevens (datum, start, bestemming, kilometers, bestuurder)</li>
+      <li>Ritgegevens (datum, start, bestemming, kilometers, bestuurder, reisdoel)</li>
       <li>Adresboek (straat, plaats, coördinaten)</li>
       <li>Bestuurdersgegevens (naam)</li>
+      <li>Reisdoelen (omschrijving)</li>
       <li>App-instellingen</li>
     </ul>
     <p>Deze gegevens <strong>verlaten het apparaat niet automatisch</strong> en worden niet aan de ontwikkelaar doorgegeven.</p>
@@ -264,8 +265,30 @@
 
   <section>
     <h2><span class="icon">📶</span> Wi-Fi-synchronisatie</h2>
-    <p>De app biedt optionele synchronisatie tussen twee apparaten op hetzelfde Wi-Fi-netwerk (bijv. Android-smartphone en Windows-pc). Ritgegevens worden rechtstreeks uitgewisseld tussen de twee apparaten – <strong>zonder tussenkomst van internet of externe servers</strong>.</p>
+    <p>De app biedt optionele synchronisatie tussen meerdere apparaten op hetzelfde Wi-Fi-netwerk (bijv. Android-smartphone en Windows-pc). Ritgegevens worden rechtstreeks uitgewisseld tussen de apparaten – <strong>zonder tussenkomst van internet of externe servers</strong>.</p>
     <p>De overdracht vindt onversleuteld (TCP) plaats op het lokale netwerk. Er worden geen gegevens gedeeld met derden.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🛒</span> In-app aankoop (Pro-versie)</h2>
+    <p>
+      De Android-versie van Driverslog biedt een optionele upgrade naar
+      <strong>Driverslog Pro</strong> via een eenmalige in-app aankoop
+      (product-ID: <code>driverslog_pro</code>). De aankoop is vrijwillig
+      en niet vereist voor de basisfuncties van de app.
+    </p>
+    <p>
+      De betalingsverwerking verloopt <strong>uitsluitend via Google Play
+      Billing</strong>. De ontwikkelaar ontvangt alleen een bevestiging
+      dat de aankoop succesvol was – geen betalingsgegevens (kaartnummers,
+      bankgegevens, enz.) worden aan de ontwikkelaar doorgegeven.
+    </p>
+    <p>
+      Voor de verwerking van betalingsgegevens geldt het privacybeleid
+      van Google:
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+    </p>
+    <div class="badge">✅ Betalingsgegevens alleen bij Google &nbsp;·&nbsp; ✅ Geen abonnement</div>
   </section>
 
   <section>
@@ -275,6 +298,8 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – voor Wi-Fi-synchronisatiedetectie</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – voor apparaatdetectie via UDP-broadcast</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – toegang tot het databasebestand</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – voor GPS-tracking (autoritten, fietstochten, wandelingen). Locatiegegevens worden uitsluitend lokaal verwerkt en nooit verzonden.</li>
+      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – maakt GPS-opname mogelijk ook wanneer de app geminimaliseerd is (voorgrondservice met zichtbare melding)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – voor directe Wi-Fi-synchronisatie</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Er worden geen machtigingen gevraagd voor camera, microfoon, locatie, contacten of andere gevoelige apparaatgegevens.</p>

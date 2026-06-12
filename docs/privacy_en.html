@@ -218,7 +218,7 @@
 <div class="container">
 
   <div class="date-banner">
-    Last updated: April 2026 &nbsp;·&nbsp; Valid for Driverslog from version 1.4.22
+    Last updated: May 2026 &nbsp;·&nbsp; Valid for Driverslog from version 1.5.03
   </div>
 
   <section>
@@ -226,7 +226,7 @@
     <div class="info-grid">
       <div class="info-tile"><div class="label">Developer</div><div class="value">Klösel</div></div>
       <div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">App Version</div><div class="value">1.4.22+</div></div>
+      <div class="info-tile"><div class="label">App Version</div><div class="value">1.5.03+</div></div>
       <div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div>
     </div>
   </section>
@@ -241,9 +241,10 @@
     <h2><span class="icon">💾</span> Locally Stored Data</h2>
     <p>All entered data is stored <strong>exclusively locally</strong> on the device (SQLite database). This includes:</p>
     <ul>
-      <li>Trip data (date, start, destination, kilometers, driver)</li>
+      <li>Trip data (date, start, destination, kilometers, driver, trip purpose)</li>
       <li>Address book (street, city, coordinates)</li>
       <li>Driver data (name)</li>
+      <li>Trip purposes (label)</li>
       <li>App settings</li>
     </ul>
     <p>This data does <strong>not leave the device automatically</strong> and is not transmitted to the developer.</p>
@@ -264,8 +265,29 @@
 
   <section>
     <h2><span class="icon">📶</span> Wi-Fi Synchronisation</h2>
-    <p>The app offers optional synchronisation between two devices on the same Wi-Fi network (e.g. Android smartphone and Windows PC). Trip data is exchanged directly between the two devices – <strong>without going through the internet or external servers</strong>.</p>
+    <p>The app offers optional synchronisation between multiple devices on the same Wi-Fi network (e.g. Android smartphone and Windows PC). Trip data is exchanged directly between the devices – <strong>without going through the internet or external servers</strong>.</p>
     <p>The transmission takes place unencrypted (TCP) on the local network. No data is shared with third parties.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🛒</span> In-App Purchase (Pro Version)</h2>
+    <p>
+      The Android version of Driverslog offers an optional upgrade to
+      <strong>Driverslog Pro</strong> via a one-time in-app purchase
+      (product ID: <code>driverslog_pro</code>). The purchase is voluntary
+      and not required for the basic features of the app.
+    </p>
+    <p>
+      All payment processing is handled <strong>exclusively by Google Play
+      Billing</strong>. The developer only receives a confirmation that
+      the purchase was successful – no payment data (card numbers, bank
+      details, etc.) is transmitted to the developer.
+    </p>
+    <p>
+      For payment data processing, Google's privacy policy applies:
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+    </p>
+    <div class="badge">✅ Payment data with Google only &nbsp;·&nbsp; ✅ No subscription</div>
   </section>
 
   <section>
@@ -275,6 +297,8 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – for Wi-Fi sync detection and Wi-Fi check before routing requests</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – for device discovery via UDP broadcast on the local network</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – access to the database file in external storage</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – for GPS tracking (car trips, cycling tours, hikes). Location data is processed locally only and never transmitted.</li>
+      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – enables GPS recording even when the app is minimised (Foreground Service with visible notification)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – for Wi-Fi direct sync without location permission</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No permissions for camera, microphone, location, contacts or other sensitive device data are requested.</p>

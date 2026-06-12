@@ -218,7 +218,7 @@
 <div class="container">
 
   <div class="date-banner">
-    Actualizado: abril de 2026 &nbsp;·&nbsp; Válido para Driverslog desde la versión 1.4.22
+    Actualizado: mayo de 2026 &nbsp;·&nbsp; Válido para Driverslog desde la versión 1.5.03
   </div>
 
   <section>
@@ -226,7 +226,7 @@
     <div class="info-grid">
       <div class="info-tile"><div class="label">Desarrollador</div><div class="value">Klösel</div></div>
       <div class="info-tile"><div class="label">Contacto</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">Versión</div><div class="value">1.4.22+</div></div>
+      <div class="info-tile"><div class="label">Versión</div><div class="value">1.5.03+</div></div>
       <div class="info-tile"><div class="label">Plataforma</div><div class="value">Android, Windows</div></div>
     </div>
   </section>
@@ -241,9 +241,10 @@
     <h2><span class="icon">💾</span> Datos almacenados localmente</h2>
     <p>Todos los datos introducidos se almacenan <strong>exclusivamente de forma local</strong> en el dispositivo (base de datos SQLite). Esto incluye:</p>
     <ul>
-      <li>Datos de viaje (fecha, origen, destino, kilómetros, conductor)</li>
+      <li>Datos de viaje (fecha, origen, destino, kilómetros, conductor, motivo de viaje)</li>
       <li>Libreta de direcciones (calle, ciudad, coordenadas)</li>
       <li>Datos del conductor (nombre)</li>
+      <li>Motivos de viaje (descripción)</li>
       <li>Configuración de la aplicación</li>
     </ul>
     <p>Estos datos <strong>no salen del dispositivo automáticamente</strong> y no se transmiten al desarrollador.</p>
@@ -264,8 +265,31 @@
 
   <section>
     <h2><span class="icon">📶</span> Sincronización Wi-Fi</h2>
-    <p>La aplicación ofrece sincronización opcional entre dos dispositivos en la misma red Wi-Fi (p. ej. smartphone Android y PC Windows). Los datos de viaje se intercambian directamente entre los dos dispositivos, <strong>sin pasar por Internet ni por servidores externos</strong>.</p>
+    <p>La aplicación ofrece sincronización opcional entre varios dispositivos en la misma red Wi-Fi (p. ej. smartphone Android y PC Windows). Los datos de viaje se intercambian directamente entre los dispositivos, <strong>sin pasar por Internet ni por servidores externos</strong>.</p>
     <p>La transmisión se realiza sin cifrar (TCP) en la red local. No se comparten datos con terceros.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🛒</span> Compra dentro de la app (versión Pro)</h2>
+    <p>
+      La versión Android de Driverslog ofrece una actualización opcional a
+      <strong>Driverslog Pro</strong> mediante una compra única dentro de la
+      aplicación (ID de producto: <code>driverslog_pro</code>). La compra es
+      voluntaria y no es necesaria para las funciones básicas de la app.
+    </p>
+    <p>
+      El procesamiento de pagos se realiza <strong>exclusivamente a través de
+      Google Play Billing</strong>. El desarrollador solo recibe una
+      confirmación de que la compra se realizó con éxito – ningún dato de
+      pago (números de tarjeta, datos bancarios, etc.) es transmitido al
+      desarrollador.
+    </p>
+    <p>
+      Para el procesamiento de datos de pago se aplica la política de
+      privacidad de Google:
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+    </p>
+    <div class="badge">✅ Datos de pago solo en Google &nbsp;·&nbsp; ✅ Sin suscripción</div>
   </section>
 
   <section>
@@ -275,6 +299,8 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – para detección de sincronización Wi-Fi</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – para descubrimiento de dispositivos mediante difusión UDP</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – acceso al archivo de base de datos</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – para el seguimiento GPS (viajes en coche, ciclismo, senderismo). Los datos de ubicación se procesan localmente y nunca se transmiten.</li>
+      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – permite la grabación GPS incluso con la app minimizada (servicio en primer plano con notificación visible)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – para sincronización directa Wi-Fi</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No se solicitan permisos para cámara, micrófono, ubicación, contactos u otros datos confidenciales del dispositivo.</p>

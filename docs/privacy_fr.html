@@ -218,7 +218,7 @@
 <div class="container">
 
   <div class="date-banner">
-    Mise à jour&nbsp;: avril 2026 &nbsp;·&nbsp; Valide pour Driverslog à partir de la version 1.4.22
+    Mise à jour&nbsp;: mai 2026 &nbsp;·&nbsp; Valide pour Driverslog à partir de la version 1.5.03
   </div>
 
   <section>
@@ -226,7 +226,7 @@
     <div class="info-grid">
       <div class="info-tile"><div class="label">Développeur</div><div class="value">Klösel</div></div>
       <div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">Version</div><div class="value">1.4.22+</div></div>
+      <div class="info-tile"><div class="label">Version</div><div class="value">1.5.03+</div></div>
       <div class="info-tile"><div class="label">Plateforme</div><div class="value">Android, Windows</div></div>
     </div>
   </section>
@@ -241,9 +241,10 @@
     <h2><span class="icon">💾</span> Données stockées localement</h2>
     <p>Toutes les données saisies sont stockées <strong>exclusivement en local</strong> sur l'appareil (base de données SQLite). Cela comprend&nbsp;:</p>
     <ul>
-      <li>Données de trajet (date, départ, destination, kilomètres, conducteur)</li>
+      <li>Données de trajet (date, départ, destination, kilomètres, conducteur, motif de trajet)</li>
       <li>Carnet d'adresses (rue, ville, coordonnées)</li>
       <li>Données du conducteur (nom)</li>
+      <li>Motifs de trajet (libellé)</li>
       <li>Paramètres de l'application</li>
     </ul>
     <p>Ces données ne <strong>quittent pas automatiquement l'appareil</strong> et ne sont pas transmises au développeur.</p>
@@ -264,8 +265,31 @@
 
   <section>
     <h2><span class="icon">📶</span> Synchronisation Wi-Fi</h2>
-    <p>L'application propose une synchronisation optionnelle entre deux appareils sur le même réseau Wi-Fi (par ex. smartphone Android et PC Windows). Les données de trajet sont échangées directement entre les deux appareils – <strong>sans passer par Internet ni par des serveurs externes</strong>.</p>
+    <p>L'application propose une synchronisation optionnelle entre plusieurs appareils sur le même réseau Wi-Fi (par ex. smartphone Android et PC Windows). Les données de trajet sont échangées directement entre les appareils – <strong>sans passer par Internet ni par des serveurs externes</strong>.</p>
     <p>La transmission s'effectue en clair (TCP) sur le réseau local. Aucune donnée n'est partagée avec des tiers.</p>
+  </section>
+
+  <section>
+    <h2><span class="icon">🛒</span> Achat intégré (version Pro)</h2>
+    <p>
+      La version Android de Driverslog propose une mise à niveau optionnelle vers
+      <strong>Driverslog Pro</strong> via un achat unique intégré
+      (ID produit&nbsp;: <code>driverslog_pro</code>). L'achat est facultatif
+      et n'est pas nécessaire pour les fonctions de base de l'application.
+    </p>
+    <p>
+      Le traitement des paiements est effectué <strong>exclusivement par
+      Google Play Billing</strong>. Le développeur ne reçoit qu'une
+      confirmation que l'achat a été effectué avec succès – aucune donnée
+      de paiement (numéros de carte, coordonnées bancaires, etc.) n'est
+      transmise au développeur.
+    </p>
+    <p>
+      Pour le traitement des données de paiement, la politique de
+      confidentialité de Google s'applique&nbsp;:
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+    </p>
+    <div class="badge">✅ Données de paiement chez Google uniquement &nbsp;·&nbsp; ✅ Pas d'abonnement</div>
   </section>
 
   <section>
@@ -275,6 +299,8 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – pour la détection de synchronisation Wi-Fi</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – pour la découverte d'appareils via diffusion UDP sur le réseau local</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – accès au fichier de base de données</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – pour le suivi GPS (trajets, vélo, randonnée). Les données de localisation sont traitées localement et ne sont jamais transmises.</li>
+      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – permet l'enregistrement GPS même lorsque l'application est réduite (service de premier plan avec notification visible)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – pour la synchronisation Wi-Fi directe</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Aucune permission pour l'appareil photo, le microphone, la localisation, les contacts ou d'autres données sensibles n'est demandée.</p>

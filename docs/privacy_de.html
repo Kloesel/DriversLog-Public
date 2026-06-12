@@ -218,7 +218,7 @@
 <div class="container">
 
   <div class="date-banner">
-    Stand: April 2026 &nbsp;·&nbsp; Gültig für Driverslog ab Version 1.4.22
+    Stand: Mai 2026 &nbsp;·&nbsp; Gültig für Driverslog ab Version 1.5.03
   </div>
 
   <!-- 1. Verantwortlicher -->
@@ -235,7 +235,7 @@
       </div>
       <div class="info-tile">
         <div class="label">App-Version</div>
-        <div class="value">ab 1.4.22</div>
+        <div class="value">ab 1.5.03</div>
       </div>
       <div class="info-tile">
         <div class="label">Plattform</div>
@@ -251,6 +251,7 @@
       Driverslog dient der privaten oder dienstlichen Erfassung und Verwaltung
       von Kraftfahrzeugfahrten. Die App ermöglicht die Protokollierung von
       Start- und Zieladressen, Fahrstrecken sowie Fahrerdaten und kann
+      Fahrten, Fahrradtouren und Wanderungen erfassen – manuell oder per GPS-Tracking.
       Fahrtenberichte als PDF oder CSV exportieren.
     </p>
     <p>
@@ -265,9 +266,10 @@
     <p>Alle eingegebenen Daten werden <strong>ausschließlich lokal</strong> auf
     dem Gerät gespeichert (SQLite-Datenbank). Dazu gehören:</p>
     <ul>
-      <li>Fahrtdaten (Datum, Start, Ziel, Kilometer, Fahrer)</li>
+      <li>Fahrtdaten (Datum, Start, Ziel, Kilometer, Fahrer, Fahrtzweck)</li>
       <li>Adressbuch (Straße, Ort, Koordinaten)</li>
       <li>Fahrerdaten (Name)</li>
+      <li>Fahrtzwecke (Bezeichnung)</li>
       <li>App-Einstellungen</li>
     </ul>
     <p>Diese Daten verlassen das Gerät <strong>nicht automatisch</strong> und
@@ -329,9 +331,9 @@
   <section>
     <h2><span class="icon">📶</span> WLAN-Synchronisation</h2>
     <p>
-      Die App bietet eine optionale Synchronisation zwischen zwei Geräten
+      Die App bietet eine optionale Synchronisation zwischen mehreren Geräten
       im gleichen WLAN-Netz (z.&nbsp;B. Android-Smartphone und Windows-PC).
-      Dabei werden Fahrtdaten direkt zwischen den beiden Geräten ausgetauscht –
+      Dabei werden Fahrtdaten direkt zwischen den Geräten ausgetauscht –
       <strong>ohne Umweg über das Internet oder externe Server</strong>.
     </p>
     <p>
@@ -340,7 +342,29 @@
     </p>
   </section>
 
-  <!-- 6. Berechtigungen Android -->
+  <!-- 6. In-App-Kauf (Pro-Version) -->
+  <section>
+    <h2><span class="icon">🛒</span> In-App-Kauf (Pro-Version)</h2>
+    <p>
+      Die Android-Version von Driverslog bietet einen optionalen Upgrade auf
+      <strong>Driverslog Pro</strong> über einen einmaligen In-App-Kauf
+      (Produkt-ID: <code>driverslog_pro</code>). Der Kauf ist freiwillig und
+      für die Grundfunktionen der App nicht erforderlich.
+    </p>
+    <p>
+      Die Kaufabwicklung erfolgt <strong>ausschließlich über Google Play
+      Billing</strong>. Der Entwickler erhält dabei lediglich eine
+      Bestätigung, dass der Kauf erfolgreich abgeschlossen wurde –
+      keinerlei Zahlungsdaten (Kartennummern, Bankdaten o.&nbsp;Ä.).
+    </p>
+    <p>
+      Für die Verarbeitung von Zahlungsdaten gilt die Datenschutzerklärung
+      von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+    </p>
+    <div class="badge">✅ Zahlungsdaten nur bei Google &nbsp;·&nbsp; ✅ Kein Abo</div>
+  </section>
+
+  <!-- 7. Berechtigungen Android -->
   <section>
     <h2><span class="icon">🔒</span> Android-Berechtigungen</h2>
     <ul>
@@ -348,15 +372,18 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – für WLAN-Sync-Erkennung und WLAN-Prüfung vor Routing-Anfragen</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – für Gerätesuche per UDP-Broadcast im lokalen Netz</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – Zugriff auf die Datenbankdatei im externen Speicher</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – für GPS-Tracking (Autofahrten, Fahrradtouren, Wanderungen). Standortdaten werden ausschließlich lokal verarbeitet und niemals übertragen.</li>
+      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – ermöglicht GPS-Erfassung auch bei minimierter App (Foreground Service mit sichtbarer Benachrichtigung)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – für WLAN-Direktsync ohne Standortberechtigung</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">
-      Es werden keine Berechtigungen für Kamera, Mikrofon, Standort,
-      Kontakte oder andere sensible Gerätedaten angefordert.
+      Es werden keine Berechtigungen für Kamera, Mikrofon, Kontakte oder andere
+      nicht aufgeführte sensible Gerätedaten angefordert. Der Standortzugriff
+      erfolgt ausschließlich während aktiver GPS-Aufzeichnung.
     </p>
   </section>
 
-  <!-- 7. Keine Weitergabe -->
+  <!-- 8. Keine Weitergabe -->
   <section>
     <h2><span class="icon">🚫</span> Keine Datenweitergabe</h2>
     <p>
@@ -367,7 +394,7 @@
     <div class="badge">✅ Kein Tracking &nbsp;·&nbsp; ✅ Keine Werbung &nbsp;·&nbsp; ✅ Keine Analyse</div>
   </section>
 
-  <!-- 8. Rechte -->
+  <!-- 9. Rechte -->
   <section>
     <h2><span class="icon">⚖️</span> Ihre Rechte</h2>
     <p>
@@ -382,7 +409,7 @@
     </p>
   </section>
 
-  <!-- 9. Änderungen -->
+  <!-- 10. Änderungen -->
   <section>
     <h2><span class="icon">🔄</span> Änderungen dieser Erklärung</h2>
     <p>

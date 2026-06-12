@@ -1,6 +1,7 @@
 # Driver's Log (Fahrtenbuch)
 
-A dual-platform mileage logging app for **Android** and **Windows**, built with Qt/C++.
+A dual-platform activity logging app for **Android** and **Windows**, built with Qt/C++.  
+Record car trips, cycling tours and hikes — with optional GPS tracking on Android.
 
 ## Download
 
@@ -13,7 +14,8 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 
 | Feature | Free | Pro |
 |---|---|---|
-| Trip recording | max. 25 trips | unlimited |
+| Trip / activity recording | max. 25 entries | unlimited |
+| GPS tracking (car, cycling, hiking) | max. 25 entries | unlimited |
 | Export (CSV & PDF) | ✗ | ✓ |
 | Driver management | ✗ | ✓ |
 | Trip purpose management | ✗ | ✓ |
@@ -25,7 +27,12 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 
 ## Features
 
-- Trip recording (date, start/destination, distance, driver, trip purpose, notes)
+- **GPS tracking** (Android) — automatic distance recording for car trips 🚗, cycling tours 🚴 and hikes 🥾
+  - Background tracking via Foreground Service (works with the app minimised)
+  - Activity selection with optimised GPS intervals and drift filters
+  - Automatic address lookup from your address book
+  - Trip form pre-filled with date, distance and trip purpose after stopping
+- Manual trip recording (date, start/destination, distance, driver, trip purpose, notes)
 - Distance calculation via OSRM (free, no account) or OpenRouteService (optional API key)
 - Address book with geocoding (Nominatim/OpenStreetMap)
 - Driver management (optional multi-driver mode) — *Pro*
@@ -52,6 +59,7 @@ Product ID: `driverslog_pro`
 Available at: [kloesel.github.io/DriversLog-Public](https://kloesel.github.io/DriversLog-Public/)
 
 All trip data is stored locally on the device. No data is transmitted to the developer.  
+GPS location data (used for tracking) is processed locally only — never transmitted.  
 External services used (on user initiative only): Nominatim (geocoding), OSRM or ORS (routing).
 
 ## License
