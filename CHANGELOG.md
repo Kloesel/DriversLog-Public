@@ -1,5 +1,37 @@
 # Driver's Log – Changelog
 
+## [1.6.02] – 19.06.2026
+
+### Fehlerbehebungen
+- Export/Protokoll: Start- und Zieladresse bei GPS-Fahrten war immer die Standardadresse statt dem eingetragenen Text
+- Synchronisation: mehrere Ursachen für falsche oder fehlende Fahrtzweck-Zuordnung nach Sync behoben
+- Synchronisation: Geräte erkannten sich nach Löschen aller Fahrten fälschlich als "neu" und verloren dabei eigene Änderungen
+- GPS-Fahrt erfassen: Fahrer-Auswahl wurde bei "Mehrere Fahrer" nicht gespeichert
+- GPS-Fahrt erfassen: verzerrte Darstellung nach Tastatureingabe behoben
+- Entwickleroptionen blieben nach Neuinstallation eines Geräts deaktiviert
+- Info-Dialog zeigte teilweise englische Texte trotz eingestellter deutscher Sprache
+
+---
+
+## [1.6.01] – 14.06.2026
+
+### Neu
+- GPS-Fahrt nachträglich erfassen: Toggle im manuellen Fahrtformular
+- Freitext-Felder für Start und Ziel bei GPS-Aktivitäten
+
+### Geändert
+- Abbrechen-Button im GPS-Tracking-Dialog größer
+
+### Fehlerbehebungen
+- Fahrtzweck „Fahrradtour" / „Wandern" nach Neuinstall + Sync doppelt eingetragen
+- Falsche Fahrtzwecke nach Sync (ID-Konflikte bei Neuinstallation)
+- Aktivitätssymbol bei manueller GPS-Eingabe immer 🚗 statt 🚴/🥾
+- Start/Ziel-Felder wurden nicht gespeichert
+- Eingabefelder beim Bearbeiten einer GPS-Fahrt leer
+- Tastatur schob Felder nicht in den sichtbaren Bereich
+
+---
+
 ## [1.6.00] – 11.06.2026
 
 ### Neu
