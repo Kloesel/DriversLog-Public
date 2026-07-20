@@ -1,5 +1,28 @@
 # Driver's Log – Changelog
 
+## [1.8.0] – 17.07.2026
+
+### Neue Funktionen
+- GPS-Aufzeichnung für Fahrrad- und Wandertouren – Strecke wird direkt per GPS erfasst, statt Start/Ziel manuell einzutragen
+- Edge-to-Edge-Design: Die App nutzt jetzt den vollen Bildschirm inklusive der Bereiche unter Statusleiste und Navigationsleiste
+- Fahrtenliste: nach dem Bearbeiten einer Fahrt springt die Liste nicht mehr an den Anfang, sondern zeigt den geänderten Eintrag
+
+### Fehlerbehebungen
+- Kritischer Fix: Ein Fehler in der automatischen Datenbank-Sicherung konnte unter bestimmten Umständen zu Datenverlust führen – behoben
+- „Letztes Backup" zeigt jetzt zusätzlich die Uhrzeit an, nicht nur das Datum
+- Diverse Übersetzungslücken behoben (u. a. Qt-Standarddialoge auf Android teilweise englisch geblieben)
+- Wisch-Navigation reagierte nach bestimmten Bildschirmwechseln auf Android 16 teils erst nach mehrfachem Antippen – behoben
+- Adressbuch: mehrere Ziele/Personen an derselben Adresse (z.B. Hochhaus) lassen sich jetzt anlegen, ohne dass "Adresse schon vergeben" gemeldet wird
+- Kompatibilität mit 16-KB-Speicherseiten (Android 16) verbessert
+
+### Sonstiges
+- Vorbereitung auf Android 16 (API 36), deutlich vor der Google-Play-Frist (31.08.2026)
+
+### Bekanntes Problem
+Bei aktivierter Wischgesten-Navigation (statt der klassischen 3-Tasten-Navigation) reagiert das Menü-Symbol (☰) gelegentlich nach dem Zurückwischen aus einem Formular kurzzeitig nicht. Die App bleibt dabei voll funktionsfähig und stürzt nicht ab – meist reicht kurzes Warten oder ein Tap woanders auf dem Bildschirm. Die Ursache liegt nachweislich nicht in unserem eigenen Code, sondern im zugrunde liegenden Qt-Framework; wir haben das bereits mit ausführlichen Belegen bei den Qt-Entwicklern gemeldet ([QTBUG-148335](https://bugreports.qt.io/browse/QTBUG-148335)). Bei 3-Tasten-Navigation tritt das Problem nicht auf.
+
+---
+
 ## [1.6.02] – 19.06.2026
 
 ### Fehlerbehebungen

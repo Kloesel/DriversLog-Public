@@ -39,6 +39,8 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 - Trip purpose management — *Pro*
 - PDF and CSV export — *Pro*
 - Wi-Fi synchronisation between Android and Windows (same local network, no cloud) — *Pro*
+- Automatic database backup with safeguards against accidental data loss, plus manual restore from any previous backup
+- Modern edge-to-edge design on Android, with official Android 16 support
 - Multilingual: German, English, French, Dutch, Spanish
 - No ads, no data collection, no cloud
 
@@ -46,7 +48,7 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 
 | Platform | Qt UI | Min. Version |
 |---|---|---|
-| Android | QML / QQuickWidget | Android 9.0 (API 28) |
+| Android | QML / QQuickWidget | Android 9.0 (API 28), officially supports Android 16 (API 36) |
 | Windows | Qt Widgets | Windows 10 |
 
 ## In-App Purchase
@@ -59,7 +61,11 @@ Product ID: `driverslog_pro`
 Available at: [kloesel.github.io/DriversLog-Public](https://kloesel.github.io/DriversLog-Public/)
 
 All trip data is stored locally on the device. No data is transmitted to the developer.  
-GPS location data (used for tracking) is processed locally only — never transmitted.  
+GPS location data is processed entirely on-device while a trip is being recorded and is
+never transmitted during that process. The resulting trip data (e.g. addresses and
+distance derived from GPS) may optionally be synced between your own devices via local
+Wi-Fi if you set this up yourself — this data is never sent to the developer or any
+third party, and never leaves your local network.  
 External services used (on user initiative only): Nominatim (geocoding), OSRM or ORS (routing).
 
 ## License
