@@ -39,8 +39,6 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 - Trip purpose management — *Pro*
 - PDF and CSV export — *Pro*
 - Wi-Fi synchronisation between Android and Windows (same local network, no cloud) — *Pro*
-- Automatic database backup with safeguards against accidental data loss, plus manual restore from any previous backup
-- Modern edge-to-edge design on Android, with official Android 16 support
 - Multilingual: German, English, French, Dutch, Spanish
 - No ads, no data collection, no cloud
 
@@ -48,7 +46,7 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 
 | Platform | Qt UI | Min. Version |
 |---|---|---|
-| Android | QML / QQuickWidget | Android 9.0 (API 28), officially supports Android 16 (API 36) |
+| Android | QML / QQuickWidget | Android 9.0 (API 28) |
 | Windows | Qt Widgets | Windows 10 |
 
 ## In-App Purchase
@@ -61,11 +59,8 @@ Product ID: `driverslog_pro`
 Available at: [kloesel.github.io/DriversLog-Public](https://kloesel.github.io/DriversLog-Public/)
 
 All trip data is stored locally on the device. No data is transmitted to the developer.  
-GPS location data is processed entirely on-device while a trip is being recorded and is
-never transmitted during that process. The resulting trip data (e.g. addresses and
-distance derived from GPS) may optionally be synced between your own devices via local
-Wi-Fi if you set this up yourself — this data is never sent to the developer or any
-third party, and never leaves your local network.  
+GPS location data used for trip tracking is processed locally only and never transmitted.
+When adding/editing an address, the current device location may — as a last fallback step, Android only, if text-based lookup returns no result — be looked up once via Nominatim to auto-detect the address's country; this location is not stored by the app.  
 External services used (on user initiative only): Nominatim (geocoding), OSRM or ORS (routing).
 
 ## License
@@ -82,7 +77,7 @@ Qt is dynamically linked in all builds. The Qt source code is available at
 
 | Service | Purpose | Account required |
 |---|---|---|
-| [Nominatim](https://nominatim.org/) | Address → GPS coordinates | No |
+| [Nominatim](https://nominatim.org/) | Address → GPS coordinates; GPS coordinates → country (address fallback, Android only) | No |
 | [OSRM](https://project-osrm.org/) | Route distance calculation | No |
 | [OpenRouteService](https://openrouteservice.org/) | Route distance (optional) | Yes (free) |
 | [Google Play Billing](https://developer.android.com/google/play/billing) | In-App Purchase | — |
