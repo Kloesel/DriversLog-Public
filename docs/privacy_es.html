@@ -255,12 +255,13 @@
     <h2><span class="icon">🌐</span> Servicios externos (acceso a la red)</h2>
     <p>La aplicación utiliza los siguientes servicios externos, <strong>exclusivamente por iniciativa del usuario</strong> (p. ej. al calcular una ruta):</p>
     <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>Para convertir direcciones en coordenadas (geocodificación), los textos de dirección se transmiten al servicio público Nominatim de la Fundación OpenStreetMap. No se transmiten datos personales, solo el texto de dirección introducido.<br>
+        Además, al añadir o editar una dirección, como último paso de reserva (solo Android, solo si la búsqueda basada en texto no arroja ningún resultado), se puede determinar una vez la ubicación actual del dispositivo y transmitirla también a Nominatim para determinar automáticamente el país de la dirección. Estos datos de ubicación no son almacenados por la app, solo se conserva el país determinado.<br>
         Privacidad: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
     <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>Para calcular la ruta de conducción real, las coordenadas de origen y destino se transmiten al servidor de demostración público de OSRM (<code>router.project-osrm.org</code>). OSRM es gratuito y no requiere cuenta ni clave API. Solo se transmiten coordenadas GPS, sin datos personales.<br>
         Proyecto: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
     <div class="service-card"><h3>OpenRouteService (ORS) – opcional</h3><p>Alternativamente, se puede guardar una clave API personal de OpenRouteService en la configuración. Si se introduce una clave, las coordenadas de origen y destino se transmiten a OpenRouteService (HeiGIT, Heidelberg) en lugar de a OSRM. El servicio ofrece 500 solicitudes/día de forma gratuita. Sin clave, se utiliza OSRM.<br>
         Privacidad: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">Los tres servicios solo se invocan cuando el usuario activa activamente un cálculo de distancia. No se producen solicitudes automáticas en segundo plano. OSRM se utiliza de forma predeterminada; ORS solo si se introduce una clave API.</p>
+    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">OSRM y ORS solo se invocan cuando el usuario activa activamente un cálculo de distancia. Nominatim también se invoca al añadir o editar una dirección (véase más arriba). No se producen solicitudes automáticas en segundo plano. OSRM se utiliza de forma predeterminada; ORS solo si se introduce una clave API.</p>
   </section>
 
   <section>
@@ -299,11 +300,11 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – para detección de sincronización Wi-Fi</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – para descubrimiento de dispositivos mediante difusión UDP</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – acceso al archivo de base de datos</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – para el seguimiento GPS (viajes en coche, ciclismo, senderismo). Los datos de ubicación se procesan localmente y nunca se transmiten.</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – para el seguimiento GPS (viajes en coche, ciclismo, senderismo) y, solo como último paso de reserva al añadir una dirección, para determinar automáticamente el país (véase la sección "Servicios externos"). Los datos de seguimiento GPS se procesan localmente y no se transmiten; la localización puntual al añadir una dirección se transmite a Nominatim, pero la app no la almacena.</li>
       <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – permite la grabación GPS incluso con la app minimizada (servicio en primer plano con notificación visible)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – para sincronización directa Wi-Fi</li>
     </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No se solicitan permisos para cámara, micrófono, ubicación, contactos u otros datos confidenciales del dispositivo.</p>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No se solicitan permisos para cámara, micrófono, contactos u otros datos confidenciales del dispositivo no mencionados. El acceso a la ubicación se produce durante la grabación GPS activa, así como, brevemente y una sola vez, al añadir/editar una dirección si la búsqueda basada en texto no arroja ningún resultado.</p>
   </section>
 
   <section>

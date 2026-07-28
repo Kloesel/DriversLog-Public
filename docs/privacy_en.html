@@ -255,12 +255,13 @@
     <h2><span class="icon">🌐</span> External Services (Network Access)</h2>
     <p>The app uses the following external services, <strong>exclusively on user initiative</strong> (e.g. when calculating a route):</p>
     <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>To convert addresses to coordinates (geocoding), address texts are transmitted to the public Nominatim service of the OpenStreetMap Foundation. No personal data is transmitted, only the entered address text.<br>
+        Additionally, when adding or editing an address, as a last fallback step (Android only, only if the text-based search returns no result), the device's current location may be determined once and also transmitted to Nominatim to automatically determine the address's country. This location data is not stored by the app itself, only the resulting country is kept.<br>
         Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
     <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>To calculate the actual driving route, start and destination coordinates are transmitted to the public OSRM demo server (<code>router.project-osrm.org</code>). OSRM is free and requires no account or API key. Only GPS coordinates are transmitted – no personal data.<br>
         Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
     <div class="service-card"><h3>OpenRouteService (ORS) – optional</h3><p>Alternatively, a personal API key from OpenRouteService can be stored in the settings. If a key is entered, start and destination coordinates are transmitted to OpenRouteService (HeiGIT, Heidelberg) instead of OSRM. The service offers 500 requests/day for free. Without a key, OSRM is used.<br>
         Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">All three services are only called when the user actively triggers a distance calculation. No automatic background requests occur. OSRM is used by default; ORS only if an API key is entered.</p>
+    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">OSRM and ORS are only called when the user actively triggers a distance calculation. Nominatim is additionally called when adding or editing an address (see above). No automatic background requests occur. OSRM is used by default; ORS only if an API key is entered.</p>
   </section>
 
   <section>
@@ -297,11 +298,11 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – for Wi-Fi sync detection and Wi-Fi check before routing requests</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – for device discovery via UDP broadcast on the local network</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – access to the database file in external storage</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – for GPS tracking (car trips, cycling tours, hikes). Location data is processed locally only and never transmitted.</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – for GPS tracking (car trips, cycling tours, hikes) and, only as a last fallback step when adding an address, to automatically determine the country (see "External Services" section). GPS tracking data is processed locally and not transmitted; the one-off location lookup when adding an address is transmitted to Nominatim but not stored by the app.</li>
       <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – enables GPS recording even when the app is minimised (Foreground Service with visible notification)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – for Wi-Fi direct sync without location permission</li>
     </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No permissions for camera, microphone, location, contacts or other sensitive device data are requested.</p>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No permissions for camera, microphone, contacts or other unlisted sensitive device data are requested. Location access occurs during active GPS recording as well as, briefly and once, when adding/editing an address if the text-based search returns no result.</p>
   </section>
 
   <section>

@@ -255,12 +255,13 @@
     <h2><span class="icon">🌐</span> Externe diensten (netwerktoegang)</h2>
     <p>De app gebruikt de volgende externe diensten, <strong>uitsluitend op initiatief van de gebruiker</strong> (bijv. bij het berekenen van een route):</p>
     <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>Voor het omzetten van adressen naar coördinaten (geocodering) worden adresteksten verzonden naar de publieke Nominatim-dienst van de OpenStreetMap Foundation. Er worden geen persoonsgegevens verzonden, alleen de ingevoerde adrestekst.<br>
+        Daarnaast kan bij het toevoegen of bewerken van een adres, als laatste terugvalstap (alleen Android, alleen als de tekstgebaseerde zoekopdracht geen resultaat oplevert), eenmalig de huidige apparaatlocatie worden bepaald en eveneens naar Nominatim worden verzonden om automatisch het land van het adres te bepalen. Deze locatiegegevens worden niet door de app zelf opgeslagen, alleen het bepaalde land wordt bewaard.<br>
         Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
     <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>Voor het berekenen van de daadwerkelijke rijroute worden start- en bestemmingscoördinaten verzonden naar de publieke OSRM-demoserver (<code>router.project-osrm.org</code>). OSRM is gratis en vereist geen account of API-sleutel. Alleen GPS-coördinaten worden verzonden – geen persoonsgegevens.<br>
         Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
     <div class="service-card"><h3>OpenRouteService (ORS) – optioneel</h3><p>Als alternatief kan een persoonlijke API-sleutel van OpenRouteService worden opgeslagen in de instellingen. Als een sleutel is ingevoerd, worden start- en bestemmingscoördinaten verzonden naar OpenRouteService (HeiGIT, Heidelberg) in plaats van OSRM. De dienst biedt 500 verzoeken/dag gratis. Zonder sleutel wordt OSRM gebruikt.<br>
         Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">Alle drie de diensten worden alleen aangeroepen wanneer de gebruiker actief een afstandsberekening start. Er vindt geen automatische achtergrondaanvraag plaats. OSRM wordt standaard gebruikt; ORS alleen als een API-sleutel is ingevoerd.</p>
+    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">OSRM en ORS worden alleen aangeroepen wanneer de gebruiker actief een afstandsberekening start. Nominatim wordt daarnaast aangeroepen bij het toevoegen of bewerken van een adres (zie hierboven). Er vindt geen automatische achtergrondaanvraag plaats. OSRM wordt standaard gebruikt; ORS alleen als een API-sleutel is ingevoerd.</p>
   </section>
 
   <section>
@@ -298,11 +299,11 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – voor Wi-Fi-synchronisatiedetectie</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – voor apparaatdetectie via UDP-broadcast</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – toegang tot het databasebestand</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – voor GPS-tracking (autoritten, fietstochten, wandelingen). Locatiegegevens worden uitsluitend lokaal verwerkt en nooit verzonden.</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – voor GPS-tracking (autoritten, fietstochten, wandelingen) en, alleen als laatste terugvalstap bij het toevoegen van een adres, om automatisch het land te bepalen (zie de sectie "Externe diensten"). GPS-trackinggegevens worden lokaal verwerkt en niet verzonden; de eenmalige locatiebepaling bij het toevoegen van een adres wordt naar Nominatim verzonden, maar niet door de app opgeslagen.</li>
       <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – maakt GPS-opname mogelijk ook wanneer de app geminimaliseerd is (voorgrondservice met zichtbare melding)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – voor directe Wi-Fi-synchronisatie</li>
     </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Er worden geen machtigingen gevraagd voor camera, microfoon, locatie, contacten of andere gevoelige apparaatgegevens.</p>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Er worden geen machtigingen gevraagd voor camera, microfoon, contacten of andere niet-genoemde gevoelige apparaatgegevens. Locatietoegang vindt plaats tijdens actieve GPS-opname, en daarnaast kort en eenmalig bij het toevoegen/bewerken van een adres als de tekstgebaseerde zoekopdracht geen resultaat oplevert.</p>
   </section>
 
   <section>

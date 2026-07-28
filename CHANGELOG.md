@@ -1,5 +1,28 @@
 # Driver's Log – Changelog
 
+## [1.8.01] – 28.07.2026
+
+### Geändert
+- Preis für Fahrtenbuch Pro wird jetzt direkt im Kauf-Dialog angezeigt
+- Benachrichtigungen (z. B. „Adresse gespeichert", „Fahrt gelöscht") werden jetzt zuverlässiger angezeigt
+
+### Fehlerbehebungen
+- Entfernungsberechnung schlug bei vollständigen Adressen (Straße, Hausnummer, PLZ, Ort) teils fehl – behoben
+- „Datenbank sichern"-Button in den Einstellungen reagierte manchmal nicht auf Antippen – behoben
+- PDF-Export: Tabellenüberschriften waren nicht mit den Werten darunter ausgerichtet
+- GPS-Aufzeichnung: Distanzanzeige erscheint jetzt sofort beim Start, nicht erst nach der ersten Bewegung
+- GPS-Aufzeichnung: kleinere Ungenauigkeiten durch GPS-Ungenauigkeit (Jitter) reduziert
+- Einige Übersetzungslücken behoben (u. a. Info-Dialog, WLAN-Sync-Meldungen)
+- Hilfe-Text verwies auf die falsche Stelle für „Adressen anlegen"
+
+### Sonstiges
+- Interne Bibliothek für In-App-Käufe aktualisiert (Google-Play-Anforderung ab 31.08.2026)
+
+### Bekanntes Problem
+Bei aktivierter Wischgesten-Navigation (statt der klassischen 3-Tasten-Navigation) reagiert das Menü-Symbol (☰) gelegentlich nach dem Zurückwischen aus einem Formular kurzzeitig nicht. Die App bleibt dabei voll funktionsfähig und stürzt nicht ab. Die Ursache liegt nachweislich im zugrunde liegenden Qt-Framework, nicht in unserem Code; wir haben das mit ausführlichen Belegen bei den Qt-Entwicklern gemeldet ([QTBUG-148335](https://bugreports.qt.io/browse/QTBUG-148335)) und warten weiterhin auf eine Rückmeldung. Bei 3-Tasten-Navigation tritt das Problem nicht auf.
+
+---
+
 ## [1.8.0] – 17.07.2026
 
 ### Neue Funktionen

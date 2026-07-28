@@ -290,6 +290,13 @@
         Adresstexte an den öffentlichen Nominatim-Dienst der OpenStreetMap
         Foundation übermittelt. Es werden dabei keine personenbezogenen Daten
         übertragen, nur der eingegebene Adresstext.<br>
+        Zusätzlich kann beim Anlegen oder Bearbeiten einer Adresse als
+        letzter Rückfallschritt (nur Android, nur falls die textbasierte
+        Suche kein Ergebnis liefert) einmalig die aktuelle Geräteposition
+        ermittelt und ebenfalls an Nominatim übermittelt werden, um
+        automatisch das Land der Adresse zu bestimmen. Diese Positionsdaten
+        werden von der App selbst nicht gespeichert, nur das ermittelte
+        Land wird übernommen.<br>
         Datenschutz: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a>
       </p>
     </div>
@@ -320,10 +327,11 @@
     </div>
 
     <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">
-      Alle drei Dienste werden nur aufgerufen, wenn der Nutzer aktiv eine
-      Entfernungsberechnung auslöst. Es findet kein automatischer
-      Hintergrundabruf statt. OSRM wird standardmäßig verwendet;
-      ORS nur wenn ein API-Key eingetragen ist.
+      OSRM und ORS werden nur aufgerufen, wenn der Nutzer aktiv eine
+      Entfernungsberechnung auslöst. Nominatim wird zusätzlich beim Anlegen
+      oder Bearbeiten einer Adresse aufgerufen (siehe oben). Es findet kein
+      automatischer Hintergrundabruf statt. OSRM wird standardmäßig
+      verwendet; ORS nur wenn ein API-Key eingetragen ist.
     </p>
   </section>
 
@@ -372,14 +380,16 @@
       <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – für WLAN-Sync-Erkennung und WLAN-Prüfung vor Routing-Anfragen</li>
       <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – für Gerätesuche per UDP-Broadcast im lokalen Netz</li>
       <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – Zugriff auf die Datenbankdatei im externen Speicher</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – für GPS-Tracking (Autofahrten, Fahrradtouren, Wanderungen). Standortdaten werden ausschließlich lokal verarbeitet und niemals übertragen.</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – für GPS-Tracking (Autofahrten, Fahrradtouren, Wanderungen) sowie, nur als letzter Rückfallschritt bei der Adressvergabe, zur automatischen Länder-Bestimmung (siehe Abschnitt „Externe Dienste"). GPS-Tracking-Daten werden lokal verarbeitet und nicht übertragen; die einmalige Positionsabfrage bei der Adressvergabe wird an Nominatim übermittelt, aber nicht von der App gespeichert.</li>
       <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – ermöglicht GPS-Erfassung auch bei minimierter App (Foreground Service mit sichtbarer Benachrichtigung)</li>
       <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – für WLAN-Direktsync ohne Standortberechtigung</li>
     </ul>
     <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">
       Es werden keine Berechtigungen für Kamera, Mikrofon, Kontakte oder andere
       nicht aufgeführte sensible Gerätedaten angefordert. Der Standortzugriff
-      erfolgt ausschließlich während aktiver GPS-Aufzeichnung.
+      erfolgt während aktiver GPS-Aufzeichnung sowie, kurz und einmalig, beim
+      Anlegen/Bearbeiten einer Adresse, falls die textbasierte Suche kein
+      Ergebnis liefert.
     </p>
   </section>
 
