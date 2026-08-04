@@ -1,5 +1,18 @@
 # Driver's Log – Changelog
 
+## [1.8.02] – 04.08.2026 (Windows + Android)
+
+### Neu
+- Neuer Button „Sync zurücksetzen" direkt unter Einstellungen → Synchronisation (Windows und Android) – bisher nur inoffiziell erreichbar
+
+### Geändert
+- Windows: Menüpunkt „Synchronisation" ist jetzt ausgeblendet (WLAN-Sync läuft ohnehin automatisch im Hintergrund, der Menüpunkt sorgte nur für Verwirrung)
+- Windows: Menüpunkt „Datei → Speichern" entfernt (war überflüssig – alle Daten werden automatisch gespeichert)
+- Hilfe (Windows + Android) korrigiert: Anleitung zum Sync-Zurücksetzen verweist jetzt auf den neuen Button in den Einstellungen
+
+### Fehlerbehebungen
+- Android: Nach „Datenbank wiederherstellen" erschien die App auf manchen Geräten nicht automatisch wieder im Vordergrund und musste manuell in der Übersicht angetippt werden – behoben
+
 ## [1.8.01] – 28.07.2026
 
 ### Geändert
