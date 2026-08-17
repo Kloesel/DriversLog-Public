@@ -1,5 +1,26 @@
 # Driver's Log – Changelog
 
+## [1.8.04] – 15.08.2026 (Windows + Android)
+
+### Fehlerbehebungen
+- Zurück-Taste (Android): Ein offenes Formular, Dropdown-Menü oder Overlay (z. B. Export) wurde teils fälschlich minimiert, statt geschlossen zu werden – jetzt zuverlässig behoben
+- Export-Bildschirm (Android): Menü-Symbol (☰) reagierte nach dem Öffnen von Export teils nicht mehr auf Antippen – behoben
+- Android: Die App konnte nach längerer Zeit im Hintergrund beim Wiederöffnen kurz erscheinen und sofort wieder verschwinden – zwei unabhängige Ursachen gefunden und behoben
+- Tastatur erschien auf manchen Android-16-Geräten beim ersten Antippen eines Eingabefelds nicht – behoben (durch Qt-Versionsupdate)
+
+### Sonstiges
+- Migration auf eine neuere Version des zugrunde liegenden Qt-Frameworks (6.10.3) – Grundlage für den Tastatur-Fix unten sowie bessere Zukunftssicherheit der App
+- Interne Bibliothek für In-App-Käufe (Google Play Billing) erneut auf die von Google vorgeschriebene aktuelle Version aktualisiert
+- Vorbereitung auf künftige Google-Play-Anforderungen zu Speicherseitengrößen (16-KB-Pages)
+
+### Bekanntes Problem
+Auf manchen Android-13-Geräten bleibt am unteren Bildschirmrand ein kleiner, rein optischer Abstand sichtbar. Die App bleibt davon unberührt voll funktionsfähig; wir arbeiten an einer Lösung für eine kommende Version.
+
+## [1.8.03] – 06.08.2026 (Android)
+
+### Sonstiges
+- Interne Bibliothek für In-App-Käufe (Google Play Billing) auf die von Google vorgeschriebene aktuelle Version aktualisiert (Frist: 01.11.2026) – keine sichtbaren Änderungen am Kaufablauf
+
 ## [1.8.02] – 04.08.2026 (Windows + Android)
 
 ### Neu
