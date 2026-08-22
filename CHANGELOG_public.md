@@ -1,5 +1,16 @@
 # Driver's Log – Changelog
 
+## [1.8.05] – 22.08.2026 (Android)
+
+### Geändert
+- **Export (CSV & PDF), Fahrtzweck-Verwaltung und Mehrere Fahrer sind jetzt auch in der kostenlosen Version nutzbar** – bisher waren diese Funktionen Pro-exklusiv
+- Free-Version bleibt weiterhin auf bis zu 25 Fahrten begrenzt
+- WLAN-Sync zwischen Android und Windows bleibt eine Pro-Funktion
+- Neuer, dauerhaft sichtbarer Hinweis in der Fahrtenliste zeigt den aktuellen Stand ("Free-Version · X/25 Fahrten")
+
+### Fehlerbehebungen
+- Kleinere Korrekturen im Zusammenhang mit der Umstellung des Free/Pro-Modells
+
 ## [1.8.04] – 15.08.2026 (Windows + Android)
 
 ### Fehlerbehebungen
