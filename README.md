@@ -10,17 +10,17 @@ Record car trips, cycling tours and hikes — with optional GPS tracking on Andr
 
 ## Free vs. Pro (Android)
 
-The Android app is free to install. A one-time **In-App Purchase** ("Pro") unlocks all features:
+The Android app is free to install. A one-time **In-App Purchase** ("Pro") unlocks unlimited trips and Wi-Fi sync:
 
 | Feature | Free | Pro |
 |---|---|---|
 | Trip / activity recording | max. 25 entries | unlimited |
 | GPS tracking (car, cycling, hiking) | max. 25 entries | unlimited |
-| Export (CSV & PDF) | ✗ | ✓ |
-| Driver management | ✗ | ✓ |
-| Trip purpose management | ✗ | ✓ |
+| Export (CSV & PDF) | ✓ | ✓ |
+| Driver management | ✓ | ✓ |
+| Trip purpose management | ✓ | ✓ |
 | Wi-Fi sync | ✗ | ✓ |
-| Windows desktop app | ✗ | ✓ free |
+| Windows desktop app | ✓ free | ✓ free |
 
 **Windows version is always free** – available as a standalone installer at  
 [github.com/Kloesel/DriversLog-Public/releases](https://github.com/Kloesel/DriversLog-Public/releases)
@@ -35,9 +35,9 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 - Manual trip recording (date, start/destination, distance, driver, trip purpose, notes)
 - Distance calculation via OSRM (free, no account) or OpenRouteService (optional API key)
 - Address book with geocoding (Nominatim/OpenStreetMap)
-- Driver management (optional multi-driver mode) — *Pro*
-- Trip purpose management — *Pro*
-- PDF and CSV export — *Pro*
+- Driver management (optional multi-driver mode)
+- Trip purpose management
+- PDF and CSV export
 - Wi-Fi synchronisation between Android and Windows (same local network, no cloud) — *Pro*
 - Multilingual: German, English, French, Dutch, Spanish
 - No ads, no data collection, no cloud
