@@ -1,31 +1,36 @@
 # Driver's Log – Changelog
 
-## [1.8.05] – 22.08.2026 (Android)
+## [1.8.07] – 31.08.2026 (Windows + Android)
+
+### Neu
+- Geführte Einrichtung für zuverlässigen Hintergrund-Sync unter Android: Ein neuer Dialog hilft dabei, die beiden nötigen Akku-Einstellungen zu setzen, damit WLAN-Sync auch im Hintergrund zuverlässig läuft. Erscheint automatisch bei Bedarf (z. B. beim Umschalten auf WLAN-Sync oder App-Start) oder manuell über Einstellungen → Synchronisation.
 
 ### Geändert
-- **Export (CSV & PDF), Fahrtzweck-Verwaltung und Mehrere Fahrer sind jetzt auch in der kostenlosen Version nutzbar** – bisher waren diese Funktionen Pro-exklusiv
-- Free-Version bleibt weiterhin auf bis zu 25 Fahrten begrenzt
-- WLAN-Sync zwischen Android und Windows bleibt eine Pro-Funktion
-- Neuer, dauerhaft sichtbarer Hinweis in der Fahrtenliste zeigt den aktuellen Stand ("Free-Version · X/25 Fahrten")
+- WLAN-Sync findet andere Geräte jetzt zuverlässiger, auch nach längerer Nutzungspause – die Sende-Zeitfenster sind jetzt an die Uhrzeit ausgerichtet statt an den individuellen App-Start.
+- Hilfe-Texte zum Hintergrund-Sync und zum kostenlosen Windows-App-Download ergänzt.
 
 ### Fehlerbehebungen
-- Kleinere Korrekturen im Zusammenhang mit der Umstellung des Free/Pro-Modells
-
-## [1.8.04] – 15.08.2026 (Windows + Android)
-
-### Fehlerbehebungen
-- Zurück-Taste (Android): Ein offenes Formular, Dropdown-Menü oder Overlay (z. B. Export) wurde teils fälschlich minimiert, statt geschlossen zu werden – jetzt zuverlässig behoben
-- Export-Bildschirm (Android): Menü-Symbol (☰) reagierte nach dem Öffnen von Export teils nicht mehr auf Antippen – behoben
-- Android: Die App konnte nach längerer Zeit im Hintergrund beim Wiederöffnen kurz erscheinen und sofort wieder verschwinden – zwei unabhängige Ursachen gefunden und behoben
-- Tastatur erschien auf manchen Android-16-Geräten beim ersten Antippen eines Eingabefelds nicht – behoben (durch Qt-Versionsupdate)
+- Fahrtzweck-Liste aktualisierte sich nach einer per WLAN-Sync empfangenen Änderung nicht automatisch – behoben.
 
 ### Sonstiges
-- Migration auf eine neuere Version des zugrunde liegenden Qt-Frameworks (6.10.3) – Grundlage für den Tastatur-Fix unten sowie bessere Zukunftssicherheit der App
-- Interne Bibliothek für In-App-Käufe (Google Play Billing) erneut auf die von Google vorgeschriebene aktuelle Version aktualisiert
-- Vorbereitung auf künftige Google-Play-Anforderungen zu Speicherseitengrößen (16-KB-Pages)
+- Interne Codeoptimierung (R8) für geringeren Speicherbedarf und bessere Performance – erfüllt zugleich Googles neue technische Play-Store-Anforderungen (ab Februar 2027).
 
-### Bekanntes Problem
-Auf manchen Android-13-Geräten bleibt am unteren Bildschirmrand ein kleiner, rein optischer Abstand sichtbar. Die App bleibt davon unberührt voll funktionsfähig; wir arbeiten an einer Lösung für eine kommende Version.
+## [1.8.05] – 17.08.2026 (Android)
+
+### Geändert — Free/Pro-Modell umgestellt
+- Export (CSV & PDF), Fahrtzweck-Verwaltung und die Verwaltung mehrerer Fahrer sind jetzt auch in der kostenlosen Version verfügbar.
+- Weiterhin an Fahrtenbuch Pro gekoppelt: unbegrenzte Fahrten (statt 25) und WLAN-Sync zwischen Android und Windows.
+- Neuer, dauerhaft sichtbarer Hinweis zur aktuellen Fahrtenzahl für Free-Nutzer (statt bisher erst ab Erreichen des Limits).
+
+## [1.8.04] – 06.08.2026 (Android + Windows)
+
+### Fehlerbehebungen
+- Menü-Symbol (☰) reagierte nach Öffnen des Exports dauerhaft nicht mehr auf Antippen – behoben.
+- Auf manchen Android-13-Geräten reichte das Anwendungsfenster nicht bis zum unteren Bildschirmrand, sichtbar als doppelte/überlappende Darstellung – behoben.
+- Zurück-Taste/-Geste minimierte in bestimmten Situationen weiterhin die App, statt nur ein offenes Formular oder Auswahlfeld zu schließen (u. a. beim GPS-Aktivitäts-Dialog) – vollständig behoben.
+
+### Sonstiges
+- Interne technische Grundlage (Qt-Framework) aktualisiert für bessere Stabilität und zukünftige Kompatibilität.
 
 ## [1.8.03] – 06.08.2026 (Android)
 
