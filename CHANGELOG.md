@@ -1,5 +1,14 @@
 # Driver's Log – Changelog
 
+## [1.8.08] – 08.09.2026 (Android)
+
+### Fehlerbehebungen
+- Auf manchen Android-13-Geräten (z. B. Galaxy S20) reichte das Anwendungsfenster nicht ganz bis zum unteren Bildschirmrand, sichtbar als schmale Lücke oberhalb der Navigationsleiste – behoben
+- Entwickleroptionen: Nach Wiederherstellung eines Backups blieb der Pro-Modus manchmal fälschlich aktiv, selbst nachdem er danach manuell ausgeschaltet wurde – behoben
+
+### Sonstiges
+- Interne technische Grundlage für die Bildschirmrand-Anpassung (Edge-to-Edge) überarbeitet – nutzt jetzt Qts eigene Schnittstelle statt einer selbst entwickelten Lösung, für bessere Langzeit-Kompatibilität
+
 ## [1.8.07] – 31.08.2026 (Windows + Android)
 
 ### Neu
