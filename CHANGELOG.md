@@ -1,5 +1,19 @@
 # Driver's Log – Changelog
 
+## [1.8.09] – September 2026 (Windows + Android)
+
+### Neu
+- In-App-Bewertungsanfrage: Nach einigen genutzten Fahrten oder einem erfolgreichen Export kann direkt in der App eine Google-Play-Bewertung abgegeben werden, ohne dass man dafür extra in den Play Store wechseln muss.
+
+### Fehlerbehebungen
+- CSV-Export: Umlaute (ä, ö, ü) wurden beim Öffnen in Excel teils falsch dargestellt – behoben.
+- PDF-Export: Inhalt konnte auf manchen Geräten stark verkleinert und in eine Ecke gequetscht erscheinen, statt die Seite auszufüllen – behoben.
+- PDF-Export (Windows): Tabellenschrift und linker Seitenrand angepasst, für ein sauberer lesbares Ausdruckbild.
+- PDF-Export: Die Tabellen „Zusammenfassung nach Strecke" und „Adressen" beginnen jetzt jeweils auf einer neuen Seite, statt mitten im Seitenumbruch anzufangen.
+
+### Sonstiges
+- Interne Code- und Ressourcen-Optimierung für eine kleinere App-Größe.
+
 ## [1.8.08] – 08.09.2026 (Android)
 
 ### Fehlerbehebungen
