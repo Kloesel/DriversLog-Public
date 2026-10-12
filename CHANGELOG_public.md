@@ -1,5 +1,20 @@
 # Driver's Log – Changelog
 
+## [1.9.01] – Oktober 2026 (Windows + Android)
+
+### Geändert
+- Technische Grundlage auf Qt 6.12 umgestellt, für bessere Kompatibilität mit aktuellen Android-Versionen und Windows.
+- Auswahllisten, Schalter, Listeneinträge und Formulare an die neue Version angepasst und auf Android und Windows geprüft.
+
+### Windows
+- Der Installer richtet jetzt automatisch eine Firewall-Freigabe für den WLAN-Sync ein (nur private Netzwerke und Domänennetzwerke, nur lokales Subnetz). Beim ersten Start erscheint dadurch keine Windows-Firewall-Abfrage mehr. Die Freigabe wird bei der Deinstallation wieder entfernt.
+
+### Sonstiges
+- Interne Aufräumarbeiten, kleinere Android-Build-Anpassungen (aktuelles Android-Gradle-Plug-in).
+
+### Bekanntes Problem
+Bei aktivierter Wischgesten-Navigation (statt der klassischen 3-Tasten-Navigation) reagiert das Menü-Symbol (☰) gelegentlich nach dem Zurückwischen aus einem Formular kurzzeitig nicht. Die App bleibt dabei voll funktionsfähig und stürzt nicht ab. Die Ursache liegt im zugrunde liegenden Qt-Framework ([QTBUG-148335](https://bugreports.qt.io/browse/QTBUG-148335)); das Problem besteht auch unter Qt 6.12 unverändert. Bei 3-Tasten-Navigation tritt es nicht auf.
+
 ## [1.8.09] – September 2026 (Windows + Android)
 
 ### Neu
