@@ -184,7 +184,7 @@ section { scroll-margin-top: 1rem; }
 .shot { margin: 0; display: grid; gap: .6rem; min-width: 0; }
 .shot img { border-radius: 16px; border: 1px solid var(--line); aspect-ratio: 540 / 1170; width: 100%; background: var(--surface); }
 .shot figcaption { font-size: .92rem; color: var(--muted); }
-.shot.win { grid-column: span 2; }
+.shot.win { grid-column: span 2; align-self: start; }
 .shot.win img { aspect-ratio: auto; border-radius: 8px; }
 .small { font-size: .85rem; color: var(--muted); margin-top: 1rem; }
 
@@ -206,6 +206,17 @@ section { scroll-margin-top: 1rem; }
 .dl-card .req { font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
 .dl-card p { color: var(--muted); }
 .dl-card .btn { justify-self: start; }
+
+/* Store-Badges: Google-Play-PNG auf sichtbare Fläche zugeschnitten, gleiche Höhe wie das Windows-Badge */
+.badge-play { display: inline-block; justify-self: start; line-height: 0; }
+.badge-play img { height: 54px; width: auto; }
+.badge-win { display: inline-flex; align-items: center; gap: .6rem; justify-self: start; height: 54px; padding: 0 1.1rem 0 .85rem;
+  background: #000; color: #fff; border: 1px solid #a6a6a6; border-radius: 9px; text-decoration: none; line-height: 1.05; }
+.badge-win:hover { background: #1a1a1a; }
+.badge-win svg { width: 30px; height: 30px; flex: none; }
+.badge-win span { display: grid; }
+.badge-win small { font-size: .72rem; letter-spacing: .02em; }
+.badge-win b { font-size: 1.35rem; font-weight: 600; }
 
 /* FAQ */
 .faq { display: grid; gap: .6rem; max-width: 52rem; }
