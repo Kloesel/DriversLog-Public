@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Driverslog</title>
+  <title>Privacy Policy – Driver's Log</title>
   <style>
 
     :root {
@@ -204,6 +204,10 @@
       section { padding: 20px 18px; }
       header { padding: 36px 18px 30px; }
     }
+  
+    /* Ergänzungen (Webseite 2026): lange Begriffe umbrechen, Untertitel lesbar */
+    li strong, code, .info-tile .value, .info-tile .label { overflow-wrap: anywhere; }
+    header p { color: rgba(255,255,255,.85); }
   </style>
 </head>
 <body>
@@ -211,120 +215,106 @@
 <header>
   <div class="header-icon">🚗</div>
   <h1>Privacy Policy</h1>
-  <p>Driverslog App &nbsp;·&nbsp; Android &amp; Windows</p>
+  <p>Driver's Log app &nbsp;·&nbsp; Android &amp; Windows</p>
 </header>
 
 <div class="container">
 
   <div class="date-banner">
-    Last updated: August 2026 &nbsp;·&nbsp; Valid for Driverslog from version 1.5.03
+    Last updated: October 2026 &nbsp;·&nbsp; Applies to Driver's Log from version 1.9.02
   </div>
 
   <section>
     <h2><span class="icon">👤</span> Controller</h2>
-    <div class="info-grid">
-      <div class="info-tile"><div class="label">Developer</div><div class="value">Klösel</div></div>
-      <div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">App Version</div><div class="value">1.5.03+</div></div>
-      <div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div>
-    </div>
+    <div class="info-grid"><div class="info-tile"><div class="label">Name</div><div class="value">Nikolaus Nießen, Kloesel Apps</div></div><div class="info-tile"><div class="label">Address</div><div class="value">Weyresstraße 37, 52525 Heinsberg, Germany</div></div><div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div><div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div></div>
   </section>
-
   <section>
-    <h2><span class="icon">📋</span> Purpose of the App</h2>
-    <p>Driverslog is used for private or business recording and management of vehicle trips. The app allows logging of start and destination addresses, distances, and driver data, and can export trip reports as PDF or CSV.</p>
-    <p>The app is designed for personal use. No user accounts are created and no data is stored in the cloud.</p>
+    <h2><span class="icon">📋</span> Purpose of the app</h2>
+    <p>Driver's Log records trips by car, by bike or on foot for private or business purposes – manually or by GPS recording. Trips can be reviewed and exported as PDF or CSV.</p>
+    <p>The app requires <strong>no user account</strong> and stores <strong>no data in a cloud</strong>. The developer receives none of your trip, address or location data.</p>
   </section>
-
   <section>
-    <h2><span class="icon">💾</span> Locally Stored Data</h2>
-    <p>All entered data is stored <strong>exclusively locally</strong> on the device (SQLite database). This includes:</p>
+    <h2><span class="icon">💾</span> Data stored locally</h2>
+    <p>All data is stored <strong>only locally</strong> in a database on your device. This includes:</p>
     <ul>
-      <li>Trip data (date, start, destination, kilometers, driver, trip purpose)</li>
-      <li>Address book (street, city, coordinates)</li>
-      <li>Driver data (name)</li>
-      <li>Trip purposes (label)</li>
-      <li>App settings</li>
+      <li>Trips (date, driver, purpose, start, destination, distance, note)</li>
+      <li>Address book (label, street, town, country, coordinates)</li>
+      <li>Drivers (name) and trip purposes (label)</li>
+      <li>GPS recordings (waypoints with time, position, altitude, speed and accuracy)</li>
+      <li>Sync log (which entries were changed on which of your devices)</li>
+      <li>Settings, including a personal OpenRouteService API key if you add one</li>
     </ul>
-    <p>This data does <strong>not leave the device automatically</strong> and is not transmitted to the developer.</p>
-    <div class="badge">✅ No cloud storage</div>
+    <p>This data only leaves the device through the functions described below, which you use or set up yourself.</p>
+    <div class="badge">✅ No cloud storage &nbsp;·&nbsp; ✅ No account</div>
   </section>
-
   <section>
-    <h2><span class="icon">🌐</span> External Services (Network Access)</h2>
-    <p>The app uses the following external services, <strong>exclusively on user initiative</strong> (e.g. when calculating a route):</p>
-    <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>To convert addresses to coordinates (geocoding), address texts are transmitted to the public Nominatim service of the OpenStreetMap Foundation. No personal data is transmitted, only the entered address text.<br>
-        Additionally, when adding or editing an address, as a last fallback step (Android only, only if the text-based search returns no result), the device's current location may be determined once and also transmitted to Nominatim to automatically determine the address's country. This location data is not stored by the app itself, only the resulting country is kept.<br>
-        Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
-    <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>To calculate the actual driving route, start and destination coordinates are transmitted to the public OSRM demo server (<code>router.project-osrm.org</code>). OSRM is free and requires no account or API key. Only GPS coordinates are transmitted – no personal data.<br>
-        Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
-    <div class="service-card"><h3>OpenRouteService (ORS) – optional</h3><p>Alternatively, a personal API key from OpenRouteService can be stored in the settings. If a key is entered, start and destination coordinates are transmitted to OpenRouteService (HeiGIT, Heidelberg) instead of OSRM. The service offers 500 requests/day for free. Without a key, OSRM is used.<br>
-        Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">OSRM and ORS are only called when the user actively triggers a distance calculation. Nominatim is additionally called when adding or editing an address (see above). No automatic background requests occur. OSRM is used by default; ORS only if an API key is entered.</p>
+    <h2><span class="icon">🗂️</span> Backup and export</h2>
+    <div class="service-card"><h3>Automatic backup</h3>
+      <p>If enabled, the app saves a daily copy of its database to a folder (Android: chosen by you via the system folder picker; Windows: “Documents\Fahrtenbuch\Backups”). The backup stays there even after uninstalling and can be restored in the app. If this folder is synced with a cloud service (e.g. Google Drive or OneDrive), that service's terms apply.</p></div>
+    <div class="service-card"><h3>Export to PDF or CSV</h3>
+      <p>Export files are saved on your device. Whether and with whom you share them is up to you; the app you choose is used for that.</p></div>
   </section>
-
   <section>
-    <h2><span class="icon">📶</span> Wi-Fi Synchronisation</h2>
-    <p>The app offers optional synchronisation between multiple devices on the same Wi-Fi network (e.g. Android smartphone and Windows PC). Trip data is exchanged directly between the devices – <strong>without going through the internet or external servers</strong>.</p>
-    <p>The transmission takes place unencrypted (TCP) on the local network. No data is shared with third parties.</p>
+    <h2><span class="icon">🌐</span> External services (network access)</h2>
+    <p>The app only contacts the following services when you use the corresponding function. For technical reasons your device's <strong>IP address</strong> is also transmitted to the service. Legal basis: Art. 6(1)(b) and (f) GDPR (providing the function you requested).</p>
+    <div class="service-card"><h3>Nominatim – OpenStreetMap Foundation</h3>
+      <p>When you create or edit an address, the address text you enter is sent to Nominatim to obtain suggestions and coordinates. If the search finds nothing, the app (Android only) may determine your current position once and send it to Nominatim to identify the country of the address. The app does not store this position.<br>
+      Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
+    <div class="service-card"><h3>OSRM – route calculation</h3>
+      <p>To calculate a distance, the coordinates of start and destination are sent to the public server <code>router.project-osrm.org</code>. No account is needed.<br>
+      Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
+    <div class="service-card"><h3>OpenRouteService (optional)</h3>
+      <p>If you have entered your own API key in the settings, the coordinates of start and destination are sent together with that key to OpenRouteService (HeiGIT gGmbH, Heidelberg, Germany) instead of OSRM.<br>
+      Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
+    <p>Start and end of a GPS recording are matched against your address book <strong>on the device</strong>; no data is transmitted for this. There is no automatic background retrieval.</p>
   </section>
-
   <section>
-    <h2><span class="icon">🛒</span> In-App Purchase (Pro Version)</h2>
-    <p>
-      The Android version of Driverslog offers an optional upgrade to
-      <strong>Driverslog Pro</strong> via a one-time in-app purchase
-      (product ID: <code>driverslog_pro</code>). The purchase is voluntary
-      and not required for the basic features of the app.
-    </p>
-    <p>
-      All payment processing is handled <strong>exclusively by Google Play
-      Billing</strong>. The developer only receives a confirmation that
-      the purchase was successful – no payment data (card numbers, bank
-      details, etc.) is transmitted to the developer.
-    </p>
-    <p>
-      For payment data processing, Google's privacy policy applies:
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
-    </p>
-    <div class="badge">✅ Payment data with Google only &nbsp;·&nbsp; ✅ No subscription</div>
-  </section>
-
-  <section>
-    <h2><span class="icon">🔒</span> Android Permissions</h2>
+    <h2><span class="icon">📶</span> Wi-Fi sync (Pro)</h2>
+    <p>Optionally, the app syncs your data directly between your own devices on the same Wi-Fi network (e.g. Android phone and Windows PC) – <strong>without the internet and without third-party servers</strong>.</p>
     <ul>
-      <li><strong>INTERNET</strong> – for Nominatim geocoding, OSRM routing and optional ORS routing</li>
-      <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – for Wi-Fi sync detection and Wi-Fi check before routing requests</li>
-      <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – for device discovery via UDP broadcast on the local network</li>
-      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – access to the database file in external storage</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – for GPS tracking (car trips, cycling tours, hikes) and, only as a last fallback step when adding an address, to automatically determine the country (see "External Services" section). GPS tracking data is processed locally and not transmitted; the one-off location lookup when adding an address is transmitted to Nominatim but not stored by the app.</li>
-      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – enables GPS recording even when the app is minimised (Foreground Service with visible notification)</li>
-      <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – for Wi-Fi direct sync without location permission</li>
+      <li>To find other devices, the app regularly broadcasts a short message on the local network containing a random device ID and the device name (Android: device model, Windows: PC name).</li>
+      <li>Trips, addresses, drivers and purposes are transferred between the devices; during initial setup the entire database may be transferred.</li>
+      <li>Transfer on the local network is <strong>not encrypted</strong>. Only use sync on trusted networks (e.g. your home network).</li>
+      <li>So that syncing also works with the screen off, Android runs a background service with a visible notification. If you agree, the app asks to be excluded from battery optimisation.</li>
+      <li>On Windows, the installer adds a firewall rule for private networks and the local subnet only.</li>
     </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">No permissions for camera, microphone, contacts or other unlisted sensitive device data are requested. Location access occurs during active GPS recording as well as, briefly and once, when adding/editing an address if the text-based search returns no result.</p>
   </section>
-
   <section>
-    <h2><span class="icon">🚫</span> No Data Sharing</h2>
-    <p>There is <strong>no sharing of personal data</strong> with the developer, advertisers or other third parties. The app contains no analytics SDKs, no advertising and no tracking.</p>
+    <h2><span class="icon">🛒</span> In-app purchase (Pro version)</h2>
+    <p>The Android app offers an optional upgrade to Pro through a one-time in-app purchase (product ID: <code>driverslog_pro</code>). Payment is handled exclusively by <strong>Google Play</strong>. The developer receives no payment data, only the order information Google provides for the purchase (e.g. order number and product).<br>
+    Google privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+    <div class="badge">✅ Payment data only with Google &nbsp;·&nbsp; ✅ No subscription</div>
+  </section>
+  <section>
+    <h2><span class="icon">⭐</span> In-app rating (Android)</h2>
+    <p>After a number of saved trips or a successful export, the app may show Google Play's rating dialog once. The dialog is provided entirely by Google; the app does not learn whether or how you rated it. A submitted review is public, as usual on the Play Store.</p>
+  </section>
+  <section>
+    <h2><span class="icon">🔒</span> Android permissions</h2><ul><li><strong>INTERNET</strong> – address search (Nominatim) and route calculation (OSRM, optionally OpenRouteService)</li><li><strong>ACCESS_NETWORK_STATE</strong> – checks whether a Wi-Fi or internet connection is available</li><li><strong>CHANGE_WIFI_MULTICAST_STATE / NEARBY_WIFI_DEVICES</strong> – finding devices for Wi-Fi sync on the local network</li><li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – GPS recording of trips and tours, and the one-time country lookup during address search (see above)</li><li><strong>FOREGROUND_SERVICE, FOREGROUND_SERVICE_LOCATION, FOREGROUND_SERVICE_DATA_SYNC</strong> – GPS recording and Wi-Fi sync continue while the app is minimised, each with a visible notification</li><li><strong>WAKE_LOCK / REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</strong> – prevents Android from stopping the sync in idle mode; you grant the battery exception yourself</li><li><strong>com.android.vending.BILLING</strong> – in-app purchase via Google Play</li><li><strong>WRITE_EXTERNAL_STORAGE</strong> – added by the Qt framework and only relevant on Android 9 and 10; the app stores its data in its own app storage</li></ul>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">The app does not request access to the camera, microphone, contacts or photos. Location is only accessed during a GPS recording and in the single case described for address search.</p>
+  </section>
+  <section>
+    <h2><span class="icon">🚫</span> No sharing, no tracking</h2>
+    <p>No personal data is passed on to the developer, advertisers or other third parties, apart from the services listed above. The app contains <strong>no ads, no analytics and no tracking</strong>.</p>
     <div class="badge">✅ No tracking &nbsp;·&nbsp; ✅ No ads &nbsp;·&nbsp; ✅ No analytics</div>
   </section>
-
   <section>
-    <h2><span class="icon">⚖️</span> Your Rights</h2>
-    <p>Since all data is stored locally on your device, you have complete control at all times. You can delete all data directly in the app or completely remove the app data via the Android settings.</p>
-    <p>For questions about data protection, please contact us by email at: <strong>info.kloesel@gmx.de</strong></p>
+    <h2><span class="icon">⚖️</span> Your rights</h2>
+    <p>Your data is on your own devices. You can change or delete it in the app at any time; uninstalling removes the app data (a backup stays in the backup folder).</p>
+    <p>Under the GDPR you have the right of access, rectification, erasure, restriction of processing, data portability and objection. For data held by the services listed above, please contact the respective provider. You may also lodge a complaint with a data protection supervisory authority, e.g. the State Commissioner for Data Protection and Freedom of Information of North Rhine-Westphalia (Germany).</p>
+    <p>Privacy questions: <strong>info.kloesel@gmx.de</strong></p>
   </section>
-
   <section>
-    <h2><span class="icon">🔄</span> Changes to this Policy</h2>
-    <p>This privacy policy may be updated when there are significant changes to the app. The date of the last change is shown above. The current version is always available at this URL.</p>
+    <h2><span class="icon">🔄</span> Changes to this policy</h2>
+    <p>This policy is updated when the app changes significantly. The date is shown above; the current version is always available at this address.</p>
   </section>
 
 </div>
 
 <footer>
-  &copy; 2026 Klösel &nbsp;·&nbsp; Driverslog &nbsp;·&nbsp; This app uses Qt, licensed under <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
+  &copy; 2026 Kloesel Apps &nbsp;·&nbsp; Driver's Log &nbsp;·&nbsp;
+  This app uses Qt, licensed under
+  <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
 </footer>
 
 </body>

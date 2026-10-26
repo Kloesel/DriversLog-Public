@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacybeleid – Driverslog</title>
+  <title>Privacybeleid – Driver's Log</title>
   <style>
 
     :root {
@@ -204,6 +204,10 @@
       section { padding: 20px 18px; }
       header { padding: 36px 18px 30px; }
     }
+  
+    /* Ergänzungen (Webseite 2026): lange Begriffe umbrechen, Untertitel lesbar */
+    li strong, code, .info-tile .value, .info-tile .label { overflow-wrap: anywhere; }
+    header p { color: rgba(255,255,255,.85); }
   </style>
 </head>
 <body>
@@ -211,121 +215,106 @@
 <header>
   <div class="header-icon">🚗</div>
   <h1>Privacybeleid</h1>
-  <p>Driverslog App &nbsp;·&nbsp; Android &amp; Windows</p>
+  <p>Driver's Log-app &nbsp;·&nbsp; Android &amp; Windows</p>
 </header>
 
 <div class="container">
 
   <div class="date-banner">
-    Bijgewerkt: augustus 2026 &nbsp;·&nbsp; Geldig voor Driverslog vanaf versie 1.5.03
+    Bijgewerkt: oktober 2026 &nbsp;·&nbsp; Geldig voor Driver's Log vanaf versie 1.9.02
   </div>
 
   <section>
     <h2><span class="icon">👤</span> Verwerkingsverantwoordelijke</h2>
-    <div class="info-grid">
-      <div class="info-tile"><div class="label">Ontwikkelaar</div><div class="value">Klösel</div></div>
-      <div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div>
-      <div class="info-tile"><div class="label">App-versie</div><div class="value">1.5.03+</div></div>
-      <div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div>
-    </div>
+    <div class="info-grid"><div class="info-tile"><div class="label">Naam</div><div class="value">Nikolaus Nießen, Kloesel Apps</div></div><div class="info-tile"><div class="label">Adres</div><div class="value">Weyresstraße 37, 52525 Heinsberg, Duitsland</div></div><div class="info-tile"><div class="label">Contact</div><div class="value">info.kloesel@gmx.de</div></div><div class="info-tile"><div class="label">Platform</div><div class="value">Android, Windows</div></div></div>
   </section>
-
   <section>
     <h2><span class="icon">📋</span> Doel van de app</h2>
-    <p>Driverslog wordt gebruikt voor de privé of zakelijke registratie en beheer van voertuigritten. De app maakt het mogelijk start- en bestemmingsadressen, afstanden en bestuurdersgegevens te registreren en rittenrapporten te exporteren als PDF of CSV.</p>
-    <p>De app is ontworpen voor persoonlijk gebruik. Er worden geen gebruikersaccounts aangemaakt en er worden geen gegevens opgeslagen in de cloud.</p>
+    <p>Driver's Log legt ritten met de auto, de fiets of te voet vast, privé of zakelijk – handmatig of via gps-registratie. Ritten kunnen worden bekeken en als PDF of CSV worden geëxporteerd.</p>
+    <p>De app heeft <strong>geen account</strong> nodig en slaat <strong>geen gegevens in een cloud</strong> op. De ontwikkelaar ontvangt geen van je rit-, adres- of locatiegegevens.</p>
   </section>
-
   <section>
     <h2><span class="icon">💾</span> Lokaal opgeslagen gegevens</h2>
-    <p>Alle ingevoerde gegevens worden <strong>uitsluitend lokaal</strong> op het apparaat opgeslagen (SQLite-database). Dit omvat:</p>
+    <p>Alle gegevens worden <strong>uitsluitend lokaal</strong> in een database op je apparaat opgeslagen:</p>
     <ul>
-      <li>Ritgegevens (datum, start, bestemming, kilometers, bestuurder, reisdoel)</li>
-      <li>Adresboek (straat, plaats, coördinaten)</li>
-      <li>Bestuurdersgegevens (naam)</li>
-      <li>Reisdoelen (omschrijving)</li>
-      <li>App-instellingen</li>
+      <li>Ritten (datum, bestuurder, doel, vertrek, bestemming, afstand, opmerking)</li>
+      <li>Adresboek (omschrijving, straat, plaats, land, coördinaten)</li>
+      <li>Bestuurders (naam) en ritdoelen (omschrijving)</li>
+      <li>Gps-registraties (punten met tijd, positie, hoogte, snelheid en nauwkeurigheid)</li>
+      <li>Synchronisatielog (welke items op welk van je apparaten zijn gewijzigd)</li>
+      <li>Instellingen, eventueel inclusief een persoonlijke OpenRouteService-API-sleutel</li>
     </ul>
-    <p>Deze gegevens <strong>verlaten het apparaat niet automatisch</strong> en worden niet aan de ontwikkelaar doorgegeven.</p>
-    <div class="badge">✅ Geen cloudopslag</div>
+    <p>Deze gegevens verlaten het apparaat alleen via de hieronder beschreven functies, die je zelf gebruikt of instelt.</p>
+    <div class="badge">✅ Geen cloudopslag &nbsp;·&nbsp; ✅ Geen account</div>
   </section>
-
+  <section>
+    <h2><span class="icon">🗂️</span> Back-up en export</h2>
+    <div class="service-card"><h3>Automatische back-up</h3>
+      <p>Als je dit inschakelt, slaat de app dagelijks een kopie van de database op in een map (Android: door jou gekozen via de mapkiezer van het systeem; Windows: „Documenten\Fahrtenbuch\Backups”). De back-up blijft daar ook na het verwijderen van de app en kan in de app worden teruggezet. Wordt deze map met een clouddienst gesynchroniseerd (bijv. Google Drive of OneDrive), dan gelden de voorwaarden van die dienst.</p></div>
+    <div class="service-card"><h3>Export als PDF of CSV</h3>
+      <p>Exportbestanden worden op je apparaat opgeslagen. Of en met wie je ze deelt, bepaal je zelf, via de app die je kiest.</p></div>
+  </section>
   <section>
     <h2><span class="icon">🌐</span> Externe diensten (netwerktoegang)</h2>
-    <p>De app gebruikt de volgende externe diensten, <strong>uitsluitend op initiatief van de gebruiker</strong> (bijv. bij het berekenen van een route):</p>
-    <div class="service-card"><h3>Nominatim – OpenStreetMap</h3><p>Voor het omzetten van adressen naar coördinaten (geocodering) worden adresteksten verzonden naar de publieke Nominatim-dienst van de OpenStreetMap Foundation. Er worden geen persoonsgegevens verzonden, alleen de ingevoerde adrestekst.<br>
-        Daarnaast kan bij het toevoegen of bewerken van een adres, als laatste terugvalstap (alleen Android, alleen als de tekstgebaseerde zoekopdracht geen resultaat oplevert), eenmalig de huidige apparaatlocatie worden bepaald en eveneens naar Nominatim worden verzonden om automatisch het land van het adres te bepalen. Deze locatiegegevens worden niet door de app zelf opgeslagen, alleen het bepaalde land wordt bewaard.<br>
-        Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
-    <div class="service-card"><h3>OSRM – Open Source Routing Machine</h3><p>Voor het berekenen van de daadwerkelijke rijroute worden start- en bestemmingscoördinaten verzonden naar de publieke OSRM-demoserver (<code>router.project-osrm.org</code>). OSRM is gratis en vereist geen account of API-sleutel. Alleen GPS-coördinaten worden verzonden – geen persoonsgegevens.<br>
-        Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
-    <div class="service-card"><h3>OpenRouteService (ORS) – optioneel</h3><p>Als alternatief kan een persoonlijke API-sleutel van OpenRouteService worden opgeslagen in de instellingen. Als een sleutel is ingevoerd, worden start- en bestemmingscoördinaten verzonden naar OpenRouteService (HeiGIT, Heidelberg) in plaats van OSRM. De dienst biedt 500 verzoeken/dag gratis. Zonder sleutel wordt OSRM gebruikt.<br>
-        Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">OSRM en ORS worden alleen aangeroepen wanneer de gebruiker actief een afstandsberekening start. Nominatim wordt daarnaast aangeroepen bij het toevoegen of bewerken van een adres (zie hierboven). Er vindt geen automatische achtergrondaanvraag plaats. OSRM wordt standaard gebruikt; ORS alleen als een API-sleutel is ingevoerd.</p>
+    <p>De app neemt alleen contact op met de volgende diensten wanneer je de betreffende functie gebruikt. Daarbij wordt om technische redenen ook het <strong>IP-adres</strong> van je apparaat doorgegeven. Rechtsgrond: art. 6 lid 1 onder b en f AVG (levering van de gevraagde functie).</p>
+    <div class="service-card"><h3>Nominatim – OpenStreetMap Foundation</h3>
+      <p>Bij het aanmaken of bewerken van een adres wordt de ingevoerde adrestekst naar Nominatim gestuurd voor suggesties en coördinaten. Levert de zoekopdracht niets op, dan kan de app (alleen Android) eenmalig je huidige positie bepalen en naar Nominatim sturen om het land van het adres vast te stellen. De app slaat deze positie niet op.<br>
+      Privacy: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
+    <div class="service-card"><h3>OSRM – routeberekening</h3>
+      <p>Voor de afstandsberekening worden de coördinaten van vertrek en bestemming naar de openbare server <code>router.project-osrm.org</code> gestuurd. Een account is niet nodig.<br>
+      Project: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
+    <div class="service-card"><h3>OpenRouteService (optioneel)</h3>
+      <p>Heb je in de instellingen een eigen API-sleutel ingevoerd, dan gaan de coördinaten van vertrek en bestemming samen met die sleutel naar OpenRouteService (HeiGIT gGmbH, Heidelberg, Duitsland) in plaats van naar OSRM.<br>
+      Privacy: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
+    <p>Begin en einde van een gps-registratie worden <strong>op het apparaat</strong> met je adresboek vergeleken; daarvoor worden geen gegevens verzonden. Er vindt geen automatische ophaling op de achtergrond plaats.</p>
   </section>
-
   <section>
-    <h2><span class="icon">📶</span> Wi-Fi-synchronisatie</h2>
-    <p>De app biedt optionele synchronisatie tussen meerdere apparaten op hetzelfde Wi-Fi-netwerk (bijv. Android-smartphone en Windows-pc). Ritgegevens worden rechtstreeks uitgewisseld tussen de apparaten – <strong>zonder tussenkomst van internet of externe servers</strong>.</p>
-    <p>De overdracht vindt onversleuteld (TCP) plaats op het lokale netwerk. Er worden geen gegevens gedeeld met derden.</p>
-  </section>
-
-  <section>
-    <h2><span class="icon">🛒</span> In-app aankoop (Pro-versie)</h2>
-    <p>
-      De Android-versie van Driverslog biedt een optionele upgrade naar
-      <strong>Driverslog Pro</strong> via een eenmalige in-app aankoop
-      (product-ID: <code>driverslog_pro</code>). De aankoop is vrijwillig
-      en niet vereist voor de basisfuncties van de app.
-    </p>
-    <p>
-      De betalingsverwerking verloopt <strong>uitsluitend via Google Play
-      Billing</strong>. De ontwikkelaar ontvangt alleen een bevestiging
-      dat de aankoop succesvol was – geen betalingsgegevens (kaartnummers,
-      bankgegevens, enz.) worden aan de ontwikkelaar doorgegeven.
-    </p>
-    <p>
-      Voor de verwerking van betalingsgegevens geldt het privacybeleid
-      van Google:
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
-    </p>
-    <div class="badge">✅ Betalingsgegevens alleen bij Google &nbsp;·&nbsp; ✅ Geen abonnement</div>
-  </section>
-
-  <section>
-    <h2><span class="icon">🔒</span> Android-machtigingen</h2>
+    <h2><span class="icon">📶</span> Wifi-synchronisatie (Pro)</h2>
+    <p>Optioneel synchroniseert de app je gegevens rechtstreeks tussen je eigen apparaten in hetzelfde wifi-netwerk (bijv. Android-telefoon en Windows-pc) – <strong>zonder internet en zonder servers van derden</strong>.</p>
     <ul>
-      <li><strong>INTERNET</strong> – voor Nominatim-geocodering, OSRM-routering en optionele ORS-routering</li>
-      <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – voor Wi-Fi-synchronisatiedetectie</li>
-      <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – voor apparaatdetectie via UDP-broadcast</li>
-      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – toegang tot het databasebestand</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – voor GPS-tracking (autoritten, fietstochten, wandelingen) en, alleen als laatste terugvalstap bij het toevoegen van een adres, om automatisch het land te bepalen (zie de sectie "Externe diensten"). GPS-trackinggegevens worden lokaal verwerkt en niet verzonden; de eenmalige locatiebepaling bij het toevoegen van een adres wordt naar Nominatim verzonden, maar niet door de app opgeslagen.</li>
-      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – maakt GPS-opname mogelijk ook wanneer de app geminimaliseerd is (voorgrondservice met zichtbare melding)</li>
-      <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – voor directe Wi-Fi-synchronisatie</li>
+      <li>Om andere apparaten te vinden, verstuurt de app regelmatig een kort bericht in het lokale netwerk met een willekeurige apparaat-ID en de apparaatnaam (Android: model, Windows: naam van de pc).</li>
+      <li>Ritten, adressen, bestuurders en doelen worden tussen de apparaten overgedragen; bij de eerste instelling kan de hele database worden overgedragen.</li>
+      <li>De overdracht in het lokale netwerk is <strong>niet versleuteld</strong>. Gebruik synchronisatie daarom alleen in vertrouwde netwerken (bijv. je thuisnetwerk).</li>
+      <li>Zodat synchronisatie ook met uitgeschakeld scherm werkt, draait onder Android een achtergronddienst met een zichtbare melding. Als je akkoord gaat, vraagt de app om uitgezonderd te worden van batterijoptimalisatie.</li>
+      <li>Onder Windows voegt het installatieprogramma een firewallregel toe, alleen voor privénetwerken en het lokale subnet.</li>
     </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Er worden geen machtigingen gevraagd voor camera, microfoon, contacten of andere niet-genoemde gevoelige apparaatgegevens. Locatietoegang vindt plaats tijdens actieve GPS-opname, en daarnaast kort en eenmalig bij het toevoegen/bewerken van een adres als de tekstgebaseerde zoekopdracht geen resultaat oplevert.</p>
   </section>
-
   <section>
-    <h2><span class="icon">🚫</span> Geen gegevensdeling</h2>
-    <p>Er is <strong>geen deling van persoonsgegevens</strong> met de ontwikkelaar, adverteerders of andere derden. De app bevat geen analyse-SDK's, geen reclame en geen tracking.</p>
+    <h2><span class="icon">🛒</span> In-app-aankoop (Pro-versie)</h2>
+    <p>De Android-app biedt een vrijwillige upgrade naar Pro via een eenmalige in-app-aankoop (product-ID: <code>driverslog_pro</code>). De betaling verloopt uitsluitend via <strong>Google Play</strong>. De ontwikkelaar ontvangt geen betaalgegevens, alleen de bestelinformatie die Google voor de aankoop verstrekt (bijv. bestelnummer en product).<br>
+    Privacybeleid van Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+    <div class="badge">✅ Betaalgegevens alleen bij Google &nbsp;·&nbsp; ✅ Geen abonnement</div>
+  </section>
+  <section>
+    <h2><span class="icon">⭐</span> Beoordeling in de app (Android)</h2>
+    <p>Na een aantal opgeslagen ritten of een geslaagde export kan de app eenmalig het beoordelingsvenster van Google Play tonen. Dit venster wordt volledig door Google geleverd; de app weet niet of en hoe je hebt beoordeeld. Een geplaatste recensie is openbaar, zoals gebruikelijk in de Play Store.</p>
+  </section>
+  <section>
+    <h2><span class="icon">🔒</span> Android-machtigingen</h2><ul><li><strong>INTERNET</strong> – adreszoekopdracht (Nominatim) en routeberekening (OSRM, optioneel OpenRouteService)</li><li><strong>ACCESS_NETWORK_STATE</strong> – controleert of er een wifi- of internetverbinding is</li><li><strong>CHANGE_WIFI_MULTICAST_STATE / NEARBY_WIFI_DEVICES</strong> – apparaten zoeken voor wifi-synchronisatie in het lokale netwerk</li><li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – gps-registratie van ritten en tochten, en de eenmalige landbepaling bij het zoeken naar een adres (zie boven)</li><li><strong>FOREGROUND_SERVICE, FOREGROUND_SERVICE_LOCATION, FOREGROUND_SERVICE_DATA_SYNC</strong> – gps-registratie en synchronisatie lopen door als de app geminimaliseerd is, telkens met een zichtbare melding</li><li><strong>WAKE_LOCK / REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</strong> – voorkomt dat Android de synchronisatie in de slaapstand afbreekt; de uitzondering op batterijoptimalisatie verleen je zelf</li><li><strong>com.android.vending.BILLING</strong> – in-app-aankoop via Google Play</li><li><strong>WRITE_EXTERNAL_STORAGE</strong> – wordt door het Qt-framework toegevoegd en geldt alleen voor Android 9 en 10; de app slaat zijn gegevens op in de eigen app-opslag</li></ul>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">De app vraagt geen toegang tot camera, microfoon, contacten of foto's. De locatie wordt alleen gebruikt tijdens een gps-registratie en in het beschreven enkele geval bij het zoeken naar een adres.</p>
+  </section>
+  <section>
+    <h2><span class="icon">🚫</span> Geen doorgifte, geen tracking</h2>
+    <p>Er worden geen persoonsgegevens doorgegeven aan de ontwikkelaar, adverteerders of andere derden, afgezien van de hierboven genoemde diensten. De app bevat <strong>geen reclame, geen analysesoftware en geen tracking</strong>.</p>
     <div class="badge">✅ Geen tracking &nbsp;·&nbsp; ✅ Geen reclame &nbsp;·&nbsp; ✅ Geen analyse</div>
   </section>
-
   <section>
-    <h2><span class="icon">⚖️</span> Uw rechten</h2>
-    <p>Omdat alle gegevens lokaal op uw apparaat zijn opgeslagen, heeft u te allen tijde volledige controle. U kunt alle gegevens rechtstreeks in de app verwijderen of de app-gegevens volledig verwijderen via de Android-instellingen.</p>
-    <p>Voor vragen over gegevensbescherming kunt u contact opnemen via e-mail: <strong>info.kloesel@gmx.de</strong></p>
+    <h2><span class="icon">⚖️</span> Je rechten</h2>
+    <p>Je gegevens staan op je eigen apparaten. Je kunt ze op elk moment in de app wijzigen of verwijderen; bij het verwijderen van de app worden de app-gegevens gewist (een back-up blijft in de back-upmap staan).</p>
+    <p>Volgens de AVG heb je recht op inzage, rectificatie, wissing, beperking van de verwerking, overdraagbaarheid en bezwaar. Voor gegevens bij de hierboven genoemde diensten wend je je tot de betreffende aanbieder. Je kunt ook een klacht indienen bij een toezichthoudende autoriteit, bijv. de gegevensbeschermingsautoriteit van Noordrijn-Westfalen (Duitsland) of de Autoriteit Persoonsgegevens.</p>
+    <p>Vragen over privacy: <strong>info.kloesel@gmx.de</strong></p>
   </section>
-
   <section>
-    <h2><span class="icon">🔄</span> Wijzigingen in dit beleid</h2>
-    <p>Dit privacybeleid kan worden bijgewerkt bij wezenlijke wijzigingen in de app. De datum van de laatste wijziging staat hierboven vermeld. De meest recente versie is altijd beschikbaar via deze URL.</p>
+    <h2><span class="icon">🔄</span> Wijzigingen van dit beleid</h2>
+    <p>Dit beleid wordt bijgewerkt bij belangrijke wijzigingen van de app. De datum staat bovenaan; de actuele versie is altijd op dit adres beschikbaar.</p>
   </section>
 
 </div>
 
 <footer>
-  &copy; 2026 Klösel &nbsp;·&nbsp; Driverslog &nbsp;·&nbsp; Deze app gebruikt Qt, gelicentieerd onder <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
+  &copy; 2026 Kloesel Apps &nbsp;·&nbsp; Driver's Log &nbsp;·&nbsp;
+  Deze app gebruikt Qt, gelicentieerd onder
+  <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
 </footer>
 
 </body>

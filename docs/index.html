@@ -1,38 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Driverslog</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: sans-serif; background: #f8fafb; color: #1a1c1e;
-           display: flex; align-items: center; justify-content: center;
-           min-height: 100vh; }
-    .box { background: #fff; border: 1px solid #dce4e9; border-radius: 14px;
-           padding: 40px 48px; text-align: center; max-width: 360px; width: 90%; }
-    h1 { font-size: 1.1rem; color: #006493; margin-bottom: 8px; }
-    p  { font-size: 0.85rem; color: #72787e; margin-bottom: 24px; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 10px; }
-    a  { display: block; padding: 12px 20px; border-radius: 8px;
-         background: #e8f3f9; color: #006493; text-decoration: none;
-         font-size: 0.95rem; font-weight: 500;
-         transition: background 0.15s; }
-    a:hover { background: #006493; color: #fff; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fahrtenbuch-App für Android &amp; Windows | Driver&#x27;s Log</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Digitales Fahrtenbuch für Android und Windows: Fahrten erfassen, Entfernung automatisch berechnen, Rad- und Wandertouren per GPS aufzeichnen, Export als PDF oder CSV. WLAN-Sync ohne Cloud. Kostenlos bis 25 Fahrten.">
+<link rel="canonical" href="https://kloesel.github.io/DriversLog-Public/">
+<link rel="alternate" hreflang="de" href="https://kloesel.github.io/DriversLog-Public/">
+<link rel="alternate" hreflang="en" href="https://kloesel.github.io/DriversLog-Public/en/">
+<link rel="alternate" hreflang="fr" href="https://kloesel.github.io/DriversLog-Public/fr/">
+<link rel="alternate" hreflang="nl" href="https://kloesel.github.io/DriversLog-Public/nl/">
+<link rel="alternate" hreflang="es" href="https://kloesel.github.io/DriversLog-Public/es/">
+<link rel="alternate" hreflang="x-default" href="https://kloesel.github.io/DriversLog-Public/">
+<meta property="og:title" content="Fahrtenbuch-App für Android &amp; Windows | Driver&#x27;s Log">
+<meta property="og:description" content="Digitales Fahrtenbuch für Android und Windows: Fahrten erfassen, Entfernung automatisch berechnen, Rad- und Wandertouren per GPS aufzeichnen, Export als PDF oder CSV. WLAN-Sync ohne Cloud. Kostenlos bis 25 Fahrten.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kloesel.github.io/DriversLog-Public/">
+<meta property="og:image" content="https://kloesel.github.io/DriversLog-Public/assets/img/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <div class="box">
-    <h1>🚗🚴🥾 Driver's Log</h1>
-    <p>Datenschutzerklärung / Privacy Policy</p>
-    <ul>
-      <li><a href="privacy_de.html">🇩🇪 Deutsch</a></li>
-      <li><a href="privacy_en.html">🇬🇧 English</a></li>
-      <li><a href="privacy_fr.html">🇫🇷 Français</a></li>
-      <li><a href="privacy_nl.html">🇳🇱 Nederlands</a></li>
-      <li><a href="privacy_es.html">🇪🇸 Español</a></li>
-    </ul>
+<span id="top"></span><a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/img/logo.webp" width="40" height="40" alt="">
+    <span><b>Driver's Log</b><span>Fahrtenbuch für Android &amp; Windows</span></span></a>
+  <nav class="nav" aria-label="Navigation"><a href="#fuer-wen">Für wen</a><a href="#funktionen">Funktionen</a><a href="#preise">Free &amp; Pro</a><a href="#download">Download</a></nav>
+  <details class="langmenu">
+    <summary aria-label="Sprache / Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>Deutsch</span></summary>
+    <ul><li><a href="index.html" hreflang="de" lang="de" aria-current="true"><b>DE</b> Deutsch</a></li><li><a href="en/index.html" hreflang="en" lang="en"><b>EN</b> English</a></li><li><a href="fr/index.html" hreflang="fr" lang="fr"><b>FR</b> Français</a></li><li><a href="nl/index.html" hreflang="nl" lang="nl"><b>NL</b> Nederlands</a></li><li><a href="es/index.html" hreflang="es" lang="es"><b>ES</b> Español</a></li></ul>
+  </details>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+  <div class="hero-copy">
+    <p class="kicker">Fahrtenbuch-App für Android und Windows</p>
+    <h1>Jede Fahrt <em>sauber notiert.</em></h1>
+    <p class="lead">Driver&#x27;s Log erfasst Fahrten mit Datum, Fahrer, Zweck, Start und Ziel und berechnet die Entfernung automatisch. Für Dienstfahrten, Arztfahrten und Freizeittouren, mit Export als PDF oder CSV.</p>
+    <div class="ctas">
+      <a class="btn btn-play" href="https://play.google.com/store/apps/details?id=de.kloesel.driverslog&hl=de" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Bei Google Play laden</a>
+      <a class="btn btn-ghost" href="#funktionen">Funktionen ansehen</a>
+    </div>
+    <ul class="facts"><li>Kostenlos bis 25 Fahrten</li><li>Keine Werbung, kein Konto</li><li>Daten bleiben auf Ihren Geräten</li></ul>
+    <div class="ledger" role="group" aria-label="Auszug Fahrtenbuch">
+      <div class="ledger-cap"><span>Auszug Fahrtenbuch</span><span>Oktober 2026 · Beispiel</span></div>
+      <div class="ledger-scroll"><table>
+        <thead><tr><th>Datum</th><th>Fahrer</th><th>Zweck</th><th>Start → Ziel</th><th class="km">km</th></tr></thead>
+        <tbody><tr><td class="date">06.10.</td><td>Anne</td><td><span class="purpose">Kundenbesuch</span></td><td>Büro → Fa. Weber</td><td class="km">38,4</td></tr><tr><td class="date">09.10.</td><td>Timo</td><td><span class="purpose">Arztbesuch</span></td><td>zu Hause → Praxis Dr. Klein</td><td class="km">12,6</td></tr><tr><td class="date">12.10.</td><td>Anne</td><td><span class="purpose">Radtour</span></td><td>Rurufer → Wassenberg</td><td class="km">24,1</td></tr></tbody>
+        <tfoot><tr><td>Summe</td><td></td><td></td><td></td><td class="km">75,1</td></tr></tfoot>
+      </table></div></div>
   </div>
+  <figure class="phone"><div class="phone-frame"><img src="assets/img/de-liste.webp" width="540" height="1170" alt="Fahrtenliste in der App" fetchpriority="high"></div>
+    <figcaption>Fahrtenliste in der App</figcaption></figure>
+</div></section>
+
+<section class="sec" id="fuer-wen"><div class="wrap">
+  <div class="sec-head"><h2>Wofür Sie Driver&#x27;s Log nutzen</h2><p>Ein Fahrtenbuch hilft überall dort, wo Fahrten nachgewiesen, abgerechnet oder einfach festgehalten werden sollen.</p></div>
+  <div class="audience"><article class="aud "><span class="tag">Beruf</span><h3>Selbstständige und kleine Betriebe</h3><p>Kundenbesuche und Dienstfahrten mit Zweck und Entfernung festhalten. Die Monatsübersicht dient als Grundlage für Abrechnung und Steuer.</p></article><article class="aud "><span class="tag">Gesundheit</span><h3>Arzt- und Therapiefahrten</h3><p>Fahrten zu Praxen, Kliniken und Therapien sammeln, als Nachweis für die Steuererklärung oder eine Kostenerstattung.</p></article><article class="aud "><span class="tag">Ehrenamt</span><h3>Verein und Familie</h3><p>Fahrten für den Verein, das Ehrenamt oder die Betreuung von Angehörigen dokumentieren und gesammelt abrechnen.</p></article><article class="aud gps"><span class="tag">Freizeit</span><h3>Radtouren</h3><p>Die Tour per GPS aufzeichnen, Start und Ziel benennen und die gefahrene Strecke festhalten.</p></article><article class="aud gps"><span class="tag">Freizeit</span><h3>Wanderungen</h3><p>Die gewanderte Strecke per GPS erfassen, auch wenn das Handy in der Tasche steckt.</p></article></div>
+  <p class="note"><b>Hinweis zum Finanzamt:</b> Für die Fahrtenbuchmethode beim Firmenwagen gelten strenge Formvorschriften. Ob Ihre Aufzeichnungen dafür ausreichen, klären Sie im Zweifel mit Ihrer Steuerberatung.</p>
+</div></section>
+
+<section class="sec sec-alt" id="funktionen"><div class="wrap">
+  <div class="sec-head"><h2>Was die App kann</h2><p>Alles, was ein Fahrtenbuch braucht, ohne Formularkram.</p></div>
+  <div class="features"><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg></span><h3>Adressen einmal anlegen</h3><p>Start- und Zieladressen speichern Sie im Adressbuch und wählen sie danach mit einem Tipp aus. Vorschläge kommen aus OpenStreetMap.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/></svg></span><h3>Entfernung automatisch</h3><p>Die Strecke zwischen Start und Ziel wird per Routenberechnung ermittelt, auf Wunsch für Hin- und Rückweg.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><h3>GPS-Aufzeichnung</h3><p>Für Autofahrt, Fahrradtour oder Wanderung. Die Aufzeichnung läuft im Hintergrund und füllt danach das Fahrtformular aus.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.4 5 2.7 5 5.8"/></svg></span><h3>Mehrere Fahrer</h3><p>Jede Fahrt einer Person zuordnen, etwa wenn sich Familie oder Team ein Auto teilen.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span><h3>Eigene Fahrtzwecke</h3><p>Kundenbesuch, Arztbesuch, Einkauf: Zwecke legen Sie selbst an und sortieren die Liste danach.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></span><h3>Export als PDF oder CSV</h3><p>Nach Monat oder ganzem Jahr und nach Fahrtzweck, mit Fahrtenliste, Zusammenfassung nach Strecke und Adressliste.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>Automatische Datensicherung</h3><p>Tägliches Backup in einen Ordner Ihrer Wahl. Es bleibt auch erhalten, wenn die App gelöscht wird.</p></article><article class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span><h3>Fünf Sprachen</h3><p>Deutsch, Englisch, Französisch, Niederländisch und Spanisch.</p></article></div>
+</div></section>
+
+<section class="sec" id="sync"><div class="wrap sync">
+  <div class="sync-copy">
+    <p class="kicker">WLAN-Sync · Pro</p>
+    <h2>Unterwegs am Handy, im Büro am PC</h2>
+    <p class="lead">Ihr Android-Gerät und Ihr Windows-PC gleichen die Fahrten direkt über Ihr WLAN ab. Wer eine Fahrt speichert, sieht sie kurz darauf auf den anderen Geräten.</p>
+    <ul><li>Ohne Cloud und ohne Konto</li><li>Nur innerhalb Ihres eigenen Netzwerks</li><li>Android und Windows gemischt</li><li>Die Windows-App ist kostenlos</li></ul>
+  </div>
+  <div class="diagram" role="img" aria-label="Android ⇄ Ihr WLAN ⇄ Windows">
+    <div class="dev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span>Android</span></div>
+    <div class="wifi"><span class="wave"></span><span>Ihr WLAN</span><span class="wave"></span></div>
+    <div class="dev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span>Windows</span></div>
+    <span class="nocloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.2 9.1 4.5 4.5 0 0 0 7 18z"/><path d="M3 3l18 18"/></svg>keine Cloud dazwischen</span>
+  </div>
+</div></section>
+
+<section class="sec sec-alt" id="bilder"><div class="wrap">
+  <div class="sec-head"><h2>So sieht die App aus</h2></div>
+  <div class="shots"><figure class="shot"><img src="assets/img/de-liste.webp" width="540" height="1170" alt="Fahrtenliste, sortierbar nach Datum, Fahrer, Zweck, Start, Ziel und km"><figcaption>Fahrtenliste, sortierbar nach Datum, Fahrer, Zweck, Start, Ziel und km</figcaption></figure><figure class="shot"><img src="assets/img/de-gps.webp" width="540" height="1170" alt="GPS-Aufzeichnung für Auto, Rad oder Wanderung"><figcaption>GPS-Aufzeichnung für Auto, Rad oder Wanderung</figcaption></figure><figure class="shot"><img src="assets/img/de-fahrt.webp" width="540" height="1170" alt="Fahrt erfassen mit Entfernungsberechnung"><figcaption>Fahrt erfassen mit Entfernungsberechnung</figcaption></figure><figure class="shot"><img src="assets/img/de-export.webp" width="540" height="1170" alt="Export nach Zeitraum und Fahrtzweck"><figcaption>Export nach Zeitraum und Fahrtzweck</figcaption></figure></div>
+  <p class="small">Abbildungen mit Beispieldaten.</p>
+</div></section>
+
+<section class="sec" id="preise"><div class="wrap">
+  <div class="sec-head"><h2>Free und Pro</h2><p>Driver&#x27;s Log ist kostenlos. Ein einmaliger In-App-Kauf schaltet Pro frei, ohne Abo.</p></div>
+  <div class="plans-wrap"><table class="plans">
+    <thead><tr><th>Funktion</th><th class="c">Free</th><th class="c pro">Pro</th></tr></thead>
+    <tbody><tr><td>Fahrten</td><td class="c">bis 25</td><td class="c">unbegrenzt</td></tr><tr><td>GPS-Aufzeichnung</td><td class="c"><span class="yes" aria-label="ja">✓</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr><tr><td>Export als PDF und CSV</td><td class="c"><span class="yes" aria-label="ja">✓</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr><tr><td>Mehrere Fahrer und eigene Fahrtzwecke</td><td class="c"><span class="yes" aria-label="ja">✓</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr><tr><td>Automatische Datensicherung</td><td class="c"><span class="yes" aria-label="ja">✓</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr><tr><td>WLAN-Sync zwischen Geräten</td><td class="c"><span class="no" aria-label="nein">–</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr><tr><td>Windows-App mit Abgleich</td><td class="c"><span class="no" aria-label="nein">–</span></td><td class="c"><span class="yes" aria-label="ja">✓</span></td></tr></tbody></table></div>
+  <p class="small">Den aktuellen Preis zeigt Google Play in Ihrer Währung an.</p>
+</div></section>
+
+<section class="sec sec-alt" id="download"><div class="wrap">
+  <div class="sec-head"><h2>Download</h2></div>
+  <div class="dl">
+    <div class="dl-card"><span class="req">Android 9 oder neuer</span><p>Installation und Pro-Kauf über Google Play.</p>
+      <a class="btn btn-play" href="https://play.google.com/store/apps/details?id=de.kloesel.driverslog&hl=de" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Bei Google Play laden</a></div>
+    <div class="dl-card"><span class="req">Windows 10 oder 11 (64 Bit)</span><p>Die Windows-App ist kostenlos. Für den Abgleich mit dem Handy braucht die Android-App Pro.</p>
+      <a class="btn btn-ghost" href="https://github.com/Kloesel/DriversLog-Public/releases" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Windows-Version auf GitHub</a></div>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <div class="sec-head"><h2>Häufige Fragen</h2></div>
+  <div class="faq"><details><summary>Wo werden meine Daten gespeichert?</summary><p>Nur auf Ihren eigenen Geräten, in einer lokalen Datenbank. Es gibt kein Benutzerkonto und keinen Cloud-Speicher.</p></details><details><summary>Brauche ich eine Internetverbindung?</summary><p>Nur für Adressvorschläge und die automatische Entfernungsberechnung. Fahrten erfassen und der WLAN-Sync funktionieren auch ohne Internet.</p></details><details><summary>Was passiert nach 25 Fahrten?</summary><p>Ihre bisherigen Fahrten bleiben vollständig erhalten. Neue Fahrten legen Sie dann mit Pro an.</p></details><details><summary>Erkennt das Finanzamt den Export an?</summary><p>Der Export ist eine gute Grundlage für Steuererklärung und Abrechnung. Ob er im Einzelfall genügt, etwa für die Fahrtenbuchmethode beim Firmenwagen, hängt von Ihrer Situation ab.</p></details></div>
+</div></section>
+</main>
+<a class="totop" href="#top" aria-label="Nach oben" title="Nach oben"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+<footer class="foot"><div class="wrap">
+  <p>© 2026 Kloesel Apps · Driver&#x27;s Log ist eine App von Kloesel Apps.</p>
+  <nav aria-label="Rechtliches">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="privacy_de.html">Datenschutz der App</a>
+  </nav>
+  <p class="tm">Google Play und das Google Play-Logo sind Marken von Google LLC. Windows ist eine Marke der Microsoft-Unternehmensgruppe.</p>
+</div></footer>
+<script>document.addEventListener('click',function(ev){document.querySelectorAll('details.langmenu[open]').forEach(function(d){if(!d.contains(ev.target))d.removeAttribute('open')})});document.addEventListener('keydown',function(ev){if(ev.key==='Escape')document.querySelectorAll('details.langmenu[open]').forEach(function(d){d.removeAttribute('open')})});(function(){var b=document.querySelector('.totop');if(!b)return;document.documentElement.classList.add('js');function u(){b.classList.toggle('show',window.scrollY>window.innerHeight*0.6)}window.addEventListener('scroll',u,{passive:true});u()})();</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Driver's Log", "alternateName": "Fahrtenbuch – Driver's Log", "operatingSystem": "Android 9+, Windows 10/11", "applicationCategory": "BusinessApplication", "inLanguage": "de", "description": "Digitales Fahrtenbuch für Android und Windows: Fahrten erfassen, Entfernung automatisch berechnen, Rad- und Wandertouren per GPS aufzeichnen, Export als PDF oder CSV. WLAN-Sync ohne Cloud. Kostenlos bis 25 Fahrten.", "url": "https://kloesel.github.io/DriversLog-Public/", "downloadUrl": "https://play.google.com/store/apps/details?id=de.kloesel.driverslog", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "author": {"@type": "Organization", "name": "Kloesel Apps"}}</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datenschutzerklärung – Driverslog</title>
+  <title>Datenschutzerklärung – Driver's Log</title>
   <style>
 
     :root {
@@ -204,6 +204,10 @@
       section { padding: 20px 18px; }
       header { padding: 36px 18px 30px; }
     }
+  
+    /* Ergänzungen (Webseite 2026): lange Begriffe umbrechen, Untertitel lesbar */
+    li strong, code, .info-tile .value, .info-tile .label { overflow-wrap: anywhere; }
+    header p { color: rgba(255,255,255,.85); }
   </style>
 </head>
 <body>
@@ -211,228 +215,104 @@
 <header>
   <div class="header-icon">🚗</div>
   <h1>Datenschutzerklärung</h1>
-  <p>Driverslog App &nbsp;·&nbsp; Android &amp; Windows</p>
+  <p>Driver's Log App &nbsp;·&nbsp; Android &amp; Windows</p>
 </header>
 
 <div class="container">
 
   <div class="date-banner">
-    Stand: August 2026 &nbsp;·&nbsp; Gültig für Driverslog ab Version 1.5.03
+    Stand: Oktober 2026 &nbsp;·&nbsp; Gültig für Driver's Log ab Version 1.9.02
   </div>
 
-  <!-- 1. Verantwortlicher -->
   <section>
     <h2><span class="icon">👤</span> Verantwortlicher</h2>
-    <div class="info-grid">
-      <div class="info-tile">
-        <div class="label">Entwickler</div>
-        <div class="value">Klösel</div>
-      </div>
-      <div class="info-tile">
-        <div class="label">Kontakt</div>
-        <div class="value"><!-- DEINE E-MAIL HIER -->info.kloesel@gmx.de</div>
-      </div>
-      <div class="info-tile">
-        <div class="label">App-Version</div>
-        <div class="value">ab 1.5.03</div>
-      </div>
-      <div class="info-tile">
-        <div class="label">Plattform</div>
-        <div class="value">Android, Windows</div>
-      </div>
-    </div>
+    <div class="info-grid"><div class="info-tile"><div class="label">Name</div><div class="value">Nikolaus Nießen, Kloesel Apps</div></div><div class="info-tile"><div class="label">Anschrift</div><div class="value">Weyresstraße 37, 52525 Heinsberg, Deutschland</div></div><div class="info-tile"><div class="label">Kontakt</div><div class="value">info.kloesel@gmx.de</div></div><div class="info-tile"><div class="label">Plattform</div><div class="value">Android, Windows</div></div></div>
   </section>
-
-  <!-- 2. Zweck -->
   <section>
     <h2><span class="icon">📋</span> Zweck der App</h2>
-    <p>
-      Driverslog dient der privaten oder dienstlichen Erfassung und Verwaltung
-      von Kraftfahrzeugfahrten. Die App ermöglicht die Protokollierung von
-      Start- und Zieladressen, Fahrstrecken sowie Fahrerdaten und kann
-      Fahrten, Fahrradtouren und Wanderungen erfassen – manuell oder per GPS-Tracking.
-      Fahrtenberichte als PDF oder CSV exportieren.
-    </p>
-    <p>
-      Die App ist für den persönlichen Gebrauch ausgelegt. Es werden keine
-      Nutzerkonten erstellt und keine Daten in einer Cloud gespeichert.
-    </p>
+    <p>Driver's Log dient der privaten oder dienstlichen Erfassung von Fahrten mit dem Auto, dem Fahrrad oder zu Fuß – manuell oder per GPS-Aufzeichnung. Fahrten lassen sich auswerten und als PDF oder CSV exportieren.</p>
+    <p>Die App benötigt <strong>kein Benutzerkonto</strong> und speichert <strong>keine Daten in einer Cloud</strong>. Der Entwickler erhält keine Ihrer Fahrt-, Adress- oder Standortdaten.</p>
   </section>
-
-  <!-- 3. Lokal gespeicherte Daten -->
   <section>
     <h2><span class="icon">💾</span> Lokal gespeicherte Daten</h2>
-    <p>Alle eingegebenen Daten werden <strong>ausschließlich lokal</strong> auf
-    dem Gerät gespeichert (SQLite-Datenbank). Dazu gehören:</p>
+    <p>Alle Daten werden <strong>ausschließlich lokal</strong> in einer Datenbank auf Ihrem Gerät gespeichert. Dazu gehören:</p>
     <ul>
-      <li>Fahrtdaten (Datum, Start, Ziel, Kilometer, Fahrer, Fahrtzweck)</li>
-      <li>Adressbuch (Straße, Ort, Koordinaten)</li>
-      <li>Fahrerdaten (Name)</li>
-      <li>Fahrtzwecke (Bezeichnung)</li>
-      <li>App-Einstellungen</li>
+      <li>Fahrten (Datum, Fahrer, Fahrtzweck, Start, Ziel, Entfernung, Bemerkung)</li>
+      <li>Adressbuch (Bezeichnung, Straße, Ort, Land, Koordinaten)</li>
+      <li>Fahrer (Name) und Fahrtzwecke (Bezeichnung)</li>
+      <li>GPS-Aufzeichnungen (Wegpunkte mit Zeit, Position, Höhe, Geschwindigkeit und Genauigkeit)</li>
+      <li>Synchronisationsprotokoll (welche Einträge auf welchem Ihrer Geräte geändert wurden)</li>
+      <li>Einstellungen, ggf. einschließlich eines persönlichen API-Schlüssels für OpenRouteService</li>
     </ul>
-    <p>Diese Daten verlassen das Gerät <strong>nicht automatisch</strong> und
-    werden nicht an den Entwickler übermittelt.</p>
-    <div class="badge">✅ Keine Cloud-Speicherung</div>
+    <p>Diese Daten verlassen das Gerät nur über die unten beschriebenen Funktionen, die Sie selbst nutzen oder einrichten.</p>
+    <div class="badge">✅ Keine Cloud-Speicherung &nbsp;·&nbsp; ✅ Kein Konto</div>
   </section>
-
-  <!-- 4. Externe Dienste -->
+  <section>
+    <h2><span class="icon">🗂️</span> Datensicherung und Export</h2>
+    <div class="service-card"><h3>Automatische Datensicherung</h3>
+      <p>Auf Wunsch legt die App täglich eine Kopie der Datenbank in einem Ordner ab (Android: von Ihnen über die Ordnerauswahl des Systems gewählt; Windows: „Dokumente\Fahrtenbuch\Backups“). Die Sicherung bleibt dort auch nach einer Deinstallation erhalten und kann in der App wiederhergestellt werden. Liegt dieser Ordner in einem Bereich, der mit einem Cloud-Dienst synchronisiert wird (z.&nbsp;B. Google Drive oder OneDrive), gelten dafür die Bedingungen dieses Dienstes.</p></div>
+    <div class="service-card"><h3>Export als PDF oder CSV</h3>
+      <p>Exportdateien werden auf Ihrem Gerät gespeichert. Ob und an wen Sie diese Dateien weitergeben, entscheiden Sie selbst; dafür wird die von Ihnen gewählte App verwendet.</p></div>
+  </section>
   <section>
     <h2><span class="icon">🌐</span> Externe Dienste (Netzwerkzugriffe)</h2>
-    <p>Die App nutzt folgende externe Dienste, <strong>ausschließlich auf
-    Nutzerinitiative</strong> (z.&nbsp;B. beim Berechnen einer Fahrstrecke):</p>
-
-    <div class="service-card">
-      <h3>Nominatim – OpenStreetMap</h3>
-      <p>
-        Für die Umwandlung von Adressen in Koordinaten (Geocoding) werden
-        Adresstexte an den öffentlichen Nominatim-Dienst der OpenStreetMap
-        Foundation übermittelt. Es werden dabei keine personenbezogenen Daten
-        übertragen, nur der eingegebene Adresstext.<br>
-        Zusätzlich kann beim Anlegen oder Bearbeiten einer Adresse als
-        letzter Rückfallschritt (nur Android, nur falls die textbasierte
-        Suche kein Ergebnis liefert) einmalig die aktuelle Geräteposition
-        ermittelt und ebenfalls an Nominatim übermittelt werden, um
-        automatisch das Land der Adresse zu bestimmen. Diese Positionsdaten
-        werden von der App selbst nicht gespeichert, nur das ermittelte
-        Land wird übernommen.<br>
-        Datenschutz: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a>
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>OSRM – Open Source Routing Machine</h3>
-      <p>
-        Für die Berechnung der tatsächlichen Fahrstrecke (Routing) werden
-        Start- und Zielkoordinaten an den öffentlichen OSRM-Demo-Server
-        (<code>router.project-osrm.org</code>) übermittelt.
-        OSRM ist kostenlos und erfordert keinen Account oder API-Key.
-        Es werden ausschließlich GPS-Koordinaten übertragen –
-        keine personenbezogenen Daten.<br>
-        Projekt: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a>
-      </p>
-    </div>
-
-    <div class="service-card">
-      <h3>OpenRouteService (ORS) – optional</h3>
-      <p>
-        Alternativ kann ein persönlicher API-Schlüssel von OpenRouteService
-        in den Einstellungen hinterlegt werden. Ist ein Key eingetragen, werden
-        Start- und Zielkoordinaten an OpenRouteService (HeiGIT, Heidelberg)
-        übermittelt statt an OSRM. Der Dienst bietet 500 Anfragen/Tag kostenlos.
-        Ohne eingetragenen Key wird OSRM verwendet.<br>
-        Datenschutz: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a>
-      </p>
-    </div>
-
-    <p style="margin-top:14px; font-size:0.88rem; color: var(--muted);">
-      OSRM und ORS werden nur aufgerufen, wenn der Nutzer aktiv eine
-      Entfernungsberechnung auslöst. Nominatim wird zusätzlich beim Anlegen
-      oder Bearbeiten einer Adresse aufgerufen (siehe oben). Es findet kein
-      automatischer Hintergrundabruf statt. OSRM wird standardmäßig
-      verwendet; ORS nur wenn ein API-Key eingetragen ist.
-    </p>
+    <p>Die App ruft folgende Dienste nur auf, wenn Sie die jeweilige Funktion nutzen. Dabei wird technisch bedingt auch die <strong>IP-Adresse</strong> Ihres Geräts an den Dienst übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und f DSGVO (Bereitstellung der von Ihnen angeforderten Funktion).</p>
+    <div class="service-card"><h3>Nominatim – OpenStreetMap Foundation</h3>
+      <p>Beim Anlegen oder Bearbeiten einer Adresse wird der eingegebene Adresstext an Nominatim übermittelt, um Adressvorschläge und Koordinaten zu erhalten. Liefert die Suche kein Ergebnis, kann die App (nur Android) einmalig die aktuelle Geräteposition ermitteln und an Nominatim senden, um das Land der Adresse zu bestimmen. Diese Position speichert die App nicht.<br>
+      Datenschutz: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p></div>
+    <div class="service-card"><h3>OSRM – Routenberechnung</h3>
+      <p>Für die Berechnung der Entfernung werden die Koordinaten von Start und Ziel an den öffentlichen Server <code>router.project-osrm.org</code> übermittelt. Ein Konto ist nicht nötig.<br>
+      Projekt: <a href="https://project-osrm.org/" target="_blank" rel="noopener">project-osrm.org</a></p></div>
+    <div class="service-card"><h3>OpenRouteService (optional)</h3>
+      <p>Haben Sie in den Einstellungen einen eigenen API-Schlüssel hinterlegt, gehen die Koordinaten von Start und Ziel zusammen mit diesem Schlüssel an OpenRouteService (HeiGIT gGmbH, Heidelberg) statt an OSRM.<br>
+      Datenschutz: <a href="https://openrouteservice.org/privacy-policy/" target="_blank" rel="noopener">openrouteservice.org/privacy-policy</a></p></div>
+    <p>Start und Ziel einer GPS-Aufzeichnung werden <strong>auf dem Gerät</strong> mit Ihrem Adressbuch abgeglichen; dafür werden keine Daten übertragen. Es findet kein automatischer Abruf im Hintergrund statt.</p>
   </section>
-
-  <!-- 5. WLAN-Synchronisation -->
   <section>
-    <h2><span class="icon">📶</span> WLAN-Synchronisation</h2>
-    <p>
-      Die App bietet eine optionale Synchronisation zwischen mehreren Geräten
-      im gleichen WLAN-Netz (z.&nbsp;B. Android-Smartphone und Windows-PC).
-      Dabei werden Fahrtdaten direkt zwischen den Geräten ausgetauscht –
-      <strong>ohne Umweg über das Internet oder externe Server</strong>.
-    </p>
-    <p>
-      Die Übertragung erfolgt im lokalen Netzwerk unverschlüsselt (TCP).
-      Es werden keine Daten an Dritte weitergegeben.
-    </p>
+    <h2><span class="icon">📶</span> WLAN-Synchronisation (Pro)</h2>
+    <p>Optional gleicht die App Ihre Daten direkt zwischen Ihren eigenen Geräten im selben WLAN ab (z.&nbsp;B. Android-Smartphone und Windows-PC) – <strong>ohne Internet und ohne fremde Server</strong>.</p>
+    <ul>
+      <li>Zur Gerätesuche sendet die App im lokalen Netz regelmäßig eine kurze Kennung mit einer zufälligen Geräte-ID und dem Gerätenamen (Android: Gerätemodell, Windows: Name des PCs).</li>
+      <li>Fahrten, Adressen, Fahrer und Fahrtzwecke werden zwischen den Geräten übertragen; bei der Ersteinrichtung kann die gesamte Datenbank übertragen werden.</li>
+      <li>Die Übertragung erfolgt im lokalen Netz <strong>unverschlüsselt</strong>. Nutzen Sie die Synchronisation daher nur in vertrauenswürdigen Netzen (z.&nbsp;B. Ihrem Heimnetz).</li>
+      <li>Damit der Abgleich auch bei ausgeschaltetem Bildschirm funktioniert, läuft unter Android ein Hintergrunddienst mit sichtbarer Benachrichtigung. Auf Wunsch fragt die App, ob sie von der Akku-Optimierung ausgenommen werden darf.</li>
+      <li>Unter Windows richtet das Installationsprogramm eine Firewall-Freigabe nur für private Netzwerke und das lokale Subnetz ein.</li>
+    </ul>
   </section>
-
-  <!-- 6. In-App-Kauf (Pro-Version) -->
   <section>
     <h2><span class="icon">🛒</span> In-App-Kauf (Pro-Version)</h2>
-    <p>
-      Die Android-Version von Driverslog bietet einen optionalen Upgrade auf
-      <strong>Driverslog Pro</strong> über einen einmaligen In-App-Kauf
-      (Produkt-ID: <code>driverslog_pro</code>). Der Kauf ist freiwillig und
-      für die Grundfunktionen der App nicht erforderlich.
-    </p>
-    <p>
-      Die Kaufabwicklung erfolgt <strong>ausschließlich über Google Play
-      Billing</strong>. Der Entwickler erhält dabei lediglich eine
-      Bestätigung, dass der Kauf erfolgreich abgeschlossen wurde –
-      keinerlei Zahlungsdaten (Kartennummern, Bankdaten o.&nbsp;Ä.).
-    </p>
-    <p>
-      Für die Verarbeitung von Zahlungsdaten gilt die Datenschutzerklärung
-      von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
-    </p>
+    <p>Die Android-App bietet ein freiwilliges Upgrade auf Pro über einen einmaligen In-App-Kauf (Produkt-ID: <code>driverslog_pro</code>). Die Abwicklung erfolgt ausschließlich über <strong>Google Play</strong>. Der Entwickler erhält keine Zahlungsdaten, sondern nur die für den Kauf nötigen Bestellinformationen von Google (z.&nbsp;B. Bestellnummer und Produkt).<br>
+    Datenschutz von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
     <div class="badge">✅ Zahlungsdaten nur bei Google &nbsp;·&nbsp; ✅ Kein Abo</div>
   </section>
-
-  <!-- 7. Berechtigungen Android -->
   <section>
-    <h2><span class="icon">🔒</span> Android-Berechtigungen</h2>
-    <ul>
-      <li><strong>INTERNET</strong> – für Nominatim-Geocoding, OSRM-Routing und optionales ORS-Routing</li>
-      <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE</strong> – für WLAN-Sync-Erkennung und WLAN-Prüfung vor Routing-Anfragen</li>
-      <li><strong>CHANGE_WIFI_MULTICAST_STATE</strong> – für Gerätesuche per UDP-Broadcast im lokalen Netz</li>
-      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE (Android ≤12)</strong> – Zugriff auf die Datenbankdatei im externen Speicher</li>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – für GPS-Tracking (Autofahrten, Fahrradtouren, Wanderungen) sowie, nur als letzter Rückfallschritt bei der Adressvergabe, zur automatischen Länder-Bestimmung (siehe Abschnitt „Externe Dienste"). GPS-Tracking-Daten werden lokal verarbeitet und nicht übertragen; die einmalige Positionsabfrage bei der Adressvergabe wird an Nominatim übermittelt, aber nicht von der App gespeichert.</li>
-      <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_LOCATION</strong> – ermöglicht GPS-Erfassung auch bei minimierter App (Foreground Service mit sichtbarer Benachrichtigung)</li>
-      <li><strong>NEARBY_WIFI_DEVICES (Android 13+)</strong> – für WLAN-Direktsync ohne Standortberechtigung</li>
-    </ul>
-    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">
-      Es werden keine Berechtigungen für Kamera, Mikrofon, Kontakte oder andere
-      nicht aufgeführte sensible Gerätedaten angefordert. Der Standortzugriff
-      erfolgt während aktiver GPS-Aufzeichnung sowie, kurz und einmalig, beim
-      Anlegen/Bearbeiten einer Adresse, falls die textbasierte Suche kein
-      Ergebnis liefert.
-    </p>
+    <h2><span class="icon">⭐</span> Bewertung in der App (Android)</h2>
+    <p>Nach einigen gespeicherten Fahrten oder einem erfolgreichen Export kann die App einmalig den Bewertungsdialog von Google Play anzeigen. Dieser Dialog wird vollständig von Google bereitgestellt; die App erfährt nicht, ob oder wie Sie bewertet haben. Eine abgegebene Bewertung ist – wie im Play Store üblich – öffentlich.</p>
   </section>
-
-  <!-- 8. Keine Weitergabe -->
   <section>
-    <h2><span class="icon">🚫</span> Keine Datenweitergabe</h2>
-    <p>
-      Es findet <strong>keine Weitergabe persönlicher Daten</strong> an den
-      Entwickler, Werbetreibende oder sonstige Dritte statt.
-      Die App enthält keine Analyse-SDKs, keine Werbung und kein Tracking.
-    </p>
+    <h2><span class="icon">🔒</span> Android-Berechtigungen</h2><ul><li><strong>INTERNET</strong> – für Adresssuche (Nominatim) und Routenberechnung (OSRM, optional OpenRouteService)</li><li><strong>ACCESS_NETWORK_STATE</strong> – prüft, ob eine WLAN- bzw. Internetverbindung besteht</li><li><strong>CHANGE_WIFI_MULTICAST_STATE / NEARBY_WIFI_DEVICES</strong> – Gerätesuche für den WLAN-Sync im lokalen Netz</li><li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> – GPS-Aufzeichnung von Fahrten und Touren sowie die einmalige Länderbestimmung bei der Adresssuche (siehe oben)</li><li><strong>FOREGROUND_SERVICE, FOREGROUND_SERVICE_LOCATION, FOREGROUND_SERVICE_DATA_SYNC</strong> – GPS-Aufzeichnung und WLAN-Sync laufen bei minimierter App weiter, jeweils mit sichtbarer Benachrichtigung</li><li><strong>WAKE_LOCK / REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</strong> – verhindert, dass Android den Sync im Ruhezustand abbricht; die Ausnahme von der Akku-Optimierung erteilen Sie selbst</li><li><strong>com.android.vending.BILLING</strong> – In-App-Kauf über Google Play</li><li><strong>WRITE_EXTERNAL_STORAGE</strong> – wird vom verwendeten Qt-Framework eingetragen und betrifft nur Android 9 und 10; die App speichert ihre Daten im eigenen App-Speicher</li></ul>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--muted);">Die App fordert keinen Zugriff auf Kamera, Mikrofon, Kontakte oder Fotos an. Der Standort wird nur während einer GPS-Aufzeichnung und im beschriebenen Einzelfall bei der Adresssuche abgefragt.</p>
+  </section>
+  <section>
+    <h2><span class="icon">🚫</span> Keine Weitergabe, kein Tracking</h2>
+    <p>Es werden keine personenbezogenen Daten an den Entwickler, an Werbetreibende oder sonstige Dritte weitergegeben, abgesehen von den oben genannten Diensten. Die App enthält <strong>keine Werbung, keine Analyse-Software und kein Tracking</strong>.</p>
     <div class="badge">✅ Kein Tracking &nbsp;·&nbsp; ✅ Keine Werbung &nbsp;·&nbsp; ✅ Keine Analyse</div>
   </section>
-
-  <!-- 9. Rechte -->
   <section>
     <h2><span class="icon">⚖️</span> Ihre Rechte</h2>
-    <p>
-      Da alle Daten lokal auf Ihrem Gerät gespeichert werden, haben Sie
-      jederzeit vollständige Kontrolle. Sie können alle Daten direkt in der
-      App löschen oder die App-Daten über die Android-Einstellungen
-      vollständig entfernen.
-    </p>
-    <p>
-      Bei Fragen zum Datenschutz wenden Sie sich bitte per E-Mail an:
-      <strong><!-- DEINE E-MAIL -->info.kloesel@gmx.de</strong>
-    </p>
+    <p>Ihre Daten liegen auf Ihren eigenen Geräten. Sie können sie jederzeit in der App ändern oder löschen; beim Deinstallieren werden die App-Daten entfernt (eine Datensicherung bleibt im Sicherungsordner erhalten).</p>
+    <p>Nach der DSGVO haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Für Daten bei den oben genannten Diensten wenden Sie sich an den jeweiligen Anbieter. Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren, z.&nbsp;B. bei der Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.</p>
+    <p>Fragen zum Datenschutz: <strong>info.kloesel@gmx.de</strong></p>
   </section>
-
-  <!-- 10. Änderungen -->
   <section>
     <h2><span class="icon">🔄</span> Änderungen dieser Erklärung</h2>
-    <p>
-      Diese Datenschutzerklärung kann bei wesentlichen Änderungen der App
-      aktualisiert werden. Das Datum der letzten Änderung ist oben
-      angegeben. Die jeweils aktuelle Version ist stets unter dieser
-      URL abrufbar.
-    </p>
+    <p>Diese Erklärung wird bei wesentlichen Änderungen der App angepasst. Das Datum steht oben; die aktuelle Fassung ist immer unter dieser Adresse abrufbar.</p>
   </section>
 
 </div>
 
 <footer>
-  &copy; 2026 Klösel &nbsp;·&nbsp; Driverslog &nbsp;·&nbsp;
+  &copy; 2026 Kloesel Apps &nbsp;·&nbsp; Driver's Log &nbsp;·&nbsp;
   Diese App verwendet Qt, lizenziert unter
   <a href="https://www.gnu.org/licenses/lgpl-3.0.html" style="color:var(--primary)">GNU LGPL v3</a>
 </footer>
