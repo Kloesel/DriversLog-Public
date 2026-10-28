@@ -245,6 +245,7 @@ section { scroll-margin-top: 1rem; }
 .foot a { color: #fff; }
 .foot nav { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
 .foot .tm { flex-basis: 100%; font-size: .78rem; opacity: .75; }
+.foot .ver { flex-basis: 100%; font-size: .74rem; opacity: .55; margin-top: -.6rem; }
 
 /* Rechtstexte */
 .legal .wrap { max-width: 48rem; padding-block: 2.5rem 4rem; }
