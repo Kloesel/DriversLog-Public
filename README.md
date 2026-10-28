@@ -3,6 +3,8 @@
 A dual-platform activity logging app for **Android** and **Windows**, built with Qt/C++.  
 Record car trips, cycling tours and hikes — with optional GPS tracking on Android.
 
+🌐 **Website:** [kloesel.github.io/DriversLog-Public](https://kloesel.github.io/DriversLog-Public/) — features, screenshots and FAQ in English, German, French, Dutch and Spanish.
+
 ## Download
 
 - **Android:** [Google Play Store](https://play.google.com/store/apps/details?id=de.kloesel.driverslog)
