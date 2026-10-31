@@ -39,7 +39,7 @@ The Android app is free to install. A one-time **In-App Purchase** ("Pro") unloc
 - Address book with geocoding (Nominatim/OpenStreetMap)
 - Driver management (optional multi-driver mode)
 - Trip purpose management
-- PDF and CSV export
+- PDF and CSV export, filterable by month/year, driver and trip purpose
 - Wi-Fi synchronisation between Android and Windows (same local network, no cloud) — *Pro*
 - Multilingual: German, English, French, Dutch, Spanish
 - No ads, no data collection, no cloud

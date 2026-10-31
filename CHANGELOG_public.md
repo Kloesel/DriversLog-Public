@@ -1,5 +1,26 @@
 # Driver's Log – Changelog
 
+## [1.9.02] – Oktober 2026 (Windows + Android)
+
+### Neu
+- Export nach Fahrer filtern: Beim CSV- und PDF-Export lassen sich jetzt zusätzlich einzelne oder mehrere Fahrer auswählen (Android und Windows, sichtbar bei aktivierter Einstellung „Mehrere Fahrer“).
+- Pro-Version: Der Hinweis auf die kostenlose Windows-Desktop-App samt Download-Adresse steht jetzt auch in der Hilfe und unter Info, nicht mehr nur vor dem Kauf.
+
+### Fehlerbehebungen
+- Nach dem Wiederherstellen eines Backups startete die App auf manchen Geräten nicht automatisch neu, sondern war nur noch in der Übersicht der zuletzt verwendeten Apps zu sehen – behoben.
+- Querformat mit 3-Tasten-Navigation: Inhalte (u. a. km-Angaben und die „+“-Schaltfläche) lagen teilweise unter den seitlich angeordneten Navigationstasten, außerdem lag unten ein halbtransparenter Streifen über der Liste – behoben.
+
+### Windows
+- Die Windows-App startet nur noch einmal. Wird sie erneut geöffnet, während sie schon läuft, kommt einfach das bereits geöffnete Fenster nach vorne.
+- Kann der WLAN-Sync nicht starten, nennt die Meldung jetzt den Grund (z. B. Port bereits von einem anderen Programm belegt) und was zu tun ist.
+
+### Sonstiges
+- Hilfe: Veraltete Hinweise korrigiert – Export, mehrere Fahrer und eigene Fahrtzwecke sind auch in der kostenlosen Version nutzbar.
+- Interne Aufräumarbeiten an der Bildschirmrand-Anpassung (Edge-to-Edge).
+
+### Bekanntes Problem
+Bei aktivierter Wischgesten-Navigation (statt der klassischen 3-Tasten-Navigation) reagiert das Menü-Symbol (☰) gelegentlich nach dem Zurückwischen aus einem Formular kurzzeitig nicht. Die App bleibt dabei voll funktionsfähig und stürzt nicht ab. Die Ursache liegt im zugrunde liegenden Qt-Framework ([QTBUG-148335](https://bugreports.qt.io/browse/QTBUG-148335)); laut Qt wird es mit Qt 6.12.1 behoben, auf das die App nach Erscheinen umgestellt wird. Bei 3-Tasten-Navigation tritt es nicht auf.
+
 ## [1.9.01] – Oktober 2026 (Windows + Android)
 
 ### Geändert
